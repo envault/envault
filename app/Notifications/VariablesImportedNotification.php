@@ -2,30 +2,30 @@
 
 namespace App\Notifications;
 
-use App\Variable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Str;
 
-class VariableDeletedNotification extends Notification implements ShouldQueue
+class VariablesImportedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
     /**
-     * @var Variable
+     * @var int
      */
-    public $variable;
+    public $count;
 
     /**
      * Create a new notification instance.
      *
-     * @param \App\Variable $variable
+     * @param int $count
      * @return void
      */
-    public function __construct(Variable $variable)
+    public function __construct($count)
     {
-        $this->variable = $variable;
+        $this->count = $count;
     }
 
     /**
@@ -49,19 +49,19 @@ class VariableDeletedNotification extends Notification implements ShouldQueue
     {
         $channel = $notifiable->slack_notification_channel ? "#{$notifiable->slack_notification_channel}" : '#general';
 
+        $variableForm = Str::plural('variable', $this->count);
+        $wasForm = $this->count > 2 ? 'was' : 'were';
+
         return (new SlackMessage())
-            ->error()
+            ->success()
             ->from(config('app.name'))
-            ->image(url('/images/icon.png'))
             ->to($channel)
-            ->content('An environment variable has been removed!')
+            ->content("{$this->count} environment {$variableForm} {$wasForm} added!")
             ->attachment(function ($attachment) use ($notifiable) {
                 $attachment->title($notifiable->name, route('apps.show', [
                     'app' => $notifiable->id,
                 ]))
-                    ->fields([
-                        'Key' => $this->variable->key,
-                    ]);
+                    ->content('Please run `npx envault` to sync your environment!');
             });
     }
 }

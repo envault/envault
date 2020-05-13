@@ -27,10 +27,7 @@ class Delete extends Component
 
         $this->emit('user.deleted', $this->user->id);
 
-        $this->user->log()->create([
-            'action' => 'deleted',
-            'description' => "{$this->user->full_name} ({$this->user->email}) was removed as a user.",
-        ]);
+        event(new \App\Events\Users\DeletedEvent($this->user));
     }
 
     /**

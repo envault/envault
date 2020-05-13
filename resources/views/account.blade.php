@@ -25,11 +25,13 @@
 
                 <x-inputs.text label="Last name" name="lastName" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
 
-                <x-inputs.text label="Email address" name="email" type="email" maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
+                <x-inputs.text label="Email address" name="email" type="email" maxWidth="max-w-lg"
+                               class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
+                />
             </div>
             <div class="bg-gray-50 px-4 py-5 sm:p-6 flex justify-end">
                 <span class="inline-flex">
-                    <button type="submit" wire:loading.class="opacity-75 cursor-wait"
+                    <button type="submit" wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
                             class="inline-flex shadow-sm justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
                     >
                         Save

@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Variables;
 
 use App\App;
-use App\Notifications\VariableCreatedNotification;
-use App\Notifications\VariablesCreatedNotification;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -52,7 +50,6 @@ class Create extends Component
                 $variable = explode('=', $line, 2);
 
                 $key = $variable[0];
-
                 $value = $variable[1];
 
                 // Trim " from start and end of value if it's there
@@ -78,11 +75,6 @@ class Create extends Component
                             'value' => $value,
                         ]);
 
-                        $this->app->log()->create([
-                            'action' => 'variable.created',
-                            'description' => "The variable {$variable->key} was added to the {$this->app->name} app.",
-                        ]);
-
                         $count += 1;
                     }
                 }
@@ -90,11 +82,9 @@ class Create extends Component
         });
 
         if ($count) {
-            $this->emit('variables.created', $count);
+            $this->emit('variables.imported', $count);
 
-            if ($this->app->slack_notifications_set_up) {
-                $this->app->notify(new VariablesCreatedNotification());
-            }
+            event(new \App\Events\Variables\ImportedEvent($this->app, $count));
         }
 
         $this->variables = '';
@@ -120,14 +110,7 @@ class Create extends Component
 
         $this->emit('variable.created', $variable->id);
 
-        $this->app->log()->create([
-            'action' => 'variable.created',
-            'description' => "The variable {$variable->key} was added to the {$this->app->name} app.",
-        ]);
-
-        if ($this->app->slack_notifications_set_up) {
-            $this->app->notify(new VariableCreatedNotification($variable));
-        }
+        event(new \App\Events\Variables\CreatedEvent($this->app, $variable));
 
         $this->reset('key', 'value');
     }

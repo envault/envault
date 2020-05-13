@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Notifications\AuthRequestedNotification;
+use App\Rules\ValidAuthToken;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -36,24 +37,17 @@ class Auth extends Component
     public function confirm()
     {
         $this->validate([
-            'tokenAttempt' => ['required', function ($attribute, $value, $fail) {
-                if (! Hash::check($value, $this->token)) {
-                    $fail('This code is invalid. Please check it\'s what we sent you.');
-                }
-            }],
+            'tokenAttempt' => ['required', new ValidAuthToken($this->token)],
         ]);
 
         auth()->login($this->user);
 
-        user()->last_login_at = carbon();
-        user()->save();
+        $this->user->last_login_at = carbon();
+        $this->user->save();
 
         $this->emit('auth.confirmed');
 
-        $this->user->log()->create([
-            'action' => 'authenticated',
-            'description' => "{$this->user->full_name} ({$this->user->email}) signed in.",
-        ]);
+        event(new \App\Events\Users\SignedInEvent($this->user));
 
         redirect()->route('home');
     }

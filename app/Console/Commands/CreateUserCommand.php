@@ -40,6 +40,23 @@ class CreateUserCommand extends Command
      */
     public function handle()
     {
+        $user = User::create([
+            'email' => $this->getEmail(),
+            'first_name' => $this->getFirstName(),
+            'last_name' => $this->getLastName(),
+            'role' => $this->getRole(),
+        ]);
+
+        $this->info("User created with the email address {$user->email}.");
+
+        event(new \App\Events\Users\CreatedEvent($user));
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
         $email = $this->ask('Email address');
 
         $validator = Validator::make([
@@ -53,9 +70,17 @@ class CreateUserCommand extends Command
                 $this->error($error);
             }
 
-            return;
+            return $this->getEmail();
         }
 
+        return $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName()
+    {
         $firstName = $this->ask('First name');
 
         $validator = Validator::make([
@@ -69,9 +94,17 @@ class CreateUserCommand extends Command
                 $this->error($error);
             }
 
-            return;
+            return $this->getFirstName();
         }
 
+        return $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
         $lastName = $this->ask('Last name');
 
         $validator = Validator::make([
@@ -85,29 +118,23 @@ class CreateUserCommand extends Command
                 $this->error($error);
             }
 
-            return;
+            return $this->getLastName();
         }
 
+        return $lastName;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRole()
+    {
         $type = $this->choice('Role', ['User', 'Admin', 'Owner'], 0);
 
-        $role = null;
-
         if ($type != 'User') {
-            $role = strtolower($type);
+            return strtolower($type);
         }
 
-        $user = User::create([
-            'email' => $email,
-            'first_name' => $firstName,
-            'last_name' => $lastName,
-            'role' => $role,
-        ]);
-
-        $this->info('User created with the email address '.$email.'.');
-
-        $user->log()->create([
-            'action' => 'created',
-            'description' => "{$user->full_name} ({$user->email}) was added as a user.",
-        ]);
+        return null;
     }
 }

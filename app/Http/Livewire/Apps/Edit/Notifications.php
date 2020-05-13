@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Apps\Edit;
 
 use App\App;
-use App\Notifications\AppNotificationsSetUp;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -46,20 +45,18 @@ class Notifications extends Component
         $this->app->slack_notification_webhook_url = $this->slackNotificationWebhookUrl;
         $this->app->save();
 
-        if ($this->app->slack_notification_channel && $this->app->slack_notification_webhook_url) {
-            if ($oldChannel != $this->app->slack_notification_channel || $oldWebhookUrl != $this->app->slack_notification_webhook_url) {
-                $this->app->log()->create([
-                    'action' => 'updated.notifications',
-                    'description' => "The {$this->app->name} app's notification settings were updated.",
-                ]);
-
-                if ($this->app->slack_notifications_set_up) {
-                    $this->app->notify(new AppNotificationsSetUp());
-                }
-
+        if ($oldChannel != $this->app->slack_notification_channel || $oldWebhookUrl != $this->app->slack_notification_webhook_url) {
+            if ($this->app->notificationsEnabled()) {
                 $this->emit('app.notifications.set-up', $this->app->id);
+
+                event(new \App\Events\Apps\NotificationsSetUpEvent($this->app));
+            } else {
+                $this->emit('app.notifications.updated', $this->app->id);
+
+                event(new \App\Events\Apps\NotificationSettingsUpdatedEvent($this->app));
             }
         } else {
+            // Configuration changes have not been made
             $this->emit('app.notifications.updated', $this->app->id);
         }
 
@@ -73,7 +70,6 @@ class Notifications extends Component
     public function mount(App $app)
     {
         $this->app = $app;
-
         $this->slackNotificationChannel = $app->slack_notification_channel;
         $this->slackNotificationWebhookUrl = $app->slack_notification_webhook_url;
     }

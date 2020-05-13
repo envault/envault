@@ -52,14 +52,13 @@ class VariableCreatedNotification extends Notification implements ShouldQueue
         return (new SlackMessage())
             ->success()
             ->from(config('app.name'))
-            ->image(url('/images/icon.png'))
             ->to($channel)
-            ->content('An environment variable has been added!')
+            ->content('An environment variable was added!')
             ->attachment(function ($attachment) use ($notifiable) {
                 $attachment->title($notifiable->name, route('apps.show', [
                     'app' => $notifiable->id,
                 ]))
-                    ->content('Please `php artisan envault:sync` your environment!')
+                    ->content('Please run `npx envault` to sync your environment!')
                     ->fields([
                         'Key' => $this->variable->key,
                         'Version' => "v{$this->variable->latest_version->id}",

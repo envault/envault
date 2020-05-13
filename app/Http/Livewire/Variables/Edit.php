@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Variables;
 
-use App\Notifications\VariableUpdatedNotification;
 use App\Variable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
@@ -83,10 +82,7 @@ class Edit extends Component
                 'value' => $this->value,
             ]);
 
-            $this->variable->app->log()->create([
-                'action' => 'variable.updated.value',
-                'description' => "The value of the {$this->variable->key} variable was updated for the {$this->variable->app->name} app.",
-            ]);
+            event(new \App\Events\Variables\ValueUpdatedEvent($this->variable->app, $this->variable));
         }
 
         $oldKey = $this->variable->key;
@@ -98,14 +94,7 @@ class Edit extends Component
         $this->emit('variable.updated', $this->variable->id);
 
         if ($oldKey != $this->variable->key) {
-            $this->variable->app->log()->create([
-                'action' => 'variable.updated.key',
-                'description' => "The {$oldKey} variable was renamed to {$this->variable->key} for the {$this->variable->app->name} app.",
-            ]);
-        }
-
-        if ($this->variable->app->slack_notifications_set_up && ($oldValue != $this->value || $oldKey != $this->variable->key)) {
-            $this->variable->app->notify(new VariableUpdatedNotification($this->variable));
+            event(new \App\Events\Variables\KeyUpdatedEvent($this->variable->app, $this->variable, $oldKey, $this->variable->key));
         }
     }
 
@@ -130,9 +119,7 @@ class Edit extends Component
     public function mount(Variable $variable)
     {
         $this->key = $variable->key;
-
         $this->value = $variable->latest_version->value ?? '';
-
         $this->variable = $variable;
     }
 

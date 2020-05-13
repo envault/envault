@@ -53,7 +53,7 @@ class CreateTest extends TestCase
         Livewire::test('variables.create', ['app' => $app])
             ->set('variables', $variableToCreate->key.'='.$variableVersionToCreate->value)
             ->call('import')
-            ->assertEmitted('variables.created')
+            ->assertEmitted('variables.imported')
             ->assertSet('key', null)
             ->assertSet('variables', null);
 

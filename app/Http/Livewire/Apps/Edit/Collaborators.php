@@ -27,7 +27,7 @@ class Collaborators extends Component
     public $addableUsers;
 
     /**
-     * @var string
+     * @var int
      */
     public $userToAddId;
 
@@ -49,10 +49,7 @@ class Collaborators extends Component
 
         $this->emit('app.collaborator.added', $this->userToAddId, $this->app->id);
 
-        $this->app->log()->create([
-            'action' => 'collaborator.added',
-            'description' => "{$userToAdd->full_name} ({$userToAdd->email}) was added as a collaborator to the {$this->app->name} app.",
-        ]);
+        event(new \App\Events\Apps\CollaboratorAddedEvent($this->app, $userToAdd));
 
         $this->mount($this->app->refresh());
     }
@@ -91,10 +88,7 @@ class Collaborators extends Component
 
         $this->emit('app.collaborator.removed', $id, $this->app->id);
 
-        $this->app->log()->create([
-            'action' => 'collaborator.removed',
-            'description' => "{$userToRemove->full_name} ({$userToRemove->email}) was removed as a collaborator from the {$this->app->name} app.",
-        ]);
+        event(new \App\Events\Apps\CollaboratorRemovedEvent($this->app, $userToRemove));
 
         $this->mount($this->app->refresh());
     }
@@ -111,18 +105,15 @@ class Collaborators extends Component
 
         $userToUpdate = User::findOrFail($id);
 
+        $oldRole = $this->app->collaborators()->findOrFail($id)->pivot->role;
+
         $this->app->collaborators()->updateExistingPivot($id, [
             'role' => $role,
         ]);
 
         $this->emit('app.collaborator.updated', $id, $this->app->id);
 
-        $roleName = $role ?: 'user';
-
-        $this->app->log()->create([
-            'action' => 'collaborator.updated.role',
-            'description' => "The user {$userToUpdate->full_name} ({$userToUpdate->email}) was given the role of {$roleName} for the {$this->app->name} app.",
-        ]);
+        event(new \App\Events\Apps\CollaboratorRoleUpdatedEvent($this->app, $userToUpdate, $oldRole, $role));
 
         $this->mount($this->app->refresh());
     }

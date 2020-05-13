@@ -32,10 +32,7 @@ class Details extends Component
 
         $this->emit('app.deleted', $this->app->id);
 
-        $this->app->log()->create([
-            'action' => 'deleted',
-            'description' => "The {$this->app->name} app was deleted.",
-        ]);
+        event(new \App\Events\Apps\DeletedEvent($this->app));
 
         redirect()->route('apps.index');
     }
@@ -61,10 +58,7 @@ class Details extends Component
         $this->emit('app.updated', $this->app->id);
 
         if ($oldName != $this->app->name) {
-            $this->app->log()->create([
-                'action' => 'updated.name',
-                'description' => "The {$oldName} app was renamed to {$this->app->name}.",
-            ]);
+            event(new \App\Events\Apps\NameUpdatedEvent($this->app, $oldName, $this->app->name));
         }
 
         $this->mount($this->app->refresh());
@@ -77,7 +71,6 @@ class Details extends Component
     public function mount(App $app)
     {
         $this->app = $app;
-
         $this->name = $app->name;
     }
 

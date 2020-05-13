@@ -51,17 +51,11 @@ class Account extends Component
         $this->emit('account.updated');
 
         if ($oldEmail != $this->user->email) {
-            $this->user->log()->create([
-                'action' => 'updated.email',
-                'description' => "The email for {$this->user->full_name} was updated from {$oldEmail} to {$this->user->email}.",
-            ]);
+            event(new \App\Events\Users\EmailUpdatedEvent($this->user, $oldEmail, $this->user->email));
         }
 
         if ($oldFullName != $this->user->full_name) {
-            $this->user->log()->create([
-                'action' => 'updated.full-name',
-                'description' => "The user {$oldFullName} was renamed to {$this->user->full_name}.",
-            ]);
+            event(new \App\Events\Users\NameUpdatedEvent($this->user, $oldFullName, $this->user->full_name));
         }
     }
 
@@ -87,7 +81,6 @@ class Account extends Component
         $this->email = user()->email;
         $this->firstName = user()->first_name;
         $this->lastName = user()->last_name;
-
         $this->user = user();
     }
 

@@ -25,9 +25,9 @@ class Index extends Component
      */
     protected $listeners = [
         'variable.created' => '$refresh',
-        'variables.created' => '$refresh',
         'variable.deleted' => '$refresh',
         'variable.updated' => '$refresh',
+        'variables.imported' => '$refresh',
     ];
 
     /**

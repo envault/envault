@@ -48,10 +48,7 @@ class Create extends Component
 
         $this->emit('user.created', $user->id);
 
-        $user->log()->create([
-            'action' => 'created',
-            'description' => "{$user->full_name} ({$user->email}) was added as a user.",
-        ]);
+        event(new \App\Events\Users\CreatedEvent($user));
 
         $this->reset();
     }

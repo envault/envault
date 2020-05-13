@@ -28,14 +28,7 @@ class Delete extends Component
 
         $this->emit('variable.deleted', $this->variable->id);
 
-        $this->variable->app->log()->create([
-            'action' => 'variable.deleted',
-            'description' => "The variable {$this->variable->key} was removed from the {$this->variable->app->name} app.",
-        ]);
-
-        if ($this->variable->app->slack_notifications_set_up) {
-            $this->variable->app->notify(new VariableDeletedNotification($this->variable));
-        }
+        event(new \App\Events\Variables\DeletedEvent($this->variable->app, $this->variable));
     }
 
     /**

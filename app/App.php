@@ -20,20 +20,20 @@ class App extends Model
     protected $guarded = [];
 
     /**
+     * @return bool
+     */
+    public function notificationsEnabled()
+    {
+        return $this->slack_notification_channel && $this->slack_notification_webhook_url;
+    }
+
+    /**
      * @param \Illuminate\Notifications\Notification $notification
      * @return string
      */
     public function routeNotificationForSlack(Notification $notification)
     {
         return $this->slack_notification_webhook_url;
-    }
-
-    /**
-     * @return bool
-     */
-    public function getSlackNotificationsSetUpAttribute()
-    {
-        return $this->slack_notification_channel && $this->slack_notification_webhook_url;
     }
 
     /**

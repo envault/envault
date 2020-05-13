@@ -29,10 +29,7 @@ class Create extends Component
 
         $this->emit('app.created', $app->id);
 
-        $app->log()->create([
-            'action' => 'created',
-            'description' => "The {$app->name} app was created.",
-        ]);
+        event(new \App\Events\Apps\CreatedEvent($app));
 
         redirect()->route('apps.show', [
             'app' => $app->id,

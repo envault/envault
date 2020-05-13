@@ -1,8 +1,8 @@
 # Envault
 
-[Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install our [Laravel](https://github.com/envault/laravel) or [October CMS](https://github.com/envault/oc-plugin) package into your app and you’re ready to sync in seconds.
+[Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install your Envault server and you're ready to sync.
 
-## Setting up
+## Installation
 
 Please see our guide on [how to set up your Envault server](https://docs.envault.dev/article/37-setting-up-envault).
 

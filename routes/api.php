@@ -13,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::name('v1.')->namespace('v1')->prefix('v1')->group(function () {
-    Route::post('/apps/{app}/setup/{token}', 'SetupAppController')->name('apps.setup');
-    Route::post('/apps/{app}/update', 'UpdateAppController')->middleware('auth:sanctum')->name('apps.update');
+Route::get('version', function () {
+    return '1';
+});
+
+Route::prefix('v1')->group(function () {
+    Route::post('apps/{app}/setup/{token}', 'SetupAppController')->name('apps.setup');
+    Route::post('apps/{app}/update', 'UpdateAppController')->middleware('auth:sanctum')->name('apps.update');
 });

@@ -67,26 +67,15 @@ class Edit extends Component
         $this->emit('user.updated', $this->user->id);
 
         if ($oldEmail != $this->user->email) {
-            $this->user->log()->create([
-                'action' => 'updated.email',
-                'description' => "The email for {$this->user->full_name} was updated from {$oldEmail} to {$this->user->email}.",
-            ]);
+            event(new \App\Events\Users\EmailUpdatedEvent($this->user, $oldEmail, $this->user->email));
         }
 
         if ($oldFullName != $this->user->full_name) {
-            $this->user->log()->create([
-                'action' => 'updated.full-name',
-                'description' => "The user {$oldFullName} was renamed to {$this->user->full_name}.",
-            ]);
+            event(new \App\Events\Users\NameUpdatedEvent($this->user, $oldFullName, $this->user->full_name));
         }
 
         if ($oldRole != $this->user->role) {
-            $roleName = $this->user->role ?: 'user';
-
-            $this->user->log()->create([
-                'action' => 'updated.role',
-                'description' => "The user {$this->user->full_name} ({$this->user->email}) was given the role of {$roleName}.",
-            ]);
+            event(new \App\Events\Users\RoleUpdatedEvent($this->user, $oldRole, $this->user->role));
         }
     }
 
@@ -114,7 +103,6 @@ class Edit extends Component
         $this->firstName = $user->first_name;
         $this->lastName = $user->last_name;
         $this->role = $user->role;
-
         $this->user = $user;
     }
 

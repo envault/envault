@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\SlackMessage;
 use Illuminate\Notifications\Notification;
 
-class AppNotificationsSetUp extends Notification implements ShouldQueue
+class AppNotificationsSetUpNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -42,17 +42,18 @@ class AppNotificationsSetUp extends Notification implements ShouldQueue
     {
         $channel = $notifiable->slack_notification_channel ? "#{$notifiable->slack_notification_channel}" : '#general';
 
+        $configAppName = config('app.name');
+
         return (new SlackMessage())
             ->success()
             ->from(config('app.name'))
-            ->image(url('/images/icon.png'))
             ->to($channel)
             ->content("Slack notifications have been set up!")
-            ->attachment(function ($attachment) use ($notifiable) {
+            ->attachment(function ($attachment) use ($configAppName, $notifiable) {
                 $attachment->title($notifiable->name, route('apps.show', [
                     'app' => $notifiable->id,
                 ]))
-                    ->content('Please set up your local environment to recieve variable updates from '.config('app.name').'.');
+                    ->content("Please set up your local environment to receive variable updates from {$configAppName}.");
             });
     }
 

@@ -21,24 +21,26 @@
                                     <option value="user.created">User added</option>
                                     <option value="user.deleted">User removed</option>
                                     <option value="user.authenticated">User signed in</option>
-                                    <option value="user.updated.email">User email address updated</option>
-                                    <option value="user.updated.full-name">User name updated</option>
-                                    <option value="user.updated.role">User role updated</option>
+                                    <option value="user.email.updated">User email address updated</option>
+                                    <option value="user.name.updated">User name updated</option>
+                                    <option value="user.role.updated">User role updated</option>
                                 </optgroup>
                                 <optgroup label="Apps">
                                     <option value="app.created">App created</option>
                                     <option value="app.deleted">App deleted</option>
-                                    <option value="app.updated.name">App name updated</option>
-                                    <option value="app.updated.notifications">App notification settings updated</option>
+                                    <option value="app.name.updated">App name updated</option>
+                                    <option value="app.notifications.set-up">App notifications set up</option>
+                                    <option value="app.notifications.update">App notification settings updated</option>
                                     <option value="app.collaborator.added">Collaborator added</option>
                                     <option value="app.collaborator.removed">Collaborator removed</option>
-                                    <option value="app.collaborator.updated.role">Collaborator role updated</option>
+                                    <option value="app.collaborator.role.updated">Collaborator role updated</option>
                                 </optgroup>
                                 <optgroup label="Variables">
                                     <option value="app.variable.created">Variable created</option>
+                                    <option value="app.variables.imported">Variables imported</option>
                                     <option value="app.variable.deleted">Variable deleted</option>
-                                    <option value="app.variable.updated.key">Variable key updated</option>
-                                    <option value="app.variable.updated.value">Variable value updated</option>
+                                    <option value="app.variable.key.updated">Variable key updated</option>
+                                    <option value="app.variable.value.updated">Variable value updated</option>
                                 </optgroup>
                             </select>
                         </div>
