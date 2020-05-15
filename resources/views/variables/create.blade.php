@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <form wire:submit.prevent="store">
+        <form wire:submit.prevent="store" spellcheck="false">
             <div class="px-4 py-6 sm:px-6">
                 <x-inputs.text label="Key" name="key" placeholder="MAIL_USERNAME" font="font-mono"
                                maxWidth="max-w-lg"

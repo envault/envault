@@ -2,14 +2,14 @@
 
 namespace App\Listeners\Apps;
 
-use App\Events\Apps\NotificationsSetUp;
+use App\Events\Apps\NotificationsSetUpEvent;
 
 class LogNotificationsSetUpListener
 {
     /**
      * Handle the event.
      *
-     * @param \App\Events\Apps\NotificationsSetUp $event
+     * @param \App\Events\Apps\NotificationsSetUpEvent $event
      * @return void
      */
     public function handle(NotificationsSetUpEvent $event)

@@ -15,6 +15,6 @@ class NotifyConfirmingNotificationsSetupListener
      */
     public function handle(NotificationsSetUpEvent $event)
     {
-        $this->app->notify(new AppNotificationsSetUpNotification());
+        $event->app->notify(new AppNotificationsSetUpNotification());
     }
 }

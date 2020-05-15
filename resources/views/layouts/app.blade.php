@@ -16,7 +16,7 @@
 
 <body class="flex flex-col min-h-screen bg-gray-100">
 <div class="bg-gray-800 pb-56">
-    <nav x-data="{ open: false }" @keydown.window.escape="open = false" class="bg-gray-800">
+    <nav x-data="{ open: false }" x-cloak @keydown.window.escape="open = false" class="bg-gray-800">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="border-b border-gray-700">
                 <div class="flex items-center justify-between h-16 px-4 sm:px-0">

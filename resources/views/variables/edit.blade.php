@@ -1,5 +1,5 @@
 <div class="bg-white rounded-lg overflow-hidden shadow-xl mx-auto">
-    <form wire:submit.prevent="update">
+    <form wire:submit.prevent="update" spellcheck="false">
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
                 <div>
@@ -12,9 +12,13 @@
                 <x-flash-message event="variable.updated" message="Saved!" />
             </div>
 
-            <x-inputs.text label="Key" name="key" :key="$variable->id" context="edit" font="font-mono" maxWidth="max-w-lg" class="mt-6" />
+            <x-inputs.text label="Key" name="key" :key="$variable->id" context="edit" font="font-mono"
+                           maxWidth="max-w-lg" class="mt-6"
+            />
 
-            <x-inputs.base label="Value" name="value" :key="$variable->id" context="edit" maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5">
+            <x-inputs.base label="Value" name="value" :key="$variable->id" context="edit" maxWidth="max-w-lg"
+                           class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
+            >
                 <div class="flex @if ($openRollBack) rounded-t-md @else rounded-md @endif shadow-sm">
                     <div class="relative flex-grow focus-within:z-10">
                         <input wire:model.lazy="value" id="valueEdit{{ $variable->id }}"

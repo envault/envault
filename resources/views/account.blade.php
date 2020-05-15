@@ -8,7 +8,7 @@
     </header>
 
     <div class="max-w-4xl mx-auto pb-12 px-4 sm:px-6">
-        <form wire:submit.prevent="update" class="bg-white shadow overflow-hidden rounded-md">
+        <form wire:submit.prevent="update" spellcheck="false" class="bg-white shadow overflow-hidden rounded-md">
             <div class="bg-white px-4 py-5 sm:p-6 border-b border-gray-200">
                 <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
                     <div>

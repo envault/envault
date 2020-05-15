@@ -49,12 +49,14 @@
                                     {{ $collaborator->first_name }} {{ $collaborator->last_name }}
                                 </div>
 
-                                <div x-data="{ open: false }" class="mt-2 text-gray-500 text-sm">
+                                <div x-data="{ open: false }" x-cloak class="mt-2 text-gray-500 text-sm">
                                     @if ($collaborator->isAppAdmin($app))
                                         <div @click="open = true"
                                              class="flex items-center leading-5 @if ($collaborator->id != user()->id) cursor-pointer @endif"
                                         >
-                                            <x-heroicon-s-user-group class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" />
+                                            <x-heroicon-s-user-group
+                                                class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                            />
 
                                             Administrator
                                         </div>
@@ -77,7 +79,9 @@
                                                                 <div
                                                                     class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
                                                                 >
-                                                                    <x-heroicon-o-exclamation class="h-6 w-6 text-red-600" />
+                                                                    <x-heroicon-o-exclamation
+                                                                        class="h-6 w-6 text-red-600"
+                                                                    />
                                                                 </div>
                                                                 <div
                                                                     class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
@@ -87,8 +91,11 @@
                                                                     </h3>
                                                                     <div class="mt-2">
                                                                         <p class="text-sm leading-5 text-gray-500">
-                                                                            Are you sure you want to revoke the admin privileges
-                                                                            for {{ $collaborator->first_name }} {{ $collaborator->last_name.'?' }} They will no longer be able to edit this app's variables.
+                                                                            Are you sure you want to revoke the admin
+                                                                            privileges
+                                                                            for {{ $collaborator->first_name }} {{ $collaborator->last_name.'?' }}
+                                                                            They will no longer be able to edit this
+                                                                            app's variables.
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -103,7 +110,8 @@
                                                                 <button
                                                                     wire:click="updateRole({{ $collaborator->id }}, null)"
                                                                     @click="open = false" type="button"
-                                                                    wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                                                                    wire:loading.attr="disabled"
+                                                                    wire:loading.class="opacity-75 cursor-wait"
                                                                     class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
                                                                     Confirm
@@ -113,7 +121,8 @@
                                                                 class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
                                                             >
                                                                 <button @click="open = false" type="button"
-                                                                        wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                                                                        wire:loading.attr="disabled"
+                                                                        wire:loading.class="opacity-75 cursor-wait"
                                                                         class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
                                                                     Cancel
@@ -151,7 +160,9 @@
                                                                 <div
                                                                     class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"
                                                                 >
-                                                                    <x-heroicon-o-exclamation class="h-6 w-6 text-red-600" />
+                                                                    <x-heroicon-o-exclamation
+                                                                        class="h-6 w-6 text-red-600"
+                                                                    />
                                                                 </div>
                                                                 <div
                                                                     class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left"
@@ -163,7 +174,8 @@
                                                                         <p class="text-sm leading-5 text-gray-500">
                                                                             Are you sure you want to
                                                                             grant {{ $collaborator->first_name }} {{ $collaborator->last_name }}
-                                                                            admin privileges? They will be able to edit this app's variables.
+                                                                            admin privileges? They will be able to edit
+                                                                            this app's variables.
                                                                         </p>
                                                                     </div>
                                                                 </div>
@@ -178,7 +190,8 @@
                                                                 <button
                                                                     wire:click="updateRole({{ $collaborator->id }}, 'admin')"
                                                                     @click="open = false" type="button"
-                                                                    wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                                                                    wire:loading.attr="disabled"
+                                                                    wire:loading.class="opacity-75 cursor-wait"
                                                                     class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
                                                                     Confirm
@@ -188,7 +201,8 @@
                                                                 class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
                                                             >
                                                                 <button @click="open = false" type="button"
-                                                                        wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                                                                        wire:loading.attr="disabled"
+                                                                        wire:loading.class="opacity-75 cursor-wait"
                                                                         class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
                                                                     Cancel
@@ -204,7 +218,7 @@
                             </div>
                             <div>
                                 @if ($collaborator->id != user()->id)
-                                    <div class="inline-flex flex-shrink-0" x-data="{ open: false }">
+                                    <div class="inline-flex flex-shrink-0" x-data="{ open: false }" x-cloak>
                                         <button @click="open = true" type="button"
                                                 class="justify-center p-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 transition duration-150 ease-in-out"
                                         >
@@ -236,7 +250,8 @@
                                                                     Are you sure you want to
                                                                     remove {{ $collaborator->first_name }}
                                                                     {{ $collaborator->last_name }} from project
-                                                                    collaborator? They may no longer be able to view this project.
+                                                                    collaborator? They may no longer be able to view
+                                                                    this project.
                                                                 </p>
                                                             </div>
                                                         </div>
@@ -247,7 +262,8 @@
                                                         <button wire:click="remove({{ $collaborator->id }})"
                                                                 @click="open = false"
                                                                 type="button"
-                                                                wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                                                                wire:loading.attr="disabled"
+                                                                wire:loading.class="opacity-75 cursor-wait"
                                                                 class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                         >
                                                             Confirm
@@ -257,7 +273,8 @@
                                                         class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
                                                     >
                                                         <button @click="open = false" type="button"
-                                                                wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                                                                wire:loading.attr="disabled"
+                                                                wire:loading.class="opacity-75 cursor-wait"
                                                                 class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                         >
                                                             Cancel

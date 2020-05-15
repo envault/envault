@@ -2,11 +2,8 @@
 
 namespace App\Events\Apps;
 
-use Illuminate\Broadcasting\Channel;
+use App\App;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -15,22 +12,18 @@ class NotificationsSetUpEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * Create a new event instance.
-     *
-     * @return void
+     * @var \App\App
      */
-    public function __construct()
-    {
-        //
-    }
+    public $app;
 
     /**
-     * Get the channels the event should broadcast on.
+     * Create a new event instance.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @param \App\App $app
+     * @return void
      */
-    public function broadcastOn()
+    public function __construct(App $app)
     {
-        return new PrivateChannel('channel-name');
+        $this->app = $app;
     }
 }

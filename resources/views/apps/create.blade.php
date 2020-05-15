@@ -5,7 +5,7 @@
         </h3>
     </div>
     <div class="px-4 py-4 sm:px-6">
-        <form wire:submit.prevent="store" class="sm:flex sm:items-center">
+        <form wire:submit.prevent="store" spellcheck="false" class="sm:flex sm:items-center">
             <div class="w-full">
                 <div class="rounded-md shadow-sm">
                     <input wire:model.lazy="name"

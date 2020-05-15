@@ -1,5 +1,5 @@
 <div class="bg-white shadow overflow-hidden rounded-md">
-    <form wire:submit.prevent="update">
+    <form wire:submit.prevent="update" spellcheck="false">
         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
             <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
                 <div>
@@ -51,7 +51,7 @@
                         />
                     </div>
                     @error('slackNotificationChannel')
-                        <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -60,7 +60,8 @@
             <div class="inline-flex flex-shrink-0 items-center">
                 <p class="inline-flex text-sm leading-5 font-medium text-gray-700">
                     <x-heroicon-s-information-circle class="mr-1 h-5 w-5" />
-                    Slack notifications {{ $this->app->slack_notification_channel && $this->app->slack_notification_webhook_url ? 'enabled.' : 'disabled.' }}
+                    Slack
+                    notifications {{ $this->app->slack_notification_channel && $this->app->slack_notification_webhook_url ? 'enabled.' : 'disabled.' }}
                 </p>
             </div>
             <div class="flex w-full justify-end">

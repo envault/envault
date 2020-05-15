@@ -1,6 +1,6 @@
 <div>
     @if (!$token)
-        <form wire:submit.prevent="request">
+        <form wire:submit.prevent="request" spellcheck="false">
             <div>
                 <div class="rounded-md">
                     <input wire:model.lazy="email" value="{{ $email }}" type="email" placeholder="Your email address"
@@ -24,7 +24,7 @@
             </div>
         </form>
     @else
-        <form wire:submit.prevent="confirm">
+        <form wire:submit.prevent="confirm" spellcheck="false">
             <div x-data="{ visible: false }"
                  x-init="window.livewire.on('auth.request.resent', () => {
                     visible = true;

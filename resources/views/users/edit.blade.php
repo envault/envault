@@ -1,5 +1,5 @@
 <div class="bg-white rounded-lg overflow-hidden shadow-xl mx-auto">
-    <form wire:submit.prevent="update">
+    <form wire:submit.prevent="update" spellcheck="false">
         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
                 <div>
@@ -13,11 +13,18 @@
 
             <x-inputs.text label="First name" name="firstName" :key="$user->id" context="edit" class="mt-6" />
 
-            <x-inputs.text label="Last name" name="lastName" :key="$user->id" context="edit" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
+            <x-inputs.text label="Last name" name="lastName" :key="$user->id" context="edit"
+                           class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
+            />
 
-            <x-inputs.text label="Email address" name="email" :key="$user->id" context="edit" type="email" maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
+            <x-inputs.text label="Email address" name="email" :key="$user->id" context="edit" type="email"
+                           maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
+            />
 
-            <x-inputs.select :disabled="user()->cannot('updateRole', $user)" label="Role" name="role" :value="$user->role" :options="['User', 'admin' => 'Admin', 'owner' => 'Owner']" :key="$user->id" context="edit" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
+            <x-inputs.select :disabled="user()->cannot('updateRole', $user)" label="Role" name="role"
+                             :value="$user->role" :options="['User', 'admin' => 'Admin', 'owner' => 'Owner']"
+                             :key="$user->id" context="edit" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
+            />
 
             @can('updateRole', $user)
                 <div class="mt-1 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
@@ -35,7 +42,8 @@
                                 </p>
                             @else
                                 <p>
-                                    Users can’t access any apps by default, instead being added as a “collaborator” to their apps.
+                                    Users can’t access any apps by default, instead being added as a “collaborator” to
+                                    their apps.
                                 </p>
                             @endif
                         </div>

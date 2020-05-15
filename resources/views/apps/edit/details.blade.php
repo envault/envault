@@ -1,5 +1,5 @@
 <div class="bg-white shadow overflow-hidden rounded-md">
-    <form wire:submit.prevent="update">
+    <form wire:submit.prevent="update" spellcheck="false">
         <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
             <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
                 <div>
@@ -18,7 +18,7 @@
 
         <div class="bg-gray-50 px-4 py-4 sm:px-6 flex">
             @can('delete', $app)
-                <div class="inline-flex flex-shrink-0" x-data="{ open: false }">
+                <div class="inline-flex flex-shrink-0" x-data="{ open: false }" x-cloak>
                     <button @click="open = true" type="button"
                             class="justify-center p-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 transition duration-150 ease-in-out"
                     >

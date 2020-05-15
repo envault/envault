@@ -1,5 +1,5 @@
 <div class="bg-white shadow overflow-hidden rounded-md">
-    <form wire:submit.prevent="store">
+    <form wire:submit.prevent="store" spellcheck="false">
         <div class="bg-white px-4 py-5 sm:p-6 border-b border-gray-200">
             <div class="flex items-center justify-between flex-wrap sm:flex-no-wrap">
                 <div>
@@ -14,9 +14,13 @@
         <div class="px-4 py-5 sm:p-6">
             <x-inputs.text label="First name" name="firstName" placeholder="Tom" />
 
-            <x-inputs.text label="Last name" name="lastName" placeholder="Cook" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
+            <x-inputs.text label="Last name" name="lastName" placeholder="Cook"
+                           class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
+            />
 
-            <x-inputs.text label="Email address" name="email" placeholder="tom@example.com" type="email" maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
+            <x-inputs.text label="Email address" name="email" placeholder="tom@example.com" type="email"
+                           maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
+            />
         </div>
         <div class="bg-gray-50 px-4 py-5 sm:p-6 flex justify-end">
             <span class="inline-flex">
