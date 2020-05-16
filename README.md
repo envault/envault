@@ -1,10 +1,12 @@
-# Envault
+![Envault](https://github.com/envault/envault/blob/master/public/images/logo-black.png?raw=true)
 
-[Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install your Envault server and you're ready to sync.
+![Tests status](https://github.com/envault/envault/workflows/tests/badge.svg)
+
+[Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install your Envault server and you're ready to sync. 🚀
 
 ## Installation
 
-The Envault server is built on the [Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4.
+The Envault server is built on [the Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4.
 
 1) Clone this repository onto your server.
 
