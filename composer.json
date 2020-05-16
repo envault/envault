@@ -2,7 +2,7 @@
     "name": "envault/envault",
     "type": "project",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.4",
         "aws/aws-sdk-php": "~3.0",
         "calebporzio/awesome-helpers": "^2.4",
         "doctrine/dbal": "^2.10",
@@ -15,6 +15,7 @@
         "laravel/slack-notification-channel": "^2.0",
         "laravel/tinker": "^2.0",
         "livewire/livewire": "^1.0",
+        "pda/pheanstalk": "^4.0",
         "predis/predis": "^1.1",
         "wildbit/swiftmailer-postmark": "^3.1"
     },

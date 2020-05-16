@@ -4,7 +4,35 @@
 
 ## Installation
 
-Please see our guide on [how to set up your Envault server](https://docs.envault.dev/article/37-setting-up-envault).
+The Envault server is built on the [Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4.
+
+1) Clone this repository onto your server.
+
+2) Copy .env.example to .env. Generate a new `APP_KEY` using `php artisan key:generate`. Make sure that your `APP_URL` matches the address of your Envault server.
+
+3) Create a new database. For more details on the databases supported, please refer to [the Laravel documentation](https://laravel.com/docs/7.x/database#introduction). Fill out any connection details in your `.env` file, then run `php artisan migrate`.
+
+4) Set up outgoing mail from your Envault server. For more details on the mail drivers supported, please refer to [the Laravel documentation](https://laravel.com/docs/7.x/mail#introduction). Fill out any connection details in your `.env` file.
+
+5) Set up a queue worker. For more details, please refer to [the Laravel documentation](https://laravel.com/docs/7.x/queues#introduction).
+
+6) Set up a scheduled task to run `php artisan schedule:run` every minute. For more details, please refer to [the Laravel documentation](https://laravel.com/docs/7.x/scheduling#introduction).
+
+7) Create your first user account using the `php artisan make:user` command. You should grant it the "owner" role so that it does not encounter any restrictions on the Envault dashboard.
+
+8) Visit your Envault server URL and sign in.
+
+You can find installation guides for specific platforms like Laravel Forge and Vapor on [our documentation website](https://docs.envault.dev/collection/12-setting-up-envault).
+
+## Update guide
+
+After you update Envault from this repository, please run the following commands on your server. If you're using a platform like Laravel Forge, these can be added to your deploy script -
+
+```
+composer install
+php artisan migrate
+php artisan queue:restart
+```
 
 ## Documentation
 

@@ -12,7 +12,7 @@
     },
     "devDependencies": {
         "@tailwindcss/ui": "^0.1.4",
-        "alpinejs": "^2.3.3",
+        "alpinejs": "^2.3.5",
         "cross-env": "^5.1",
         "laravel-mix": "^5.0.1",
         "resolve-url-loader": "^2.3.1",
