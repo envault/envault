@@ -47,7 +47,7 @@ class CreateUserCommand extends Command
             'role' => $this->getRole(),
         ]);
 
-        $this->info("User created with the email address {$user->email}.");
+        $this->info("User {$user->email} created successfully.");
 
         event(new \App\Events\Users\CreatedEvent($user));
     }

@@ -27,6 +27,7 @@ class VariableVersion extends Model
 
     /**
      * @param string $value
+     * @return void
      */
     public function setValueAttribute($value)
     {
