@@ -14,7 +14,7 @@ class CreateUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:user {--admin} {--owner} {--user}';
+    protected $signature = 'make:user {--a|admin} {--o|owner} {--u|user}';
 
     /**
      * The console command description.
@@ -45,7 +45,7 @@ class CreateUserCommand extends Command
         $lastName = $this->getLastName();
         $role = $this->getRole();
 
-        if (! $email || ! $firstName || ! $lastName || ! $role) {
+        if (! $email || ! $firstName || ! $lastName) {
             return;
         }
 
@@ -158,10 +158,6 @@ class CreateUserCommand extends Command
 
         if ($this->option('owner')) {
             return 'owner';
-        }
-
-        if ($this->option('user')) {
-            return 'user';
         }
 
         $type = $this->option('no-interaction') ? ucfirst(env('USER_ROLE', 'user')) : $this->choice('Role', ['User', 'Admin', 'Owner'], 0);
