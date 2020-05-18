@@ -1,3 +1,5 @@
+@section('title', 'Apps')
+
 <div>
     <header class="py-10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,7 +40,9 @@
                                                 class="text-sm leading-5 font-medium text-indigo-600 truncate"
                                             >{{ $app->name }}</div>
                                             <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                                                <x-heroicon-s-collection class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" />
+                                                <x-heroicon-s-collection
+                                                    class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                                                />
                                                 <span
                                                     class="truncate"
                                                 >{{ count($app->variables) }} {{ count($app->variables) == 1 ? 'variable' : 'variables' }}</span>

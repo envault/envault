@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Support\Facades\View;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -61,8 +60,9 @@ class Account extends Component
 
     /**
      * @param string $field
-     * @throws \Illuminate\Validation\ValidationException
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function updated($field)
     {
@@ -89,10 +89,6 @@ class Account extends Component
      */
     public function render()
     {
-        View::share([
-            'title' => 'My Account',
-        ]);
-
         return view('account');
     }
 }

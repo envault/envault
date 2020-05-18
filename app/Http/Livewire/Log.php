@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\LogEntry;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\View;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -71,10 +70,6 @@ class Log extends Component
         if ($this->userId) {
             $entries = $entries->where('user_id', $this->userId);
         }
-
-        View::share([
-            'title' => 'Audit Log',
-        ]);
 
         return view('log', [
             'entries' => $entries->orderBy('created_at', 'desc')->paginate(20),

@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@if ($title ?? false) {{ $title }} | @endif {{ config('app.name') }}</title>
+    <title>@hasSection('title') @yield('title') | @endif {{ config('app.name') }}</title>
     <meta name="description" content="">
 
-    <link href="/images/favicon.png" rel="icon" type="image/png">
+    <link href="{{ asset('images/favicon.png') }}" rel="icon" type="image/png">
 
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
 
@@ -23,7 +23,7 @@
                     <div class="flex items-center">
                         <div class="flex items-center flex-shrink-0">
                             <a href="{{ route('home') }}">
-                                <img class="h-8 w-8" src="/images/icon-white.svg" alt="Envault logo" />
+                                <img class="h-8 w-8" src="{{ asset('images/icon-white.svg') }}" alt="Envault logo" />
                             </a>
                         </div>
                         @can('administrate')
@@ -157,7 +157,7 @@
     </div>
 </footer>
 
-<script src="/js/app.js"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @livewireScripts
 </body>
 

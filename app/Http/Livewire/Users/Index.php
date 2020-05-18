@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Users;
 
 use App\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\View;
 use Livewire\Component;
 
 class Index extends Component
@@ -26,8 +25,9 @@ class Index extends Component
     ];
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function mount()
     {
@@ -43,10 +43,6 @@ class Index extends Component
 
         // @todo investigate why this causes CorruptComponentPayloadException on open
         // $this->users = User::all()->sortBy('last_name')->sortBy('first_name');
-
-        View::share([
-            'title' => 'Users',
-        ]);
 
         return view('users.index');
     }

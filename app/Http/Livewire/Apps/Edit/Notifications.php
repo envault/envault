@@ -26,8 +26,9 @@ class Notifications extends Component
     public $slackNotificationWebhookUrl = '';
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update()
     {

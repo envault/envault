@@ -16,8 +16,9 @@ class Create extends Component
     public $name = '';
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store()
     {

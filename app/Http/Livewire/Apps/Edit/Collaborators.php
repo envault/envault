@@ -32,8 +32,9 @@ class Collaborators extends Component
     public $userToAddId;
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function add()
     {
@@ -75,8 +76,9 @@ class Collaborators extends Component
 
     /**
      * @param int $id
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function remove($id)
     {
@@ -96,8 +98,9 @@ class Collaborators extends Component
     /**
      * @param int $id
      * @param string|null $role
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function updateRole($id, $role)
     {

@@ -14,7 +14,7 @@ class CreateUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'make:user';
+    protected $signature = 'make:user {--admin} {--owner} {--user}';
 
     /**
      * The console command description.
@@ -40,24 +40,35 @@ class CreateUserCommand extends Command
      */
     public function handle()
     {
-        $user = User::create([
-            'email' => $this->getEmail(),
-            'first_name' => $this->getFirstName(),
-            'last_name' => $this->getLastName(),
-            'role' => $this->getRole(),
+        $email = $this->getEmail();
+        $firstName = $this->getFirstName();
+        $lastName = $this->getLastName();
+        $role = $this->getRole();
+
+        if (! $email || ! $firstName || ! $lastName || ! $role) {
+            return;
+        }
+
+        $user = User::onlyTrashed()->updateOrCreate([
+            'email' => $email,
+        ], [
+            'deleted_at' => null,
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'role' => $role,
         ]);
 
-        $this->info("User {$user->email} created successfully.");
+        $this->info("User created with the email address {$user->email}.");
 
         event(new \App\Events\Users\CreatedEvent($user));
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getEmail()
+    protected function getEmail()
     {
-        $email = $this->ask('Email address');
+        $email = $this->option('no-interaction') ? env('USER_EMAIL') : $this->ask('Email address');
 
         $validator = Validator::make([
             'email' => $email,
@@ -70,6 +81,10 @@ class CreateUserCommand extends Command
                 $this->error($error);
             }
 
+            if ($this->option('no-interaction')) {
+                return;
+            }
+
             return $this->getEmail();
         }
 
@@ -77,11 +92,11 @@ class CreateUserCommand extends Command
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getFirstName()
+    protected function getFirstName()
     {
-        $firstName = $this->ask('First name');
+        $firstName = $this->option('no-interaction') ? env('USER_FIRST_NAME') : $this->ask('First name');
 
         $validator = Validator::make([
             'first_name' => $firstName,
@@ -94,6 +109,10 @@ class CreateUserCommand extends Command
                 $this->error($error);
             }
 
+            if ($this->option('no-interaction')) {
+                return;
+            }
+
             return $this->getFirstName();
         }
 
@@ -101,11 +120,11 @@ class CreateUserCommand extends Command
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getLastName()
+    protected function getLastName()
     {
-        $lastName = $this->ask('Last name');
+        $lastName = $this->option('no-interaction') ? env('USER_LAST_NAME') : $this->ask('Last name');
 
         $validator = Validator::make([
             'last_name' => $lastName,
@@ -118,6 +137,10 @@ class CreateUserCommand extends Command
                 $this->error($error);
             }
 
+            if ($this->option('no-interaction')) {
+                return;
+            }
+
             return $this->getLastName();
         }
 
@@ -127,9 +150,21 @@ class CreateUserCommand extends Command
     /**
      * @return string|null
      */
-    public function getRole()
+    protected function getRole()
     {
-        $type = $this->choice('Role', ['User', 'Admin', 'Owner'], 0);
+        if ($this->option('admin')) {
+            return 'admin';
+        }
+
+        if ($this->option('owner')) {
+            return 'owner';
+        }
+
+        if ($this->option('user')) {
+            return 'user';
+        }
+
+        $type = $this->option('no-interaction') ? ucfirst(env('USER_ROLE', 'user')) : $this->choice('Role', ['User', 'Admin', 'Owner'], 0);
 
         if ($type != 'User') {
             return strtolower($type);

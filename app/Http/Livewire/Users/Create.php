@@ -27,8 +27,9 @@ class Create extends Component
     public $lastName = '';
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store()
     {
@@ -40,8 +41,10 @@ class Create extends Component
             'lastName' => ['required'],
         ]);
 
-        $user = User::create([
+        $user = User::onlyTrashed()->updateOrCreate([
             'email' => $this->email,
+        ], [
+            'deleted_at' => null,
             'first_name' => $this->firstName,
             'last_name' => $this->lastName,
         ]);

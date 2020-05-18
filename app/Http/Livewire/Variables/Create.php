@@ -34,8 +34,9 @@ class Create extends Component
     public $variables = '';
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function import()
     {
@@ -91,8 +92,9 @@ class Create extends Component
     }
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store()
     {
@@ -117,8 +119,9 @@ class Create extends Component
 
     /**
      * @param string $field
-     * @throws \Illuminate\Validation\ValidationException
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function updated($field)
     {

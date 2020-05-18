@@ -17,8 +17,9 @@ class Delete extends Component
     public $variable;
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy()
     {

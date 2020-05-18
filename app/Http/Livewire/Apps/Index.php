@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Apps;
 
 use App\App;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Support\Facades\View;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -50,10 +49,6 @@ class Index extends Component
         }
 
         $apps = $apps->where('name', 'like', '%'.$this->search.'%');
-
-        View::share([
-            'title' => 'Apps',
-        ]);
 
         return view('apps.index', [
             'apps' => $apps->orderBy('name')->paginate(10),

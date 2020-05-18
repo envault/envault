@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->string('role')->nullable();
             $table->softDeletes();
             $table->timestamps();
-
             $table->unique(['email', 'deleted_at']);
         });
     }

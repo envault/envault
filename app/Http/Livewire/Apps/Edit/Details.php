@@ -21,8 +21,9 @@ class Details extends Component
     public $name = '';
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy()
     {
@@ -38,8 +39,9 @@ class Details extends Component
     }
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update()
     {
@@ -76,8 +78,9 @@ class Details extends Component
 
     /**
      * @param string $field
-     * @throws \Illuminate\Validation\ValidationException
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function updated($field)
     {

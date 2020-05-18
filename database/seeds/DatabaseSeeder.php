@@ -2,6 +2,8 @@
 
 use App\App;
 use App\User;
+use App\Variable;
+use App\VariableVersion;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,11 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         factory(User::class, 10)->create();
 
-        $user = User::first();
-        $user->email = 'example@user.com';
-        $user->role = 'owner';
-        $user->save();
-
-        factory(App::class, 50)->create();
+        factory(App::class, 50)->create()->each(function (App $app) {
+            factory(Variable::class, 10)->create([
+                'app_id' => $app->id,
+            ])->each(function (Variable $variable) {
+                factory(VariableVersion::class)->create([
+                    'variable_id' => $variable->id,
+                ]);
+            });
+        });
     }
 }

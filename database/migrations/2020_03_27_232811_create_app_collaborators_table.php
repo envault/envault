@@ -19,7 +19,6 @@ class CreateAppCollaboratorsTable extends Migration
             $table->string('role')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-
             $table->unique(['app_id', 'user_id']);
         });
     }

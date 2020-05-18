@@ -30,8 +30,9 @@ class Handler extends ExceptionHandler
      * Report or log an exception.
      *
      * @param \Throwable $exception
-     * @throws \Exception
      * @return void
+     *
+     * @throws \Exception
      */
     public function report(Throwable $exception)
     {
@@ -43,8 +44,9 @@ class Handler extends ExceptionHandler
      *
      * @param \Illuminate\Http\Request $request
      * @param \Throwable $exception
-     * @throws \Throwable
      * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Throwable
      */
     public function render($request, Throwable $exception)
     {

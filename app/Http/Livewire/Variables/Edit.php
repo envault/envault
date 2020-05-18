@@ -62,8 +62,9 @@ class Edit extends Component
     }
 
     /**
-     * @throws \Illuminate\Auth\Access\AuthorizationException
      * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update()
     {
@@ -100,8 +101,9 @@ class Edit extends Component
 
     /**
      * @param string $field
-     * @throws \Illuminate\Validation\ValidationException
      * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function updated($field)
     {
