@@ -11,6 +11,7 @@ use App\Observers\VariableObserver;
 use App\User;
 use App\Variable;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
+
         Relation::morphMap([
             'app' => App::class,
             'user' => User::class,
