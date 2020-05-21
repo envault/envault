@@ -26,12 +26,12 @@ class Create extends Component
     /**
      * @var string
      */
-    public $value = '';
+    public $import = '';
 
     /**
      * @var string
      */
-    public $variables = '';
+    public $value = '';
 
     /**
      * @return void
@@ -42,53 +42,43 @@ class Create extends Component
     {
         $this->authorize('createVariable', $this->app);
 
-        $lines = collect(explode(PHP_EOL, $this->variables));
+        $totalImported = 0;
 
-        $count = 0;
+        collect(explode(PHP_EOL, $this->import))->filter(function ($line) {
+            return Str::contains($line, '=');
+        })->each(function ($line) use (&$totalImported) {
+            $lineComponents = explode('=', $line, 2);
+            $key = $lineComponents[0] ?? null;
+            $value = $lineComponents[1] ?? null;
 
-        $lines->each(function ($line) use (&$count) {
-            if (Str::contains($line, '=')) {
-                $variable = explode('=', $line, 2);
+            $validator = Validator::make([
+                'key' => $key,
+            ], [
+                'key' => ['required', 'alpha_dash', Rule::unique('variables')->where(function ($query) {
+                    return $query->where('app_id', $this->app->id);
+                })->whereNull('deleted_at')],
+            ]);
 
-                $key = $variable[0];
-                $value = $variable[1];
+            if (! $validator->fails()) {
+                $variable = $this->app->variables()->create([
+                    'key' => $key,
+                ]);
 
-                // Trim " from start and end of value if it's there
-                if (Str::startsWith($value, '"') && Str::endsWith($value, '"')) {
-                    $value = substr($value, 1, -1);
-                }
+                $variable->versions()->create([
+                    'value' => $value,
+                ]);
 
-                if ($key && (is_string($key) || is_numeric($key)) && preg_match('/^[\pL\pM\pN_-]+$/u', $key) > 0) {
-                    $validator = Validator::make([
-                        'key' => $key,
-                    ], [
-                        'key' => ['required', 'alpha_dash', Rule::unique('variables')->where(function ($query) {
-                            return $query->where('app_id', $this->app->id);
-                        })->whereNull('deleted_at')],
-                    ]);
-
-                    if (! $validator->fails()) {
-                        $variable = $this->app->variables()->create([
-                            'key' => $key,
-                        ]);
-
-                        $variable->versions()->create([
-                            'value' => $value,
-                        ]);
-
-                        $count += 1;
-                    }
-                }
+                $totalImported += 1;
             }
         });
 
-        if ($count) {
-            $this->emit('variables.imported', $count);
+        if ($totalImported) {
+            $this->emit('variables.imported', $totalImported);
 
-            event(new \App\Events\Variables\ImportedEvent($this->app, $count));
+            event(new \App\Events\Variables\ImportedEvent($this->app, $totalImported));
         }
 
-        $this->variables = '';
+        $this->reset('import');
     }
 
     /**
