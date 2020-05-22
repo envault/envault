@@ -16,7 +16,7 @@ class NotifyOfVariableImportListener
     public function handle(ImportedEvent $event)
     {
         if ($event->app->notificationsEnabled()) {
-            $event->app->notify(new VariablesImportedNotification($event->variable));
+            $event->app->notify(new VariablesImportedNotification($event->count));
         }
     }
 }
