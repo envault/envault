@@ -64,7 +64,7 @@
                                         <div>
                                             @if ($collaborator->id != user()->id)
                                                 <div x-show.transition.opacity="open"
-                                                     class="fixed bottom-0 z-10 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
+                                                     class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
                                                 >
                                                     <div class="fixed inset-0">
                                                         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -72,7 +72,7 @@
 
                                                     <div @click.away="open = false"
                                                          @keydown.escape.window="open = false"
-                                                         class="z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
+                                                         class="relative z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
                                                     >
                                                         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                                             <div class="sm:flex sm:items-start">
@@ -145,7 +145,7 @@
                                         <div>
                                             @if ($collaborator->id != user()->id)
                                                 <div x-show.transition.opacity="open"
-                                                     class="fixed bottom-0 z-10 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
+                                                     class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
                                                 >
                                                     <div class="fixed inset-0">
                                                         <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
@@ -153,7 +153,7 @@
 
                                                     <div @click.away="open = false"
                                                          @keydown.escape.window="open = false"
-                                                         class="z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
+                                                         class="relative z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
                                                     >
                                                         <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                                             <div class="sm:flex sm:items-start">
@@ -225,14 +225,14 @@
                                             <x-heroicon-s-trash class="h-5 w-5" />
                                         </button>
                                         <div x-show.transition.opacity="open"
-                                             class="fixed bottom-0 z-10 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
+                                             class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
                                         >
                                             <div class="fixed inset-0">
                                                 <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                                             </div>
 
                                             <div @click.away="open = false" @keydown.escape.window="open = false"
-                                                 class="z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
+                                                 class="relative z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
                                             >
                                                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                                     <div class="sm:flex sm:items-start">
@@ -309,7 +309,8 @@
                     </div>
                 </div>
                 <span class="mt-3 flex justify-end rounded-md sm:mt-0 sm:ml-3 sm:w-auto">
-                    <button wire:click="add" type="button" wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                    <button wire:click="add" type="button" wire:loading.attr="disabled"
+                            wire:loading.class="opacity-75 cursor-wait"
                             class="inline-flex shadow-sm items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
                     >
                         Add

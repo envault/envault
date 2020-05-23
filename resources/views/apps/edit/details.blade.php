@@ -26,14 +26,14 @@
                     </button>
 
                     <div x-show.transition.opacity="open"
-                         class="fixed bottom-0 z-10 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
+                         class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
                     >
                         <div class="fixed inset-0">
                             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                         </div>
 
                         <div @click.away="open = false" @keydown.escape.window="open = false"
-                             class="z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
+                             class="relative z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-lg sm:w-full"
                         >
                             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                 <div class="sm:flex sm:items-start">
