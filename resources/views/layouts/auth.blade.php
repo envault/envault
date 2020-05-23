@@ -12,6 +12,9 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    @livewireScripts
 </head>
 
 <body class="min-h-screen bg-gray-900 flex flex-col justify-center py-12 px-2 sm:px-6">
@@ -24,9 +27,6 @@
         @yield('content')
     </div>
 </div>
-
-<script src="{{ asset('js/app.js') }}"></script>
-@livewireScripts
 </body>
 
 </html>

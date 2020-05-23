@@ -19,9 +19,9 @@
         "sass": "^1.26.5",
         "sass-loader": "^8.0.0",
         "tailwindcss": "^1.4.6",
+        "turbolinks": "^5.2.0",
         "typeface-fira-mono": "0.0.72",
         "typeface-inter": "^3.12.0",
         "vue-template-compiler": "^2.6.11"
-    },
-    "dependencies": {}
+    }
 }

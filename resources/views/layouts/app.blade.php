@@ -12,6 +12,9 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @livewireStyles
+
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    @livewireScripts
 </head>
 
 <body class="flex flex-col min-h-screen bg-gray-100">
@@ -156,9 +159,6 @@
         </p>
     </div>
 </footer>
-
-<script src="{{ asset('js/app.js') }}"></script>
-@livewireScripts
 </body>
 
 </html>
