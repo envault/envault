@@ -13,6 +13,8 @@ class UpdateAppController extends Controller
      */
     public function __invoke(App $app)
     {
+        $this->authorize('view', $app);
+
         return $app->load('variables');
     }
 }

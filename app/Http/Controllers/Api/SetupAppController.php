@@ -19,6 +19,10 @@ class SetupAppController extends Controller
             ['token', $token],
         ])->firstOrFail();
 
+        if ($setupToken->user->cannot('view', $app)) {
+            abort(403);
+        };
+
         return [
             'authToken' => $setupToken->user->createToken(uniqid())->plainTextToken,
             'app' => $setupToken->app->load('variables'),
