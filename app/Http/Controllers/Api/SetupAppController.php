@@ -21,7 +21,7 @@ class SetupAppController extends Controller
 
         if ($setupToken->user->cannot('view', $app)) {
             abort(403);
-        };
+        }
 
         return [
             'authToken' => $setupToken->user->createToken(uniqid())->plainTextToken,

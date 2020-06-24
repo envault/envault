@@ -2,25 +2,34 @@
 
 namespace App\Rules;
 
+use App\AuthRequest;
+use App\User;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
-class ValidAuthToken implements Rule
+class ValidAuthAttempt implements Rule
 {
     /**
-     * @var string
+     * @var \App\AuthRequest
      */
-    public $hashedToken;
+    public $request;
+
+    /**
+     * @var \App\User
+     */
+    public $user;
 
     /**
      * Create a new rule instance.
      *
-     * @param string $hashedToken
+     * @param \App\AuthRequest $request
+     * @param \App\User $user
      * @return void
      */
-    public function __construct($hashedToken)
+    public function __construct($request, $user)
     {
-        $this->hashedToken = $hashedToken;
+        $this->request = $request;
+        $this->user = $user;
     }
 
     /**
@@ -32,7 +41,7 @@ class ValidAuthToken implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Hash::check($value, $this->hashedToken);
+        return $this->request->user_id == $this->user->id && Hash::check($value, $this->request->token);
     }
 
     /**

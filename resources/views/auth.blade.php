@@ -1,5 +1,5 @@
 <div>
-    @if (!$token)
+    @if (!$request)
         <form wire:submit.prevent="request" spellcheck="false">
             <div>
                 <div class="rounded-md">
@@ -52,18 +52,18 @@
 
             <div class="mt-3">
                 <div class="rounded-md">
-                    <input wire:model.lazy="tokenAttempt" placeholder="The code we emailed you" required autofocus
-                           class="appearance-none bg-gray-700 block w-full px-3 py-2 border border-gray-600 rounded-md text-gray-200 placeholder-gray-400 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('tokenAttempt') border-red-500 placeholder-red-400 focus:border-red-500 focus:shadow-outline-red @enderror"
+                    <input wire:model.lazy="token" placeholder="The code we emailed you" required autofocus
+                           class="appearance-none bg-gray-700 block w-full px-3 py-2 border border-gray-600 rounded-md text-gray-200 placeholder-gray-400 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-500 transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('token') border-red-500 placeholder-red-400 focus:border-red-500 focus:shadow-outline-red @enderror"
                     />
                 </div>
-                @error('tokenAttempt')
+                @error('token')
                 <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="mt-6 flex items-center justify-end">
                 <div class="text-sm leading-5">
-                    <a wire:click="sendRequest(true)" wire:loading.attr="disabled"
+                    <a wire:click="processRequest(true)" wire:loading.attr="disabled"
                        wire:loading.class="opacity-75 cursor-wait"
                        class="cursor-pointer font-medium text-indigo-500 hover:text-indigo-400 focus:outline-none focus:underline transition ease-in-out duration-150"
                     >

@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('app-setup-tokens:flush')->everyFiveMinutes();
+        $schedule->command('auth-requests:flush')->everyFiveMinutes();
     }
 
     /**

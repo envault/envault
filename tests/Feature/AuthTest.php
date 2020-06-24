@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\AuthRequest;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
@@ -14,14 +15,18 @@ class AuthTest extends TestCase
     {
         $user = factory(User::class)->create();
 
+        $requestToValidate = $user->auth_requests()->create([
+            'token' => Hash::make('token'),
+        ]);
+
         Livewire::test('auth')
-            ->set('token', Hash::make('token'))
-            ->set('tokenAttempt', 'token')
+            ->set('request', $requestToValidate)
+            ->set('token', 'token')
             ->set('user', $user)
             ->call('confirm')
             ->assertEmitted('auth.confirmed');
 
-        $this->assertEquals(user()->email, $user->email);
+        $this->assertEquals(user()->id, $user->id);
     }
 
     /** @test */
@@ -44,8 +49,8 @@ class AuthTest extends TestCase
 
         Livewire::test('auth')
             ->set('user', $user)
-            ->call('sendRequest')
-            ->assertNotSet('token', null)
+            ->call('processRequest')
+            ->assertNotSet('request', null)
             ->assertEmitted('auth.request.sent');
     }
 
@@ -76,19 +81,27 @@ class AuthTest extends TestCase
     }
 
     /** @test */
-    public function token_attempt_is_required()
+    public function token_is_required()
     {
         Livewire::test('auth')
             ->call('confirm')
-            ->assertHasErrors(['tokenAttempt' => 'required']);
+            ->assertHasErrors(['token' => 'required']);
     }
 
     /** @test */
-    public function token_attempt_is_valid()
+    public function token_is_valid()
     {
+        $user = factory(User::class)->create();
+
+        $requestToValidate = $user->auth_requests()->create([
+            'token' => Hash::make('token'),
+        ]);
+
         Livewire::test('auth')
-            ->set('tokenAttempt', 'token')
+            ->set('request', $requestToValidate)
+            ->set('token', 'incorrect-token')
+            ->set('user', $user)
             ->call('confirm')
-            ->assertHasErrors('tokenAttempt');
+            ->assertHasErrors('token');
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire;
 
+use App\AuthRequest;
 use App\Notifications\AuthRequestedNotification;
-use App\Rules\ValidAuthToken;
+use App\Rules\ValidAuthAttempt;
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -17,14 +18,14 @@ class Auth extends Component
     public $email = '';
 
     /**
-     * @var string
+     * @var \App\AuthRequest|null
      */
-    public $token = '';
+    public $request;
 
     /**
      * @var string
      */
-    public $tokenAttempt = '';
+    public $token = '';
 
     /**
      * @var \App\User|null
@@ -37,8 +38,10 @@ class Auth extends Component
     public function confirm()
     {
         $this->validate([
-            'tokenAttempt' => ['required', new ValidAuthToken($this->token)],
+            'token' => ['required', new ValidAuthAttempt($this->request, $this->user)],
         ]);
+
+        $this->request->delete();
 
         auth()->login($this->user);
 
@@ -53,6 +56,27 @@ class Auth extends Component
     }
 
     /**
+     * @param bool $resend
+     * @return void
+     */
+    public function processRequest($resend = false)
+    {
+        $token = Str::random(16);
+
+        $this->request = $this->user->auth_requests()->create([
+            'token' => Hash::make($token),
+        ]);
+
+        $this->user->notify(new AuthRequestedNotification($token));
+
+        $this->emit('auth.request.sent');
+
+        if ($resend) {
+            $this->emit('auth.request.resent');
+        }
+    }
+
+    /**
      * @return void
      */
     public function request()
@@ -63,28 +87,9 @@ class Auth extends Component
 
         $this->user = User::where('email', $this->email)->firstOrFail();
 
-        $this->sendRequest();
+        $this->processRequest();
 
         $this->emit('auth.requested');
-    }
-
-    /**
-     * @param bool $resend
-     * @return void
-     */
-    public function sendRequest($resend = false)
-    {
-        $token = Str::random(16);
-
-        $this->user->notify(new AuthRequestedNotification($token));
-
-        $this->token = Hash::make($token);
-
-        $this->emit('auth.request.sent');
-
-        if ($resend) {
-            $this->emit('auth.request.resent');
-        }
     }
 
     /**

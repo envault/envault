@@ -12,11 +12,11 @@
     },
     "devDependencies": {
         "@tailwindcss/ui": "^0.1.4",
-        "alpinejs": "^2.3.5",
+        "alpinejs": "^2.4.1",
         "cross-env": "^5.1",
         "laravel-mix": "^5.0.1",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.26.5",
+        "sass": "^1.26.9",
         "sass-loader": "^8.0.0",
         "tailwindcss": "^1.4.6",
         "turbolinks": "^5.2.0",

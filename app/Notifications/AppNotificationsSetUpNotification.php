@@ -48,7 +48,7 @@ class AppNotificationsSetUpNotification extends Notification implements ShouldQu
             ->success()
             ->from(config('app.name'))
             ->to($channel)
-            ->content("Slack notifications have been set up!")
+            ->content('Slack notifications have been set up!')
             ->attachment(function ($attachment) use ($configAppName, $notifiable) {
                 $attachment->title($notifiable->name, route('apps.show', [
                     'app' => $notifiable->id,
