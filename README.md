@@ -8,7 +8,7 @@
 
 ## Installation
 
-The Envault server is built on [the Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4.
+The Envault server is built on [the Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4 and [Composer](https://getcomposer.org/) installed.
 
 1) Clone this repository onto your server.
 
@@ -22,7 +22,7 @@ The Envault server is built on [the Laravel PHP framework](https://laravel.com).
 
 6) Set up a scheduled task to run `php artisan schedule:run` every minute. For more details, please refer to [the Laravel documentation](https://laravel.com/docs/7.x/scheduling#introduction).
 
-7) Create your first user account using the `php artisan make:user` command. You should grant it the "owner" role so that it does not encounter any restrictions on the Envault dashboard.
+7) Create your first user account using the `php artisan make:user -o` command. It will be granted owner permissions.
 
 8) Visit your Envault server URL and sign in.
 
