@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AuthRequest extends Model
+class AppSetupToken extends Model
 {
     /**
      * The attributes that aren't mass assignable.
@@ -19,6 +19,14 @@ class AuthRequest extends Model
      * @var array
      */
     protected $hidden = ['token'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function app()
+    {
+        return $this->belongsTo(App::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

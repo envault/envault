@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Apps\Edit;
 
-use App\App;
+use App\Models\App;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -11,7 +11,7 @@ class Details extends Component
     use AuthorizesRequests;
 
     /**
-     * @var \App\App
+     * @var \App\Models\App
      */
     public $app;
 
@@ -67,7 +67,7 @@ class Details extends Component
     }
 
     /**
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return void
      */
     public function mount(App $app)

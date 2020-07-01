@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\User;
+use App\Models\User;
 
 class UserObserver
 {
     /**
      * Handle the user "force deleted" event.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @return void
      */
     public function forceDeleted(User $user)

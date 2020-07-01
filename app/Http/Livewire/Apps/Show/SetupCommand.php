@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Apps\Show;
 
-use App\App;
-use App\AppSetupToken;
+use App\Models\App;
+use App\Models\AppSetupToken;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -13,7 +13,7 @@ class SetupCommand extends Component
     use AuthorizesRequests;
 
     /**
-     * @var \App\App
+     * @var \App\Models\App
      */
     public $app;
 
@@ -30,7 +30,7 @@ class SetupCommand extends Component
     ];
 
     /**
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return void
      */
     public function mount(App $app)

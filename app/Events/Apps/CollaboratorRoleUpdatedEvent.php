@@ -2,8 +2,8 @@
 
 namespace App\Events\Apps;
 
-use App\App;
-use App\User;
+use App\Models\App;
+use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -13,12 +13,12 @@ class CollaboratorRoleUpdatedEvent
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
-     * @var \App\App
+     * @var \App\Models\App
      */
     public $app;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     public $collaborator;
 
@@ -35,8 +35,8 @@ class CollaboratorRoleUpdatedEvent
     /**
      * Create a new event instance.
      *
-     * @param \App\App $app
-     * @param \App\User $collaborator
+     * @param \App\Models\App $app
+     * @param \App\Models\User $collaborator
      * @param string $oldRole
      * @param string $newRole
      * @return void

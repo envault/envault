@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\VariableVersion;
+use App\Models\VariableVersion;
 use Faker\Generator as Faker;
 
 $factory->define(VariableVersion::class, function (Faker $faker) {

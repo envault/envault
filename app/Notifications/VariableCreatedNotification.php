@@ -2,7 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Variable;
+use App\Models\Variable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\SlackMessage;
@@ -13,14 +13,14 @@ class VariableCreatedNotification extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * @var \App\Variable
+     * @var \App\Models\Variable
      */
     public $variable;
 
     /**
      * Create a new notification instance.
      *
-     * @param \App\Variable $variable
+     * @param \App\Models\Variable $variable
      * @return void
      */
     public function __construct(Variable $variable)

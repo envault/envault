@@ -2,8 +2,8 @@
 
 namespace App\Http\Livewire\Variables;
 
+use App\Models\Variable;
 use App\Notifications\VariableDeletedNotification;
-use App\Variable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -12,7 +12,7 @@ class Delete extends Component
     use AuthorizesRequests;
 
     /**
-     * @var \App\Variable
+     * @var \App\Models\Variable
      */
     public $variable;
 
@@ -33,7 +33,7 @@ class Delete extends Component
     }
 
     /**
-     * @param \App\Variable $variable
+     * @param \App\Models\Variable $variable
      * @return void
      */
     public function mount(Variable $variable)

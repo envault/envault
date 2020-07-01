@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Policies;
 
-use App\App;
+use App\Models\App;
+use App\Models\User;
 use App\Policies\AppPolicy;
-use App\User;
 use Tests\TestCase;
 
 class AppPolicyTest extends TestCase

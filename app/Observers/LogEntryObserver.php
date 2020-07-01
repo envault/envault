@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\LogEntry;
+use App\Models\LogEntry;
 
 class LogEntryObserver
 {
     /**
      * Handle the log entry "created" event.
      *
-     * @param \App\LogEntry $logEntry
+     * @param \App\Models\LogEntry $logEntry
      * @return void
      */
     public function created(LogEntry $logEntry)

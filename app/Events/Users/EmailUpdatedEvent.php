@@ -2,7 +2,7 @@
 
 namespace App\Events\Users;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -22,7 +22,7 @@ class EmailUpdatedEvent
     public $oldEmail;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     public $user;
 

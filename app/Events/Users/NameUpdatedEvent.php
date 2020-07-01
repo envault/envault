@@ -2,7 +2,7 @@
 
 namespace App\Events\Users;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -22,14 +22,14 @@ class NameUpdatedEvent
     public $oldName;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     public $user;
 
     /**
      * Create a new event instance.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @param string $newName
      * @param string $oldName
      * @return void

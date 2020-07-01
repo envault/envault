@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Apps;
 
-use App\App;
-use App\User;
+use App\Models\App;
+use App\Models\User;
 use Livewire\Livewire;
 use Tests\TestCase;
 

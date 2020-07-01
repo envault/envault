@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Policies;
 
-use App\App;
+use App\Models\App;
+use App\Models\User;
+use App\Models\Variable;
 use App\Policies\VariablePolicy;
-use App\User;
-use App\Variable;
 use Tests\TestCase;
 
 class VariablePolicyTest extends TestCase

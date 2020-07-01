@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Users;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -11,7 +11,7 @@ class Delete extends Component
     use AuthorizesRequests;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     public $user;
 
@@ -32,7 +32,7 @@ class Delete extends Component
     }
 
     /**
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @return void
      */
     public function mount(User $user)

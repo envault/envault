@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\LogEntry;
+use App\Models\LogEntry;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use Livewire\Component;

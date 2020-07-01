@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\Variable;
+use App\Models\Variable;
 
 class VariableObserver
 {
     /**
      * Handle the variable "deleted" event.
      *
-     * @param \App\Variable $variable
+     * @param \App\Models\Variable $variable
      * @return void
      */
     public function deleted(Variable $variable)
@@ -20,7 +20,7 @@ class VariableObserver
     /**
      * Handle the variable "restored" event.
      *
-     * @param \App\Variable $variable
+     * @param \App\Models\Variable $variable
      * @return void
      */
     public function restored(Variable $variable)

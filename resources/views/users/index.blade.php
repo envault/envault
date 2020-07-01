@@ -10,11 +10,11 @@
     </header>
 
     <div class="max-w-4xl mx-auto pb-12 px-4 sm:px-6">
-        @can('create', App\User::class)
+        @can('create', App\Models\User::class)
             @livewire('users.create')
         @endcan
-        @can('viewAny', App\User::class)
-            <div class="@can('create', App\User::class) mt-6 @endcan bg-white shadow overflow-hidden rounded-md">
+        @can('viewAny', App\Models\User::class)
+            <div class="@can('create', App\Models\User::class) mt-6 @endcan bg-white shadow overflow-hidden rounded-md">
                 <ul>
                     @forelse ($users as $user)
                         <li x-data="{ context: null }" x-cloak wire:key="user.{{ $user->id }}"

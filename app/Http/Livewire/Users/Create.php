@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Users;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Component;

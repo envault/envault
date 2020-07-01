@@ -1,9 +1,9 @@
 <?php
 
-use App\App;
-use App\User;
-use App\Variable;
-use App\VariableVersion;
+use App\Models\App;
+use App\Models\User;
+use App\Models\Variable;
+use App\Models\VariableVersion;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Users;
 
-use App\User;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -32,7 +32,7 @@ class Edit extends Component
     public $role = '';
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     public $user;
 
@@ -96,7 +96,7 @@ class Edit extends Component
     }
 
     /**
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @return void
      */
     public function mount(User $user)

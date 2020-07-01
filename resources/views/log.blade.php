@@ -51,7 +51,7 @@
                                     @endif class="@if (Str::before($this->action, '.') == 'user') bg-gray-50 opacity-50 cursor-not-allowed @endif form-select block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >
                                 <option value="">Select app...</option>
-                                @foreach (App\App::orderBy('name')->get() as $app)
+                                @foreach (App\Models\App::orderBy('name')->get() as $app)
                                     <option value="{{ $app->id }}">{{ $app->name }}</option>
                                 @endforeach
                             </select>
@@ -61,7 +61,7 @@
                                     class="form-select block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >
                                 <option value="">Select user responsible...</option>
-                                @foreach (App\User::orderBy('first_name')->get() as $user)
+                                @foreach (App\Models\User::orderBy('first_name')->get() as $user)
                                     <option value="{{ $user->id }}">{{ $user->full_name }}</option>
                                 @endforeach
                             </select>

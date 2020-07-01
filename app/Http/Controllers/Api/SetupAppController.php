@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\App;
 use App\Http\Controllers\Controller;
+use App\Models\App;
 
 class SetupAppController extends Controller
 {
     /**
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @param string $token
      * @return array
      */

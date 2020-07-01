@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\AppSetupToken;
-use App\AuthRequest;
+use App\Models\AuthRequest;
 use Illuminate\Console\Command;
 
 class FlushAuthRequestsCommand extends Command

@@ -2,28 +2,26 @@
 
 namespace App\Rules;
 
-use App\AuthRequest;
-use App\User;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
 class ValidAuthAttempt implements Rule
 {
     /**
-     * @var \App\AuthRequest
+     * @var \App\Models\AuthRequest
      */
     public $request;
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     public $user;
 
     /**
      * Create a new rule instance.
      *
-     * @param \App\AuthRequest $request
-     * @param \App\User $user
+     * @param \App\Models\AuthRequest $request
+     * @param \App\Models\User $user
      * @return void
      */
     public function __construct($request, $user)

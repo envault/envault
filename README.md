@@ -8,7 +8,7 @@
 
 ## Installation
 
-The Envault server is built on [the Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4 and [Composer](https://getcomposer.org/) installed.
+The Envault server is built on [the Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4 and [Composer](https://getcomposer.org) installed.
 
 1) Clone this repository onto your server.
 

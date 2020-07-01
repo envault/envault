@@ -2,9 +2,9 @@
 
 namespace Tests\Unit;
 
-use App\App;
-use App\Variable;
-use App\VariableVersion;
+use App\Models\App;
+use App\Models\Variable;
+use App\Models\VariableVersion;
 use Tests\TestCase;
 
 class VariableTest extends TestCase

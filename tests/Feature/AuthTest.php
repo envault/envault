@@ -2,8 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\AuthRequest;
-use App\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
 use Tests\TestCase;

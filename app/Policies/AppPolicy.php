@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\App;
-use App\User;
+use App\Models\App;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AppPolicy
@@ -13,7 +13,7 @@ class AppPolicy
     /**
      * Determine whether the user can create models.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @return mixed
      */
     public function create(User $user)
@@ -24,8 +24,8 @@ class AppPolicy
     /**
      * Determine whether the user can create variables for the model.
      *
-     * @param \App\User $user
-     * @param \App\App $app
+     * @param \App\Models\User $user
+     * @param \App\Models\App $app
      * @return mixed
      */
     public function createVariable(User $user, App $app)
@@ -36,8 +36,8 @@ class AppPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param \App\User $user
-     * @param \App\App $app
+     * @param \App\Models\User $user
+     * @param \App\Models\App $app
      * @return mixed
      */
     public function delete(User $user, App $app)
@@ -48,8 +48,8 @@ class AppPolicy
     /**
      * Determine whether the user can permanently delete the model.
      *
-     * @param \App\User $user
-     * @param \App\App $app
+     * @param \App\Models\User $user
+     * @param \App\Models\App $app
      * @return mixed
      */
     public function forceDelete(User $user, App $app)
@@ -60,8 +60,8 @@ class AppPolicy
     /**
      * Determine whether the user can restore the model.
      *
-     * @param \App\User $user
-     * @param \App\App $app
+     * @param \App\Models\User $user
+     * @param \App\Models\App $app
      * @return mixed
      */
     public function restore(User $user, App $app)
@@ -72,8 +72,8 @@ class AppPolicy
     /**
      * Determine whether the user can update the model.
      *
-     * @param \App\User $user
-     * @param \App\App $app
+     * @param \App\Models\User $user
+     * @param \App\Models\App $app
      * @return mixed
      */
     public function update(User $user, App $app)
@@ -84,8 +84,8 @@ class AppPolicy
     /**
      * Determine whether the user can view the model.
      *
-     * @param \App\User $user
-     * @param \App\App $app
+     * @param \App\Models\User $user
+     * @param \App\Models\App $app
      * @return mixed
      */
     public function view(User $user, App $app)
@@ -96,7 +96,7 @@ class AppPolicy
     /**
      * Determine whether the user can view all models.
      *
-     * @param \App\User $user
+     * @param \App\Models\User $user
      * @return mixed
      */
     public function viewAll(User $user)

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Variables\Edit;
 
-use App\Variable;
+use App\Models\Variable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -26,7 +26,7 @@ class RollBack extends Component
     public $selectedVersionValue;
 
     /**
-     * @var \App\Variable
+     * @var \App\Models\Variable
      */
     public $variable;
 
@@ -53,7 +53,7 @@ class RollBack extends Component
     }
 
     /**
-     * @param \App\Variable $variable
+     * @param \App\Models\Variable $variable
      * @return void
      */
     public function mount(Variable $variable)

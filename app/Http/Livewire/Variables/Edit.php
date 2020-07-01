@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Variables;
 
-use App\Variable;
+use App\Models\Variable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
@@ -27,7 +27,7 @@ class Edit extends Component
     public $value = '';
 
     /**
-     * @var \App\Variable
+     * @var \App\Models\Variable
      */
     public $variable;
 
@@ -115,7 +115,7 @@ class Edit extends Component
     }
 
     /**
-     * @param \App\Variable $variable
+     * @param \App\Models\Variable $variable
      * @return void
      */
     public function mount(Variable $variable)

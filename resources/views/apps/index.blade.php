@@ -72,7 +72,7 @@
             </div>
         @endif
 
-        @can('create', App\App::class)
+        @can('create', App\Models\App::class)
             <div @if (count($apps) || $search) class="mt-6" @endif>
                 @livewire('apps.create')
             </div>
@@ -80,7 +80,7 @@
 
         <div>
             @if (!count($apps) && !$search)
-                @cannot('create', App\App::class)
+                @cannot('create', App\Models\App::class)
                     <div class="shadow rounded-md bg-yellow-50 p-4">
                         <div class="flex">
                             <div class="flex-shrink-0">

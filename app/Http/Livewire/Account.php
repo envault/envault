@@ -23,7 +23,7 @@ class Account extends Component
     public $lastName = '';
 
     /**
-     * @var \App\User
+     * @var \App\Models\User
      */
     public $user;
 

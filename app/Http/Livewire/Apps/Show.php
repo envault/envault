@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Apps;
 
-use App\App;
+use App\Models\App;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
@@ -10,11 +10,11 @@ class Show extends Component
 {
     use AuthorizesRequests;
 
-    /** @var \App\App */
+    /** @var \App\Models\App */
     public $app;
 
     /**
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return void
      *
      * @throws \Illuminate\Auth\Access\AuthorizationException

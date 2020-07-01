@@ -2,10 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\AuthRequest;
+use App\Models\User;
 use App\Notifications\AuthRequestedNotification;
 use App\Rules\ValidAuthAttempt;
-use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -18,7 +17,7 @@ class Auth extends Component
     public $email = '';
 
     /**
-     * @var \App\AuthRequest|null
+     * @var \App\Models\AuthRequest|null
      */
     public $request;
 
@@ -28,7 +27,7 @@ class Auth extends Component
     public $token = '';
 
     /**
-     * @var \App\User|null
+     * @var \App\Models\User|null
      */
     public $user;
 

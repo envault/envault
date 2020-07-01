@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\AppSetupToken;
+use App\Models\AppSetupToken;
 use Illuminate\Console\Command;
 
 class FlushAppSetupTokensCommand extends Command

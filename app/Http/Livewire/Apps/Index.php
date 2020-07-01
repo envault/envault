@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Apps;
 
-use App\App;
+use App\Models\App;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithPagination;

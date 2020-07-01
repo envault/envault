@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return bool|mixed
      */
     public function isAppAdmin(App $app)
@@ -58,7 +58,7 @@ class User extends Authenticatable
     }
 
     /**
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return bool
      */
     public function isAppCollaborator(App $app)

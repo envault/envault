@@ -2,14 +2,14 @@
 
 namespace App\Observers;
 
-use App\App;
+use App\Models\App;
 
 class AppObserver
 {
     /**
      * Handle the app "deleted" event.
      *
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return void
      */
     public function deleted(App $app)
@@ -22,7 +22,7 @@ class AppObserver
     /**
      * Handle the app "restored" event.
      *
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return void
      */
     public function restored(App $app)
@@ -35,7 +35,7 @@ class AppObserver
     /**
      * Handle the app "force deleted" event.
      *
-     * @param \App\App $app
+     * @param \App\Models\App $app
      * @return void
      */
     public function forceDeleted(App $app)

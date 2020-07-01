@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,7 +24,7 @@ class Variable extends Model
     protected $guarded = ['latest_version'];
 
     /**
-     * @return \App\VariableVersion|null
+     * @return \App\Models\VariableVersion|null
      */
     public function getLatestVersionAttribute()
     {
