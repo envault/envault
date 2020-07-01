@@ -50,7 +50,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <x-heroicon-s-cheveron-right class="h-5 w-5 text-gray-400" />
+                                        <x-heroicon-s-chevron-right class="h-5 w-5 text-gray-400" />
                                     </div>
                                 </div>
                             </a>
