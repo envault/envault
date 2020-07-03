@@ -16,7 +16,7 @@ class LogImportListener
     public function handle(ImportedEvent $event)
     {
         $variableForm = Str::plural('variable', $event->count);
-        $wasForm = $event->count > 2 ? 'was' : 'were';
+        $wasForm = $event->count > 1 ? 'were' : 'was';
 
         $event->app->log()->create([
             'action' => 'variables.imported',

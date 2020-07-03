@@ -50,7 +50,7 @@ class VariablesImportedNotification extends Notification implements ShouldQueue
         $channel = $notifiable->slack_notification_channel ? "#{$notifiable->slack_notification_channel}" : '#general';
 
         $variableForm = Str::plural('variable', $this->count);
-        $wasForm = $this->count > 2 ? 'was' : 'were';
+        $wasForm = $this->count > 1 ? 'were' : 'was';
 
         return (new SlackMessage())
             ->success()
