@@ -17,20 +17,20 @@
     @livewireScripts
 </head>
 
-<body class="flex flex-col min-h-screen bg-gray-100">
-<div class="bg-gray-800 pb-56">
+<body class="flex flex-col min-h-screen bg-gray-100 select-none">
+<div class="pb-56 bg-gray-800">
     <nav x-data="{ open: false }" x-cloak @keydown.window.escape="open = false" class="bg-gray-800">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="border-b border-gray-700">
                 <div class="flex items-center justify-between h-16 px-4 sm:px-0">
                     <div class="flex items-center">
                         <div class="flex items-center flex-shrink-0">
                             <a href="{{ route('home') }}">
-                                <img class="h-8 w-8" src="{{ asset('images/icon-white.svg') }}" alt="Envault logo" />
+                                <img class="w-8 h-8" src="{{ asset('images/icon-white.svg') }}" alt="Envault logo" />
                             </a>
                         </div>
                         @can('administrate')
-                            <div class="ml-10 hidden md:block">
+                            <div class="hidden ml-10 md:block">
                                 <div class="flex items-baseline">
                                     <a href="{{ route('apps.index') }}"
                                        class="px-3 py-2 rounded-md text-sm font-medium @if (request()->is('apps*')) text-white bg-gray-900 @else text-gray-300 hover:text-white hover:bg-gray-700 @endif focus:outline-none focus:text-white focus:bg-gray-700"
@@ -50,15 +50,15 @@
                         @endcan
                     </div>
                     <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6">
+                        <div class="flex items-center ml-4 md:ml-6">
                             <div @click.away="open = false" class="relative" x-data="{ open: false }" x-cloak>
                                 <div>
                                     <button @click="open = !open" type="button"
-                                            class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid"
+                                            class="flex items-center max-w-xs text-sm text-white rounded-full focus:outline-none focus:shadow-solid"
                                             id="user-menu" aria-label="User menu" aria-haspopup="true"
                                             x-bind:aria-expanded="open"
                                     >
-                                        <x-heroicon-s-user-circle class="h-8 w-8" />
+                                        <x-heroicon-s-user-circle class="w-8 h-8" />
                                     </button>
                                 </div>
                                 <div x-show="open" x-transition:enter="transition ease-out duration-100"
@@ -67,9 +67,9 @@
                                      x-transition:leave="transition ease-in duration-75"
                                      x-transition:leave-start="transform opacity-100 scale-100"
                                      x-transition:leave-end="transform opacity-0 scale-95"
-                                     class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+                                     class="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-lg"
                                 >
-                                    <div class="py-1 rounded-md bg-white shadow-xs">
+                                    <div class="py-1 bg-white rounded-md shadow-xs">
                                         <a href="{{ route('account') }}"
                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                         >My
@@ -85,17 +85,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="-mr-2 flex items-center md:hidden">
+                    <div class="flex items-center -mr-2 md:hidden">
                         <button @click="open = !open" type="button"
-                                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+                                class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
                                 x-bind:aria-label="open ? 'Close main menu' : 'Main menu'" x-bind:aria-expanded="open"
                         >
                             <span x-show="!open">
-                                <x-heroicon-s-menu class="h-6 w-6" />
+                                <x-heroicon-s-menu class="w-6 h-6" />
                             </span>
 
                             <span x-show="open">
-                                <x-heroicon-s-x class="h-6 w-6" />
+                                <x-heroicon-s-x class="w-6 h-6" />
                             </span>
                         </button>
                     </div>
@@ -127,7 +127,7 @@
                         <div class="mt-1 text-sm font-medium leading-none text-gray-400">{{ user()->email }}</div>
                     </div>
                 </div>
-                <div class="mt-3 px-2" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                <div class="px-2 mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                     <a href="{{ route('account') }}"
                        class="block px-3 py-2 rounded-md text-base font-medium @if (request()->route()->named('account')) text-white bg-gray-900 @else text-gray-300 hover:text-white hover:bg-gray-700 @endif focus:outline-none focus:text-white focus:bg-gray-700"
                        role="menuitem"
@@ -135,7 +135,7 @@
                     </a>
                     <a href="{{ route('auth.logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                       class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                       class="block px-3 py-2 mt-1 text-base font-medium text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                        role="menuitem"
                     >Sign out
                     </a>
@@ -153,8 +153,8 @@
 </main>
 
 <footer>
-    <div class="max-w-4xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <p class="text-gray-800 text-sm">
+    <div class="max-w-4xl px-4 py-6 mx-auto sm:px-6 lg:px-8">
+        <p class="text-sm text-gray-800">
             &copy; {{ config('app.name') }} {{ carbon()->year }}
         </p>
     </div>

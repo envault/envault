@@ -17,13 +17,13 @@
     @livewireScripts
 </head>
 
-<body class="min-h-screen bg-gray-900 flex flex-col justify-center py-12 px-2 sm:px-6">
+<body class="flex flex-col justify-center min-h-screen px-2 py-12 bg-gray-900 select-none sm:px-6">
 <div class="sm:mx-auto sm:w-full sm:max-w-md">
-    <img class="mx-auto h-12 w-auto" src="{{ asset('images/icon-white.svg') }}" alt="Envault logo" />
+    <img class="w-auto h-12 mx-auto" src="{{ asset('images/icon-white.svg') }}" alt="Envault logo" />
 </div>
 
 <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-    <div class="bg-gray-800 py-8 px-4 rounded-lg sm:px-10">
+    <div class="px-4 py-8 bg-gray-800 rounded-lg sm:px-10">
         @yield('content')
     </div>
 </div>
