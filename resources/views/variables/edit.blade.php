@@ -27,7 +27,7 @@
                     </div>
 
                     <button wire:click="toggleOpenRollBack" type="button"
-                            wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                            wire:loading.class="opacity-75 cursor-wait"
                             class="-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium @if ($openRollBack) rounded-tr-md @else rounded-r-md @endif text-gray-700 bg-gray-50 hover:text-gray-500 hover:bg-white focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
                     >
                         <x-heroicon-s-collection class="h-5 w-5 text-gray-400" />
@@ -43,7 +43,7 @@
         </div>
         <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse sm:justify-between">
             <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                <button type="submit" wire:loading.attr="disabled" wire:loading.class="opacity-75 cursor-wait"
+                <button type="submit" wire:loading.class="opacity-75 cursor-wait"
                         class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-indigo-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                 >
                     Save
