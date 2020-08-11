@@ -110,7 +110,7 @@
                                                                 <button
                                                                     wire:click="updateRole({{ $collaborator->id }}, null)"
                                                                     @click="open = false" type="button"
-                                                                    wire:loading.attr="disabled"
+
                                                                     wire:loading.class="opacity-75 cursor-wait"
                                                                     class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
@@ -121,7 +121,7 @@
                                                                 class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
                                                             >
                                                                 <button @click="open = false" type="button"
-                                                                        wire:loading.attr="disabled"
+
                                                                         wire:loading.class="opacity-75 cursor-wait"
                                                                         class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
@@ -190,7 +190,7 @@
                                                                 <button
                                                                     wire:click="updateRole({{ $collaborator->id }}, 'admin')"
                                                                     @click="open = false" type="button"
-                                                                    wire:loading.attr="disabled"
+
                                                                     wire:loading.class="opacity-75 cursor-wait"
                                                                     class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
@@ -201,7 +201,7 @@
                                                                 class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
                                                             >
                                                                 <button @click="open = false" type="button"
-                                                                        wire:loading.attr="disabled"
+
                                                                         wire:loading.class="opacity-75 cursor-wait"
                                                                         class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                                 >
@@ -262,7 +262,7 @@
                                                         <button wire:click="remove({{ $collaborator->id }})"
                                                                 @click="open = false"
                                                                 type="button"
-                                                                wire:loading.attr="disabled"
+
                                                                 wire:loading.class="opacity-75 cursor-wait"
                                                                 class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                         >
@@ -273,7 +273,7 @@
                                                         class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto"
                                                     >
                                                         <button @click="open = false" type="button"
-                                                                wire:loading.attr="disabled"
+
                                                                 wire:loading.class="opacity-75 cursor-wait"
                                                                 class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
                                                         >
@@ -309,7 +309,7 @@
                     </div>
                 </div>
                 <span class="mt-3 flex justify-end rounded-md sm:mt-0 sm:ml-3 sm:w-auto">
-                    <button wire:click="add" type="button" wire:loading.attr="disabled"
+                    <button wire:click="add" type="button"
                             wire:loading.class="opacity-75 cursor-wait"
                             class="inline-flex shadow-sm items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
                     >
