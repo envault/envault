@@ -29,6 +29,8 @@ After you update Envault from this repository, please run the following commands
 composer install
 php artisan migrate
 php artisan queue:restart
+php artisan livewire:discover
+php artisan view:clear
 ```
 
 ## Documentation
