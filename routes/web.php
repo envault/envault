@@ -33,5 +33,5 @@ Route::middleware('auth')->group(function () {
 
     Route::get('log', App\Http\Livewire\Log::class)->middleware('can:administrate')->name('log');
 
-    Route::get('users', App\Http\Livewire\Users\index::class)->name('users.index');
+    Route::get('users', App\Http\Livewire\Users\Index::class)->name('users.index');
 });
