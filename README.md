@@ -69,12 +69,6 @@ php artisan view:clear
 
 ## Support
 
-If you spot a bug with Envault, please [submit a detailed issue](https://github.com/envault/envault/issues) and a member of our team will assist you.
-
-If you would like support, please log into the [Envault Portal](https://portal.envault.dev), where you can access live chat with our team. Alternatively, you can email [support@envault.dev](mailto:support@envault.dev) and we'll get right back to you.
+If you spot a bug with Envault, please [submit a detailed issue](https://github.com/envault/envault/issues), and a member of our team, or the community, will assist you.
 
 If you discover a security vulnerability within Envault, please email Dan Harrin via [dan@envault.dev](mailto:dan@envault.dev). All security vulnerabilities will be promptly addressed.
-
-## License
-
-Please see our [End-User License Agreement](https://github.com/envault/envault/blob/master/LICENSE.md).
