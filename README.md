@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="https://github.com/envault/envault/blob/master/public/images/logo-black.png?raw=true" alt="Envault" />
-</p>
+# Envault
 
 [Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install your Envault server and you're ready to sync. 🚀
 
