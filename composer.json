@@ -3,7 +3,7 @@
     "type": "project",
     "description": "An app to sync your entire team's local .env variables, so you're all kept up to date.",
     "keywords": [
-        "envault",
+        "envault"
     ],
     "license": "MIT",
     "require": {
