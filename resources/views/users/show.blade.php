@@ -16,7 +16,7 @@
 
         <x-inputs.base disabled label="Role" name="role" :key="$user->id" context="show" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5">
             <div class="max-w-xs rounded-md shadow-sm">
-                <select disabled id="roleShow{{ $user->id }}" class="bg-gray-50 cursor-not-allowed block form-select w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                <select disabled id="roleShow{{ $user->id }}" class="bg-gray-50 cursor-not-allowed block border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
                     <option @if (!$user->role || $user->role == 'User') selected @endif>User</option>
                     <option @if ($user->role == 'admin') selected @endif>Admin</option>
                     <option @if ($user->role == 'owner') selected @endif>Owner</option>

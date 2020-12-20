@@ -7,12 +7,10 @@
     <div class="px-4 py-4 sm:px-6">
         <form wire:submit.prevent="store" spellcheck="false" class="sm:flex sm:items-center">
             <div class="w-full">
-                <div class="rounded-md shadow-sm">
-                    <input wire:model.defer="name" type="text"
-                           class="form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out text-sm sm:leading-5 @error('name') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
-                           placeholder="My Awesome App"
-                    />
-                </div>
+                <input wire:model.defer="name" type="text"
+                       class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md @error('name') border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500 @enderror"
+                       placeholder="My Awesome App"
+                />
             </div>
             <span class="mt-3 flex flex-shrink-0 justify-end rounded-md sm:mt-0 sm:ml-3 sm:w-auto">
                 <button type="submit" wire:loading.class="opacity-75 cursor-wait"

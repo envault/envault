@@ -14,7 +14,7 @@
                     <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6 sm:flex sm:items-center">
                         <div class="flex relative rounded-md shadow-sm sm:w-1/3">
                             <select wire:model="action"
-                                    class="form-select block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                                    class="border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >
                                 <option value="">Select action...</option>
                                 <optgroup label="Users">
@@ -46,7 +46,7 @@
                         </div>
                         <div class="flex mt-2 sm:mt-0 sm:mx-2 relative rounded-md shadow-sm sm:w-1/3">
                             <select wire:model="appId" @if (Str::before($this->action, '.') == 'user') disabled
-                                    @endif class="@if (Str::before($this->action, '.') == 'user') bg-gray-50 opacity-50 cursor-not-allowed @endif form-select block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                                    @endif class="@if (Str::before($this->action, '.') == 'user') bg-gray-50 opacity-50 cursor-not-allowed @endif border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >
                                 <option value="">Select app...</option>
                                 @foreach (App\Models\App::orderBy('name')->get() as $app)
@@ -56,7 +56,7 @@
                         </div>
                         <div class="flex mt-2 sm:mt-0 relative rounded-md shadow-sm sm:w-1/3">
                             <select wire:model="userId"
-                                    class="form-select block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                                    class="border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >
                                 <option value="">Select user responsible...</option>
                                 @foreach (App\Models\User::orderBy('first_name')->get() as $user)
@@ -82,13 +82,13 @@
                         <tbody>
                             @forelse ($entries as $entry)
                                 <tr class="{{ $loop->index % 2 == 0 ? 'bg-white' : 'bg-gray-50' }}">
-                                    <td class="hidden sm:block px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900">
+                                    <td class="hidden sm:block px-6 py-4 whitespace-nowrap text-sm leading-5 font-medium text-gray-900">
                                         {{ $entry->user->full_name ?? null }}
                                     </td>
                                     <td class="px-6 py-4 text-sm leading-5 text-gray-500">
                                         {{ $entry->description }}
                                     </td>
-                                    <td class="hidden sm:block px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                                    <td class="hidden sm:block px-6 py-4 whitespace-nowrap text-sm leading-5 text-gray-500">
                                         {{ $entry->created_at->toFormattedDateTimeString() }}
                                     </td>
                                 </tr>

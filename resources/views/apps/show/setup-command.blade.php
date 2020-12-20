@@ -9,7 +9,7 @@
             <div class="relative flex-grow focus-within:z-10">
                 <input id="setupCommand" type="text"
                        value="npx envault {{ parse_url(config('app.url'))['host'] ?? config('app.url') }} {{ $app->id }} {{ $token }}"
-                       class="form-input px-4 sm:px-6 rounded-none border-0 block w-full transition ease-in-out duration-150 font-mono py-5 text-white bg-gray-900 sm:leading-5"
+                       class="px-4 sm:px-6 rounded-none border-0 block w-full transition ease-in-out duration-150 font-mono py-5 text-white bg-gray-900 sm:leading-5"
                        readonly
                 />
             </div>

@@ -27,7 +27,7 @@
                     </div>
 
                     <div x-show.transition.opacity="context"
-                         class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
+                         class="fixed z-10 bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
                     >
                         <div class="fixed inset-0">
                             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>

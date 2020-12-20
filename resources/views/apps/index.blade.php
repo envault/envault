@@ -18,7 +18,7 @@
                                     <x-heroicon-s-search class="h-5 w-5 text-gray-400" />
                                 </div>
                                 <input wire:model.debounce.500ms="search" type="search"
-                                       class="form-input block w-full pl-10 sm:text-sm sm:leading-5"
+                                       class="pl-10 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                                        placeholder="Search..."
                                 />
                             </div>
