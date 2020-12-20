@@ -11,7 +11,7 @@ class UserTest extends TestCase
     /** @test */
     public function full_name_determined()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertEquals($user->full_name, $user->first_name.' '.$user->last_name);
     }
@@ -19,9 +19,9 @@ class UserTest extends TestCase
     /** @test */
     public function admin_or_owner_status_determined_for_admin()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue($user->isAdminOrOwner());
     }
@@ -29,9 +29,9 @@ class UserTest extends TestCase
     /** @test */
     public function admin_or_owner_status_determined_for_owner()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         $this->assertTrue($user->isAdminOrOwner());
     }
@@ -39,7 +39,7 @@ class UserTest extends TestCase
     /** @test */
     public function admin_or_owner_status_determined_for_not_admin_or_owner()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse($user->isAdminOrOwner());
     }
@@ -47,9 +47,9 @@ class UserTest extends TestCase
     /** @test */
     public function app_admin_status_determined_for_app_admin()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         $app->collaborators()->attach($user, [
             'role' => 'admin',
@@ -61,9 +61,9 @@ class UserTest extends TestCase
     /** @test */
     public function app_admin_status_determined_for_not_app_admin()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         $this->assertFalse($user->isAppAdmin($app));
 
@@ -75,9 +75,9 @@ class UserTest extends TestCase
     /** @test */
     public function app_collabortator_status_determined_for_app_collabortator()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         $app->collaborators()->attach($user);
 
@@ -87,9 +87,9 @@ class UserTest extends TestCase
     /** @test */
     public function app_collabortator_status_determined_for_not_app_collabortator()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         $this->assertFalse($user->isAppCollaborator($app));
     }
@@ -97,9 +97,9 @@ class UserTest extends TestCase
     /** @test */
     public function owner_status_determined_for_owner()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         $this->assertTrue($user->isOwner());
     }
@@ -107,7 +107,7 @@ class UserTest extends TestCase
     /** @test */
     public function owner_status_determined_for_not_owner()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse($user->isOwner());
     }

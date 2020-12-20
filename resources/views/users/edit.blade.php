@@ -21,7 +21,7 @@
                            maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
             />
 
-            <x-inputs.select :disabled="user()->cannot('updateRole', $user)" label="Role" name="role"
+            <x-inputs.select :disabled="auth()->user()->cannot('updateRole', $user)" label="Role" name="role"
                              :value="$user->role" :options="['User', 'admin' => 'Admin', 'owner' => 'Owner']"
                              :key="$user->id" context="edit" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
             />

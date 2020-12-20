@@ -12,7 +12,7 @@ class AuthTest extends TestCase
     /** @test */
     public function can_confirm_token_and_authenticate_user()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $requestToValidate = $user->auth_requests()->create([
             'token' => Hash::make('token'),
@@ -25,13 +25,13 @@ class AuthTest extends TestCase
             ->call('confirm')
             ->assertEmitted('auth.confirmed');
 
-        $this->assertEquals(user()->id, $user->id);
+        $this->assertEquals(auth()->user()->id, $user->id);
     }
 
     /** @test */
     public function can_request_auth()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         Livewire::test('auth')
             ->set('email', $user->email)
@@ -44,7 +44,7 @@ class AuthTest extends TestCase
     /** @test */
     public function can_send_auth_request()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         Livewire::test('auth')
             ->set('user', $user)
@@ -90,7 +90,7 @@ class AuthTest extends TestCase
     /** @test */
     public function token_is_valid()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $requestToValidate = $user->auth_requests()->create([
             'token' => Hash::make('token'),

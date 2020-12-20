@@ -13,7 +13,7 @@ class CreateTest extends TestCase
     /** @test */
     public function can_create_user()
     {
-        $userToCreate = factory(User::class)->make();
+        $userToCreate = User::factory()->make();
 
         Livewire::test('users.create')
             ->set('email', $userToCreate->email)
@@ -78,9 +78,9 @@ class CreateTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

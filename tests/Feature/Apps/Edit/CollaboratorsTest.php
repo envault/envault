@@ -14,9 +14,9 @@ class CollaboratorsTest extends TestCase
     /** @test */
     public function can_add_user_as_collaborator()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $userToAdd = factory(User::class)->create();
+        $userToAdd = User::factory()->create();
 
         Livewire::test('apps.edit.collaborators', ['app' => $app])
             ->set('userToAddId', $userToAdd->id)
@@ -32,9 +32,9 @@ class CollaboratorsTest extends TestCase
     /** @test */
     public function can_remove_user_from_collaborator()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $userToRemove = factory(User::class)->create();
+        $userToRemove = User::factory()->create();
 
         $app->collaborators()->attach($userToRemove);
 
@@ -51,9 +51,9 @@ class CollaboratorsTest extends TestCase
     /** @test */
     public function can_select_addable_users()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $addableUser = factory(User::class)->create();
+        $addableUser = User::factory()->create();
 
         Livewire::test('apps.edit.collaborators', ['app' => $app])
             ->assertSee($addableUser->name);
@@ -62,9 +62,9 @@ class CollaboratorsTest extends TestCase
     /** @test */
     public function can_update_collaborator_role()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $collaboratorToUpdate = factory(User::class)->create();
+        $collaboratorToUpdate = User::factory()->create();
 
         $app->collaborators()->attach($collaboratorToUpdate);
 
@@ -82,9 +82,9 @@ class CollaboratorsTest extends TestCase
     /** @test */
     public function can_view_collaborators()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $appCollaborator = factory(User::class)->create();
+        $appCollaborator = User::factory()->create();
 
         $app->collaborators()->attach($appCollaborator);
 
@@ -96,7 +96,7 @@ class CollaboratorsTest extends TestCase
     /** @test */
     public function user_to_add_exists()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         Livewire::test('apps.edit.collaborators', ['app' => $app])
             ->set('userToAddId', 2)
@@ -107,7 +107,7 @@ class CollaboratorsTest extends TestCase
     /** @test */
     public function user_to_add_id_is_required()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         Livewire::test('apps.edit.collaborators', ['app' => $app])
             ->set('userToAddId', null)
@@ -119,9 +119,9 @@ class CollaboratorsTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

@@ -14,7 +14,7 @@ class CreateTest extends TestCase
     /** @test */
     public function can_create_app()
     {
-        $appToCreate = factory(App::class)->make();
+        $appToCreate = App::factory()->make();
 
         Livewire::test('apps.create')
             ->set('name', $appToCreate->name)
@@ -38,9 +38,9 @@ class CreateTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

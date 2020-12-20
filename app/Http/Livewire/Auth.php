@@ -44,14 +44,14 @@ class Auth extends Component
 
         auth()->login($this->user);
 
-        $this->user->last_login_at = carbon();
+        $this->user->last_login_at = now();
         $this->user->save();
 
         $this->emit('auth.confirmed');
 
         event(new \App\Events\Users\SignedInEvent($this->user));
 
-        redirect()->route('home');
+        redirect('/');
     }
 
     /**
@@ -104,6 +104,6 @@ class Auth extends Component
      */
     public function render()
     {
-        return view('auth');
+        return view('auth')->layout('layouts.auth');
     }
 }

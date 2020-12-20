@@ -15,9 +15,9 @@ class DeleteTest extends TestCase
     /** @test */
     public function can_delete_variable()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToDelete = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToDelete = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.delete', ['variable' => $variableToDelete])
             ->call('destroy')
@@ -32,9 +32,9 @@ class DeleteTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

@@ -79,7 +79,7 @@
                                         Import Variables
                                     </h3>
                                     <div class="mt-3 rounded-md shadow-sm">
-                                        <textarea wire:model.lazy="import" rows="20"
+                                        <textarea wire:model.defer="import" rows="20"
                                                   placeholder="API_KEY=iRRMCOsMpNwpSWBi"
                                                   class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 font-mono"
                                         ></textarea>

@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-const tailwind = require('tailwindcss');
+const tailwindcss = require('tailwindcss');
 
 /*
  |--------------------------------------------------------------------------
@@ -7,14 +7,12 @@ const tailwind = require('tailwindcss');
  |--------------------------------------------------------------------------
  |
  | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
+ | for your Laravel applications. By default, we are compiling the CSS
  | file for the application as well as bundling up all the JS files.
  |
  */
 
-mix.js('resources/assets/scripts/app.js', 'public/js');
-
-mix.sass('resources/assets/styles/app.scss', 'public/css').options({
-    processCssUrls: false,
-    postCss: [tailwind('resources/assets/styles/tailwind.config.js')],
-});
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        tailwindcss('resources/css/tailwind.config.js'),
+    ]);

@@ -55,7 +55,7 @@ class SetupCommand extends Component
 
         $this->app->setup_tokens()->create([
             'token' => $this->token,
-            'user_id' => user()->id,
+            'user_id' => auth()->user()->id,
         ]);
 
         $this->emit('app.setup-command.generated', $this->app->id);

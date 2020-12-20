@@ -8,7 +8,7 @@
         <form wire:submit.prevent="store" spellcheck="false" class="sm:flex sm:items-center">
             <div class="w-full">
                 <div class="rounded-md shadow-sm">
-                    <input wire:model.lazy="name"
+                    <input wire:model.defer="name" type="text"
                            class="form-input flex-1 block w-full rounded-none rounded-md transition duration-150 ease-in-out text-sm sm:leading-5 @error('name') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
                            placeholder="My Awesome App"
                     />

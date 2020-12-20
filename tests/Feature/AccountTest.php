@@ -22,7 +22,7 @@ class AccountTest extends TestCase
     /** @test */
     public function can_update_account_details()
     {
-        $newDetails = factory(User::class)->make();
+        $newDetails = User::factory()->make();
 
         Livewire::test('account')
             ->set('email', $newDetails->email)
@@ -60,7 +60,7 @@ class AccountTest extends TestCase
     /** @test */
     public function email_is_unique()
     {
-        $existingUser = factory(User::class)->create();
+        $existingUser = User::factory()->create();
 
         Livewire::test('account')
             ->set('email', $existingUser->email)
@@ -90,7 +90,7 @@ class AccountTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->create([
             'role' => 'owner',
         ]);
 

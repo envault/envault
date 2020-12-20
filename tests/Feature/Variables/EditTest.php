@@ -16,11 +16,11 @@ class EditTest extends TestCase
     /** @test */
     public function can_restore_variable_version()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToRestoreVersionOf = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToRestoreVersionOf = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $newVersionDetails = factory(VariableVersion::class)->make();
+        $newVersionDetails = VariableVersion::factory()->make();
 
         Livewire::test('variables.edit', ['variable' => $variableToRestoreVersionOf])
             ->set('value', null)
@@ -34,9 +34,9 @@ class EditTest extends TestCase
     /** @test */
     public function can_toggle_open_roll_back_from_closed_to_open()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToOpenRollBackOf = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToOpenRollBackOf = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.edit', ['variable' => $variableToOpenRollBackOf])
             ->set('openRollBack', false)
@@ -48,9 +48,9 @@ class EditTest extends TestCase
     /** @test */
     public function can_toggle_open_roll_back_from_open_to_closed()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToCloseRollBackOf = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToCloseRollBackOf = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.edit', ['variable' => $variableToCloseRollBackOf])
             ->set('openRollBack', true)
@@ -62,13 +62,13 @@ class EditTest extends TestCase
     /** @test */
     public function can_update_variable()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToUpdate = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToUpdate = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $newVariableDetails = factory(Variable::class)->make();
+        $newVariableDetails = Variable::factory()->make();
 
-        $newVariableVersionDetails = factory(VariableVersion::class)->make();
+        $newVariableVersionDetails = VariableVersion::factory()->make();
 
         Livewire::test('variables.edit', ['variable' => $variableToUpdate])
             ->set('key', $newVariableDetails->key)
@@ -90,9 +90,9 @@ class EditTest extends TestCase
     /** @test */
     public function key_is_alpha_dash()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToUpdate = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToUpdate = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.edit', ['variable' => $variableToUpdate])
             ->set('key', $this->faker->sentence)
@@ -103,9 +103,9 @@ class EditTest extends TestCase
     /** @test */
     public function key_is_required()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToUpdate = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToUpdate = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.edit', ['variable' => $variableToUpdate])
             ->set('key', null)
@@ -116,18 +116,18 @@ class EditTest extends TestCase
     /** @test */
     public function key_is_app_unique()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variable = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variable = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $variableToUpdate = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToUpdate = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.edit', ['variable' => $variableToUpdate])
             ->set('key', $variable->key)
             ->call('update')
             ->assertHasErrors(['key' => 'unique']);
 
-        $variableBelongingToDifferentApp = factory(App::class)->create()->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableBelongingToDifferentApp = App::factory()->create()->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.edit', ['variable' => $variableToUpdate])
             ->set('key', $variableBelongingToDifferentApp->key)
@@ -139,9 +139,9 @@ class EditTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

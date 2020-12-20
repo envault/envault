@@ -14,8 +14,8 @@ class LogEntryObserver
      */
     public function created(LogEntry $logEntry)
     {
-        if (user()) {
-            $logEntry->user()->associate(user());
+        if (auth()->user()) {
+            $logEntry->user()->associate(auth()->user());
 
             $logEntry->save();
         }

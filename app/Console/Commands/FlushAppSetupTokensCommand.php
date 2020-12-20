@@ -38,7 +38,7 @@ class FlushAppSetupTokensCommand extends Command
      */
     public function handle()
     {
-        AppSetupToken::where('created_at', '<=', carbon()->subMinutes(10))->delete();
+        AppSetupToken::where('created_at', '<=', now()->subMinutes(10))->delete();
 
         $this->info('App setup tokens flushed successfully.');
     }

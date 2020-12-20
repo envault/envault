@@ -42,10 +42,10 @@ class Index extends Component
      */
     public function render()
     {
-        if (user()->can('viewAll', App::class)) {
+        if (auth()->user()->can('viewAll', App::class)) {
             $apps = App::query();
         } else {
-            $apps = user()->app_collaborations();
+            $apps = auth()->user()->app_collaborations();
         }
 
         $apps = $apps->where('name', 'like', '%'.$this->search.'%');

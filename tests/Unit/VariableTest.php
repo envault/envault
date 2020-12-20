@@ -12,11 +12,11 @@ class VariableTest extends TestCase
     /** @test */
     public function latest_version_retrieved()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variable = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variable = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $variableVersion = $variable->versions()->create(factory(VariableVersion::class)->make()->toArray());
+        $variableVersion = $variable->versions()->create(VariableVersion::factory()->make()->toArray());
 
         $this->assertEquals($variable->latest_version->id, $variableVersion->id);
     }

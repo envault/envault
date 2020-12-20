@@ -14,7 +14,7 @@ class SetupCommandTest extends TestCase
     /** @test */
     public function can_generate_and_view_setup_command()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         Livewire::test('apps.show.setup-command', ['app' => $app])
             ->assertNotSet('token', null)
@@ -30,9 +30,9 @@ class SetupCommandTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

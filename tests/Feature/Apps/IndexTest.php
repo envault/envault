@@ -14,7 +14,7 @@ class IndexTest extends TestCase
     /** @test */
     public function can_search_apps()
     {
-        $app = factory(App::class, 20)->create()->random();
+        $app = App::factory()->count(20)->create()->random();
 
         Livewire::test('apps.index')
             ->set('search', $app->name)
@@ -24,7 +24,7 @@ class IndexTest extends TestCase
     /** @test */
     public function can_view_apps()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         Livewire::test('apps.index')
             ->assertSee($app->name);
@@ -34,9 +34,9 @@ class IndexTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

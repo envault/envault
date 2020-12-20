@@ -15,9 +15,9 @@ class RollBackTest extends TestCase
     /** @test */
     public function can_select_version_to_roll_back_to()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToSelectVersionOf = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToSelectVersionOf = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.edit.roll-back', ['variable' => $variableToSelectVersionOf])
             ->set('selectedVersionId', 1)
@@ -40,9 +40,9 @@ class RollBackTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

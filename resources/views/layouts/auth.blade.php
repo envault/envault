@@ -10,10 +10,10 @@
 
     <link href="{{ asset('images/favicon.png') }}" rel="icon" type="image/png">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
     @livewireStyles
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset(mix('js/app.js')) }}" defer></script>
     @livewireScripts
 </head>
 
@@ -24,7 +24,7 @@
 
 <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="px-4 py-8 bg-gray-800 rounded-lg sm:px-10">
-        @yield('content')
+        {{ $slot }}
     </div>
 </div>
 </body>

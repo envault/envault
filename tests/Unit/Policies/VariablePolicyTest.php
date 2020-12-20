@@ -13,13 +13,13 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_delete_variables()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToDelete = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToDelete = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new VariablePolicy)->delete($user, $variableToDelete));
 
@@ -31,11 +31,11 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function app_admin_can_delete_variables()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToDelete = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToDelete = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $app->collaborators()->attach($user, [
             'role' => 'admin',
@@ -47,11 +47,11 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_or_app_admin_cant_delete_variables()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToDelete = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToDelete = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new VariablePolicy)->delete($user, $variableToDelete));
 
@@ -63,13 +63,13 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_update_variables()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToUpdate = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToUpdate = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new VariablePolicy)->update($user, $variableToUpdate));
 
@@ -81,11 +81,11 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function app_admin_can_update_variables()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToUpdate = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToUpdate = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $app->collaborators()->attach($user, [
             'role' => 'admin',
@@ -97,11 +97,11 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_or_app_admin_cant_update_variables()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToUpdate = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToUpdate = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new VariablePolicy)->update($user, $variableToUpdate));
 
@@ -113,13 +113,13 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_view_variable()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToView = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToView = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new VariablePolicy)->view($user, $variableToView));
 
@@ -131,11 +131,11 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function app_collaborator_can_view_variable()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToView = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToView = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $app->collaborators()->attach($user);
 
@@ -145,11 +145,11 @@ class VariablePolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_or_app_collaborator_cant_view_variable()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToView = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToView = $app->variables()->create(Variable::factory()->make()->toArray());
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new VariablePolicy)->view($user, $variableToView));
     }

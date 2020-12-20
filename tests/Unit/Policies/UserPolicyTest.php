@@ -11,9 +11,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_create_user()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->create($user));
 
@@ -25,7 +25,7 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_cant_create_user()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new UserPolicy)->create($user));
     }
@@ -33,11 +33,11 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function owner_can_delete_user()
     {
-        $userToDelete = factory(User::class)->create();
+        $userToDelete = User::factory()->create();
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->delete($user, $userToDelete));
     }
@@ -45,9 +45,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function owner_cant_delete_themselves()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         $this->assertFalse((new UserPolicy)->delete($user, $user));
     }
@@ -55,11 +55,11 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_delete_user_if_not_admin_or_owner()
     {
-        $userToDelete = factory(User::class)->create();
+        $userToDelete = User::factory()->create();
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->delete($user, $userToDelete));
 
@@ -71,9 +71,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_cant_delete_users()
     {
-        $userToDelete = factory(User::class)->create();
+        $userToDelete = User::factory()->create();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new UserPolicy)->delete($user, $userToDelete));
     }
@@ -81,11 +81,11 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function owner_can_update_user()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->update($user, $userToUpdate));
     }
@@ -93,11 +93,11 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_update_user_if_not_admin_or_owner()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->update($user, $userToUpdate));
 
@@ -109,9 +109,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_cant_update_users()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new UserPolicy)->update($user, $userToUpdate));
     }
@@ -119,11 +119,11 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function owner_can_update_user_role()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->updateRole($user, $userToUpdate));
     }
@@ -131,9 +131,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function owner_cant_update_their_own_role()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         $this->assertFalse((new UserPolicy)->updateRole($user, $user));
     }
@@ -141,9 +141,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function not_owner_cant_update_user_role()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new UserPolicy)->updateRole($user, $userToUpdate));
 
@@ -155,11 +155,11 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_view_user()
     {
-        $userToView = factory(User::class)->create();
+        $userToView = User::factory()->create();
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->view($user, $userToView));
 
@@ -171,9 +171,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_cant_view_user()
     {
-        $userToView = factory(User::class)->create();
+        $userToView = User::factory()->create();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new UserPolicy)->view($user, $userToView));
     }
@@ -181,9 +181,9 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function admin_or_owner_can_view_any_users()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->state([
             'role' => 'admin',
-        ]);
+        ])->create();
 
         $this->assertTrue((new UserPolicy)->viewAny($user));
 
@@ -195,7 +195,7 @@ class UserPolicyTest extends TestCase
     /** @test */
     public function not_admin_or_owner_cant_view_any_users()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertFalse((new UserPolicy)->viewAny($user));
     }

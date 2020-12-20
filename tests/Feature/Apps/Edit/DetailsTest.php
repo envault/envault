@@ -14,7 +14,7 @@ class DetailsTest extends TestCase
     /** @test */
     public function can_delete_app()
     {
-        $appToDelete = factory(App::class)->create();
+        $appToDelete = App::factory()->create();
 
         Livewire::test('apps.edit.details', ['app' => $appToDelete])
             ->call('destroy')
@@ -28,9 +28,9 @@ class DetailsTest extends TestCase
     /** @test */
     public function can_update_details()
     {
-        $appToUpdate = factory(App::class)->create();
+        $appToUpdate = App::factory()->create();
 
-        $newDetails = factory(App::class)->make();
+        $newDetails = App::factory()->make();
 
         Livewire::test('apps.edit.details', ['app' => $appToUpdate])
             ->set('name', $newDetails->name)
@@ -46,7 +46,7 @@ class DetailsTest extends TestCase
     /** @test */
     public function name_is_required()
     {
-        $appToUpdate = factory(App::class)->create();
+        $appToUpdate = App::factory()->create();
 
         Livewire::test('apps.edit.details', ['app' => $appToUpdate])
             ->set('name', null)
@@ -58,9 +58,9 @@ class DetailsTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

@@ -16,11 +16,11 @@ class CreateTest extends TestCase
     /** @test */
     public function can_create_variable()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToCreate = factory(Variable::class)->make();
+        $variableToCreate = Variable::factory()->make();
 
-        $variableVersionToCreate = factory(VariableVersion::class)->make();
+        $variableVersionToCreate = VariableVersion::factory()->make();
 
         Livewire::test('variables.create', ['app' => $app])
             ->set('key', $variableToCreate->key)
@@ -44,11 +44,11 @@ class CreateTest extends TestCase
     /** @test */
     public function can_import_variable()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToCreate = factory(Variable::class)->make();
+        $variableToCreate = Variable::factory()->make();
 
-        $variableVersionToCreate = factory(VariableVersion::class)->make();
+        $variableVersionToCreate = VariableVersion::factory()->make();
 
         Livewire::test('variables.create', ['app' => $app])
             ->set('import', $variableToCreate->key.'='.$variableVersionToCreate->value)
@@ -71,7 +71,7 @@ class CreateTest extends TestCase
     /** @test */
     public function key_is_alpha_dash()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         Livewire::test('variables.create', ['app' => $app])
             ->set('key', $this->faker->sentence)
@@ -82,7 +82,7 @@ class CreateTest extends TestCase
     /** @test */
     public function key_is_required()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
         Livewire::test('variables.create', ['app' => $app])
             ->call('store')
@@ -92,16 +92,16 @@ class CreateTest extends TestCase
     /** @test */
     public function key_is_app_unique()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variable = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variable = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.create', ['app' => $app])
             ->set('key', $variable->key)
             ->call('store')
             ->assertHasErrors(['key' => 'unique']);
 
-        $variableBelongingToDifferentApp = factory(App::class)->create()->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableBelongingToDifferentApp = App::factory()->create()->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.create', ['app' => $app])
             ->set('key', $variableBelongingToDifferentApp->key)
@@ -113,9 +113,9 @@ class CreateTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

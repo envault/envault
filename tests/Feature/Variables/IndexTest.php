@@ -17,9 +17,9 @@ class IndexTest extends TestCase
     /** @test */
     public function can_view_variables()
     {
-        $app = factory(App::class)->create();
+        $app = App::factory()->create();
 
-        $variableToView = $app->variables()->create(factory(Variable::class)->make()->toArray());
+        $variableToView = $app->variables()->create(Variable::factory()->make()->toArray());
 
         Livewire::test('variables.index', ['app' => $app])
             ->assertSee($variableToView->key);
@@ -29,9 +29,9 @@ class IndexTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

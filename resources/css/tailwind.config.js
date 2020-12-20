@@ -29,5 +29,7 @@ module.exports = {
             whitelistPatterns: [/-active$/, /-enter$/, /-leave-to$/, /show$/],
         },
     },
-    plugins: [require('@tailwindcss/ui')],
+    plugins: [
+        require('@tailwindcss/custom-forms'),
+    ],
 };

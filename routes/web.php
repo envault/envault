@@ -14,20 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('auth')->group(function () {
-    Route::livewire('', 'auth')->layout('layouts.auth')->middleware('guest')->name('auth');
-    Route::post('logout', 'LogoutController')->middleware('auth')->name('auth.logout');
+    Route::get('', App\Http\Livewire\Auth::class)->middleware('guest')->name('auth');
+    Route::post('logout', function () {
+        auth()->logout();
+
+        return redirect('/');
+    })->middleware('auth')->name('auth.logout');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::redirect('', 'apps')->name('home');
+    Route::redirect('', 'apps');
 
-    Route::livewire('account', 'account')->name('account');
+    Route::get('account', App\Http\Livewire\Account::class)->name('account');
 
-    Route::livewire('apps', 'apps.index')->name('apps.index');
-    Route::livewire('apps/{app}', 'apps.show')->name('apps.show');
-    Route::livewire('apps/{app}/edit', 'apps.edit')->name('apps.edit');
+    Route::get('apps', App\Http\Livewire\Apps\Index::class)->name('apps.index');
+    Route::get('apps/{app}', App\Http\Livewire\Apps\Show::class)->name('apps.show');
+    Route::get('apps/{app}/edit', App\Http\Livewire\Apps\Edit::class)->name('apps.edit');
 
-    Route::livewire('log', 'log')->middleware('can:administrate')->name('log');
+    Route::get('log', App\Http\Livewire\Log::class)->middleware('can:administrate')->name('log');
 
-    Route::livewire('users', 'users.index')->name('users.index');
+    Route::get('users', App\Http\Livewire\Users\index::class)->name('users.index');
 });

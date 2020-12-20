@@ -13,7 +13,7 @@ class DeleteTest extends TestCase
     /** @test */
     public function can_delete_user()
     {
-        $userToDelete = factory(User::class)->create();
+        $userToDelete = User::factory()->create();
 
         Livewire::test('users.delete', ['user' => $userToDelete])
             ->call('destroy', $userToDelete->id)
@@ -28,9 +28,9 @@ class DeleteTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

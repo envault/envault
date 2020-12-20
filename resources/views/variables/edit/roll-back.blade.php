@@ -15,7 +15,7 @@
             <div>
                 <div class="w-full rounded-b-md">
                     <div class="mt-4 border-t">
-                        <input wire:model.lazy="selectedVersionValue" readonly
+                        <input wire:model.defer="selectedVersionValue" type="text" readonly
                                class="form-input font-mono rounded-none flex-1 block border-0 bg-gray-50 block w-full transition ease-in-out duration-150 text-sm sm:leading-5"
                         />
                     </div>

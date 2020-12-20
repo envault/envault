@@ -59,7 +59,7 @@ class Edit extends Component
         $this->user->first_name = $this->firstName;
         $this->user->last_name = $this->lastName;
 
-        if (user()->can('updateRole', $this->user)) {
+        if (auth()->user()->can('updateRole', $this->user)) {
             $this->user->role = $this->role ?: null;
         }
 

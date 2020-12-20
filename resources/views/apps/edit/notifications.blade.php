@@ -23,7 +23,7 @@
                 </label>
                 <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <div class="rounded-md shadow-sm">
-                        <input wire:model.lazy="slackNotificationWebhookUrl" id="webhookUrl"
+                        <input wire:model.defer="slackNotificationWebhookUrl" id="webhookUrl" type="text"
                                placeholder="https://hooks.slack.com/services/..."
                                class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('slackNotificationWebhookUrl') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
                         />
@@ -46,7 +46,7 @@
                                 #
                             </span>
                         </div>
-                        <input wire:model.lazy="slackNotificationChannel" id="channel" placeholder="general"
+                        <input wire:model.defer="slackNotificationChannel" id="channel" type="text" placeholder="general"
                                class="form-input block pl-7 w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('slackNotificationChannel') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"
                         />
                     </div>

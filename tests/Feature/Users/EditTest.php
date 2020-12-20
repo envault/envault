@@ -13,7 +13,7 @@ class EditTest extends TestCase
     /** @test */
     public function can_update_user()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
         $newDetails = $userToUpdate;
 
@@ -37,7 +37,7 @@ class EditTest extends TestCase
     /** @test */
     public function email_is_email()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
         Livewire::test('users.edit', ['user' => $userToUpdate])
             ->set('email', 'email')
@@ -48,7 +48,7 @@ class EditTest extends TestCase
     /** @test */
     public function email_is_required()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
         Livewire::test('users.edit', ['user' => $userToUpdate])
             ->set('email', '')
@@ -59,7 +59,7 @@ class EditTest extends TestCase
     /** @test */
     public function email_is_unique()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
         Livewire::test('users.edit', ['user' => $userToUpdate])
             ->set('email', $this->authenticatedUser->email)
@@ -70,7 +70,7 @@ class EditTest extends TestCase
     /** @test */
     public function first_name_is_required()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
         Livewire::test('users.edit', ['user' => $userToUpdate])
             ->set('firstName', '')
@@ -81,7 +81,7 @@ class EditTest extends TestCase
     /** @test */
     public function last_name_is_required()
     {
-        $userToUpdate = factory(User::class)->create();
+        $userToUpdate = User::factory()->create();
 
         Livewire::test('users.edit', ['user' => $userToUpdate])
             ->set('lastName', '')
@@ -93,9 +93,9 @@ class EditTest extends TestCase
     {
         parent::setUp();
 
-        $this->authenticatedUser = factory(User::class)->create([
+        $this->authenticatedUser = User::factory()->state([
             'role' => 'owner',
-        ]);
+        ])->create();
 
         Livewire::actingAs($this->authenticatedUser);
     }

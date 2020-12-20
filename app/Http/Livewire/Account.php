@@ -78,10 +78,10 @@ class Account extends Component
      */
     public function mount()
     {
-        $this->email = user()->email;
-        $this->firstName = user()->first_name;
-        $this->lastName = user()->last_name;
-        $this->user = user();
+        $this->email = auth()->user()->email;
+        $this->firstName = auth()->user()->first_name;
+        $this->lastName = auth()->user()->last_name;
+        $this->user = auth()->user();
     }
 
     /**

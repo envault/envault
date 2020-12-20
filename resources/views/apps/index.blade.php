@@ -1,5 +1,3 @@
-@section('title', 'Apps')
-
 <div>
     <header class="py-10">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +17,7 @@
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                     <x-heroicon-s-search class="h-5 w-5 text-gray-400" />
                                 </div>
-                                <input wire:model.debounce.500ms="search"
+                                <input wire:model.debounce.500ms="search" type="search"
                                        class="form-input block w-full pl-10 sm:text-sm sm:leading-5"
                                        placeholder="Search..."
                                 />

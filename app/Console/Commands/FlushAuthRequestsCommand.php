@@ -38,7 +38,7 @@ class FlushAuthRequestsCommand extends Command
      */
     public function handle()
     {
-        AuthRequest::where('created_at', '<=', carbon()->subDay())->delete();
+        AuthRequest::where('created_at', '<=', now()->subDay())->delete();
 
         $this->info('Auth requests flushed successfully.');
     }

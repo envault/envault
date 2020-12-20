@@ -52,7 +52,7 @@
                                 <div x-data="{ open: false }" x-cloak class="mt-2 text-gray-500 text-sm">
                                     @if ($collaborator->isAppAdmin($app))
                                         <div @click="open = true"
-                                             class="flex items-center leading-5 @if ($collaborator->id != user()->id) cursor-pointer @endif"
+                                             class="flex items-center leading-5 @if ($collaborator->id != auth()->user()->id) cursor-pointer @endif"
                                         >
                                             <x-heroicon-s-user-group
                                                 class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
@@ -62,7 +62,7 @@
                                         </div>
 
                                         <div>
-                                            @if ($collaborator->id != user()->id)
+                                            @if ($collaborator->id != auth()->user()->id)
                                                 <div x-show.transition.opacity="open"
                                                      class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
                                                 >
@@ -135,7 +135,7 @@
                                         </div>
                                     @else
                                         <div @click="open = true"
-                                             class="flex items-center leading-5 @if ($collaborator->id != user()->id) cursor-pointer @endif"
+                                             class="flex items-center leading-5 @if ($collaborator->id != auth()->user()->id) cursor-pointer @endif"
                                         >
                                             <x-heroicon-s-user class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" />
 
@@ -143,7 +143,7 @@
                                         </div>
 
                                         <div>
-                                            @if ($collaborator->id != user()->id)
+                                            @if ($collaborator->id != auth()->user()->id)
                                                 <div x-show.transition.opacity="open"
                                                      class="fixed bottom-0 inset-x-0 px-4 pb-4 sm:inset-0 sm:flex sm:items-center sm:justify-center"
                                                 >
@@ -217,7 +217,7 @@
                                 </div>
                             </div>
                             <div>
-                                @if ($collaborator->id != user()->id)
+                                @if ($collaborator->id != auth()->user()->id)
                                     <div class="inline-flex flex-shrink-0" x-data="{ open: false }" x-cloak>
                                         <button @click="open = true" type="button"
                                                 class="justify-center p-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-700 transition duration-150 ease-in-out"

@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@hasSection('title') @yield('title') | @endif {{ config('app.name') }}</title>
+    <title>{{ config('app.name') }}</title>
     <meta name="description" content="">
 
     <link href="{{ asset('images/favicon.png') }}" rel="icon" type="image/png">
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset(mix('css/app.css')) }}" rel="stylesheet">
     @livewireStyles
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset(mix('js/app.js')) }}" defer></script>
     @livewireScripts
 </head>
 
@@ -25,7 +25,7 @@
                 <div class="flex items-center justify-between h-16 px-4 sm:px-0">
                     <div class="flex items-center">
                         <div class="flex items-center flex-shrink-0">
-                            <a href="{{ route('home') }}">
+                            <a href="/">
                                 <img class="w-8 h-8" src="{{ asset('images/icon-white.svg') }}" alt="Envault logo" />
                             </a>
                         </div>
@@ -123,8 +123,8 @@
             <div class="pt-4 pb-3 border-t border-gray-700">
                 <div class="px-5">
                     <div>
-                        <div class="text-base font-medium leading-none text-white">{{ user()->full_name }}</div>
-                        <div class="mt-1 text-sm font-medium leading-none text-gray-400">{{ user()->email }}</div>
+                        <div class="text-base font-medium leading-none text-white">{{ auth()->user()->full_name }}</div>
+                        <div class="mt-1 text-sm font-medium leading-none text-gray-400">{{ auth()->user()->email }}</div>
                     </div>
                 </div>
                 <div class="px-2 mt-3" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
@@ -149,13 +149,13 @@
 </div>
 
 <main class="flex-grow -mt-56">
-    @yield('content')
+    {{ $slot }}
 </main>
 
 <footer>
     <div class="max-w-4xl px-4 py-6 mx-auto sm:px-6 lg:px-8">
         <p class="text-sm text-gray-800">
-            &copy; {{ config('app.name') }} {{ carbon()->year }}
+            &copy; {{ config('app.name') }} {{ now()->year }}
         </p>
     </div>
 </footer>
