@@ -17,7 +17,7 @@ The Envault server is built on [the Laravel PHP framework](https://laravel.com).
 7) Create your first user account using the `php artisan make:user -o` command. It will be granted owner permissions.
 8) Visit your Envault server URL and sign in.
 
-You can find installation guides for specific platforms like [Laravel Forge](https://vimeo.com/414958726) and [Vapor](https://github.com/envault/envault/blob/master/docs/installation/vapor.md).
+You can find installation guides for specific platforms like [Laravel Forge](https://vimeo.com/414958726) and [Vapor](https://github.com/envault/envault/wiki/Installing-Envault-on-Laravel-Vapor).
 
 ## Update guide
 
@@ -33,37 +33,7 @@ php artisan view:clear
 
 ## Documentation
 
-### The basics
-
-[Introduction](https://vimeo.com/414894566)
-
-[Creating a new app](https://github.com/envault/envault/blob/master/docs/usage/apps/create.md)
-
-[Creating a new variable](https://github.com/envault/envault/blob/master/docs/usage/variables/create.md)
-
-[Syncing to your local .env](https://github.com/envault/envault/blob/master/docs/usage/apps/sync.md)
-
-[Update a variable](https://github.com/envault/envault/blob/master/docs/usage/variables/update.md)
-
-### Diving deeper
-
-[Importing variables from .env format](https://github.com/envault/envault/blob/master/docs/usage/variables/import.md)
-
-[Rolling back a variable to a previous version](https://github.com/envault/envault/blob/master/docs/usage/variables/roll-back.md)
-
-[Managing Slack notifications](https://github.com/envault/envault/blob/master/docs/usage/apps/notifications.md)
-
-[Update an app](https://github.com/envault/envault/blob/master/docs/usage/apps/update.md)
-
-### Users and permissions
-
-[Creating a new user](https://github.com/envault/envault/blob/master/docs/usage/users/create.md)
-
-[Managing a user's permissions](https://github.com/envault/envault/blob/master/docs/usage/users/permissions.md)
-
-[Managing an app's collaborators](https://github.com/envault/envault/blob/master/docs/usage/apps/collaborators.md)
-
-[Updating a user's details](https://github.com/envault/envault/blob/master/docs/usage/users/update.md)
+Please visit the [wiki](https://github.com/envault/envault/wiki).
 
 ## Support
 
