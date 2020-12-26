@@ -32,7 +32,7 @@
 
 ## Update guide
 
-After you update Envault from this repository, please run the following commands on your server. If you're using a platform like Laravel Forge, these can be added to your deploy script -
+After you update Envault from this repository, please run the following commands on your server. If you're using a platform like Laravel Forge, these can be added to your deploy script:
 
 ```
 composer install
