@@ -2,6 +2,8 @@
 
 [Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install your Envault server and you're ready to sync. 🚀
 
+https://user-images.githubusercontent.com/41773797/103159854-49ab6c80-47c6-11eb-89d7-0d9e1e0a6635.mp4
+
 ![Tests status](https://github.com/envault/envault/workflows/tests/badge.svg)
 
 ## Documentation
