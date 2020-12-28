@@ -12,6 +12,7 @@ use App\Observers\UserObserver;
 use App\Observers\VariableObserver;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -45,5 +46,9 @@ class AppServiceProvider extends ServiceProvider
         LogEntry::observe(LogEntryObserver::class);
         User::observe(UserObserver::class);
         Variable::observe(VariableObserver::class);
+
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
     }
 }
