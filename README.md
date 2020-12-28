@@ -1,10 +1,10 @@
 <p align="center">
-    <a href="https://envault.dev"><img width="800" src="https://user-images.githubusercontent.com/41773797/103243991-76d95580-4953-11eb-9bd7-af13af58b9cd.png" alt="Envault banner" /></a>
+    <a href="https://envault.dev"><img src="https://user-images.githubusercontent.com/41773797/103243991-76d95580-4953-11eb-9bd7-af13af58b9cd.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
 </p>
 
 <p align="center">
-    <a href="https://github.com/envault/envault/actions"><img alt="Tests passing" src="https://img.shields.io/badge/Tests-passing-green?style=for-the-badge?style=for-the-badge&logo=github"></a>
-    <a href="https://laravel.com"><img alt="Laravel 8.x" src="https://img.shields.io/badge/Laravel-v8.x-FF2D20?style=for-the-badge?style=for-the-badge&logo=laravel"></a>
+    <a href="https://github.com/envault/envault/actions"><img alt="Tests passing" src="https://img.shields.io/badge/Tests-passing-green?style=for-the-badge&logo=github"></a>
+    <a href="https://laravel.com"><img alt="Laravel 8.x" src="https://img.shields.io/badge/Laravel-v8.x-FF2D20?style=for-the-badge&logo=laravel"></a>
     <a href="https://laravel-livewire.com"><img alt="Livewire 2.x" src="https://img.shields.io/badge/Livewire-v2.x-FB70A9?style=for-the-badge"></a>
     <a href="https://envault.dev"><img alt="Envault 2.x" src="https://img.shields.io/badge/stable-v2.x-1F2223?style=for-the-badge"></a>
 </p>
