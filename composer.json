@@ -19,6 +19,7 @@
         "laravel/slack-notification-channel": "^2.3",
         "laravel/tinker": "^2.5",
         "livewire/livewire": "^2.3",
+        "monicahq/laravel-cloudflare": "^1.7",
         "pda/pheanstalk": "^4.0",
         "predis/predis": "^1.1",
         "wildbit/swiftmailer-postmark": "^3.3"

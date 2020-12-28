@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('app-setup-tokens:flush')->everyFiveMinutes();
         $schedule->command('auth-requests:flush')->everyFiveMinutes();
+        $schedule->command('cloudflare:reload')->daily();
     }
 
     /**
