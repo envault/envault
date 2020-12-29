@@ -1,5 +1,9 @@
 <p align="center">
-    <a href="https://envault.dev"><img src="https://user-images.githubusercontent.com/41773797/103243991-76d95580-4953-11eb-9bd7-af13af58b9cd.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
+    <a href="https://envault.dev"><img src="https://user-images.githubusercontent.com/41773797/103277136-3cf26880-49c0-11eb-8e8d-a8feec4f27a2.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
+</p>
+
+<p align="center">
+    # Envault
 </p>
 
 <p align="center">
@@ -9,7 +13,7 @@
     <a href="https://envault.dev"><img alt="Envault 2.x" src="https://img.shields.io/badge/stable-v2.x-1F2223?style=for-the-badge"></a>
 </p>
 
-[Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install your Envault server and you're ready to sync. 🚀
+[Envault](https://envault.dev) is a repository for your .env secrets. It lets you manage and sync your entire team’s local .env variables across all your projects, so you’re all kept up to date with the latest changes. Simply install your Envault server and you're ready to sync. 🚀
 
 ## Documentation
 
