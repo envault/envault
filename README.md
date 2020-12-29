@@ -17,6 +17,8 @@ It lets you manage and sync your entire team’s local .env files, across all yo
 
 Simply install Envault onto your own web server and you're ready to sync all your projects. 🚀
 
+[**Interested? Click here to watch a demo of the app.**](https://vimeo.com/414894566)
+
 ## Requirements
 
 - PHP 7.4 or higher
