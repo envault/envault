@@ -2,6 +2,8 @@
     <a href="https://envault.dev"><img src="https://user-images.githubusercontent.com/41773797/103277136-3cf26880-49c0-11eb-8e8d-a8feec4f27a2.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
 </p>
 
+<h1 align="center">Envault</h1>
+
 <p align="center">
     <a href="https://github.com/envault/envault/actions"><img alt="Tests passing" src="https://img.shields.io/badge/Tests-passing-green?style=for-the-badge&logo=github"></a>
     <a href="https://laravel.com"><img alt="Laravel 8.x" src="https://img.shields.io/badge/Laravel-v8.x-FF2D20?style=for-the-badge&logo=laravel"></a>
