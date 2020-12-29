@@ -9,7 +9,7 @@
     <a href="https://envault.dev"><img alt="Envault 2.x" src="https://img.shields.io/badge/stable-v2.x-1F2223?style=for-the-badge"></a>
 </p>
 
-[Envault](https://envault.dev) is a repository for your credentials. It lets you manage and sync your entire team’s local .env variables, so you’re all kept up to date. Simply install your Envault server and you're ready to sync. 🚀
+[Envault](https://envault.dev) is a repository for your .env secrets. It lets you manage and sync your entire team’s local .env variables across all your projects, so you’re all kept up to date with the latest changes. Simply install your Envault server and you're ready to sync. 🚀
 
 ## Documentation
 
