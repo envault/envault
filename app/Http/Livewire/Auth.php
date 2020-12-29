@@ -104,6 +104,6 @@ class Auth extends Component
      */
     public function render()
     {
-        return view('auth')->layout('layouts.auth');
+        return view('auth')->layout('layouts.basic');
     }
 }

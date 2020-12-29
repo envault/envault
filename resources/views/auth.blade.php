@@ -1,6 +1,6 @@
 <div>
     @if (!$request)
-        <form wire:submit.prevent="request" spellcheck="false">
+        <form wire:submit.prevent="request" spellcheck="false" class="space-y-6">
             <div>
                 <div class="rounded-md">
                     <input wire:model.defer="email" value="{{ $email }}" type="email" placeholder="Your email address"
@@ -9,11 +9,11 @@
                     />
                 </div>
                 @error('email')
-                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
+                    <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
                 @enderror
             </div>
 
-            <div class="mt-6">
+            <div>
                 <span class="block w-full rounded-md shadow-sm">
                     <button type="submit" wire:loading.class="opacity-75 cursor-wait"
                             class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"

@@ -25,7 +25,7 @@ class AuthTest extends TestCase
             ->call('confirm')
             ->assertEmitted('auth.confirmed');
 
-        $this->assertEquals(auth()->user()->id, $user->id);
+        $this->assertAuthenticatedAs($user);
     }
 
     /** @test */
