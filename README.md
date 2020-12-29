@@ -51,8 +51,8 @@ php artisan view:clear
 
 ## Support
 
-If you spot a bug with Envault, please [submit a detailed issue](https://github.com/envault/envault/issues/new), and wait for assistance.
+🐞 If you spot a bug with Envault, please [submit a detailed issue](https://github.com/envault/envault/issues/new), and wait for assistance.
 
-If you have a question or feature request, please [start a new discussion](https://github.com/envault/envault/discussions/new).
+🤔 If you have a question or feature request, please [start a new discussion](https://github.com/envault/envault/discussions/new).
 
-If you discover a vulnerability within Envault, please review our [security policy](https://github.com/envault/envault/blob/master/SECURITY.md).
+🔐 If you discover a vulnerability within Envault, please review our [security policy](https://github.com/envault/envault/blob/master/SECURITY.md).
