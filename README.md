@@ -11,14 +11,39 @@
     <a href="https://envault.dev"><img alt="Envault 2.x" src="https://img.shields.io/badge/stable-v2.x-1F2223?style=for-the-badge"></a>
 </p>
 
-[Envault](https://envault.dev) is a repository for your .env secrets. It lets you manage and sync your entire team’s local .env variables across all your projects, so you’re all kept up to date with the latest changes. Simply install your Envault server and you're ready to sync. 🚀
+[Envault](https://envault.dev) is a tool to share .env secrets.
+
+It lets you manage and sync your entire team’s local .env files, across all your projects, so you’re all kept up to date with the latest changes.
+
+Simply install Envault onto your own web server and you're ready to sync all your projects. 🚀
+
+## Installation
+
+Envault is built on [the Laravel PHP framework](https://laravel.com). This makes installation very simple. It requires a minimum PHP version of 7.4 and [Composer](https://getcomposer.org) installed.
+
+1) Clone this repository onto your server.
+2) Copy the `.env.example` to `.env`.
+3) Generate a new `APP_KEY` in your `.env` by running `php artisan key:generate` in the terminal.
+4) Ensure that the `APP_URL` in `.env` matches the address of your Envault server.
+3) Create a new database. For more details on the databases supported, please refer to [the Laravel documentation](https://laravel.com/docs/master/database#introduction). Fill out any appropriate connection details in your `.env` file.
+4) Run `php artisan migrate` to prepare your database.
+4) Configure outgoing mail from your Envault server. For more details on the mail drivers supported, please refer to [the Laravel documentation](https://laravel.com/docs/master/mail#introduction). Fill out any appropriate connection details in your `.env` file.
+5) Set up a scheduled task to run `php artisan schedule:run` every minute. For more details, please refer to [the Laravel documentation](https://laravel.com/docs/master/scheduling#introduction).
+6) Visit your Envault server URL and setup your owner account.
+
+We also have installation guides for specific platforms like [Laravel Forge](https://vimeo.com/414958726) and [Laravel Vapor](https://github.com/envault/envault/wiki/Installing-Envault-on-Laravel-Vapor).
+
+## Update guide
+
+After you update Envault from this repository, please run the following commands on your server. If you're using a platform like Laravel Forge, these can be added to your deploy script:
+
+```
+composer install
+php artisan migrate
+php artisan queue:restart
+```
 
 ## Documentation
-
-### Installation
-- [Installing Envault](https://github.com/envault/envault/wiki/Installing-Envault)
-- [Installing Envault on Laravel Forge](https://vimeo.com/414958726)
-- [Installing Envault on Laravel Vapor](https://github.com/envault/envault/wiki/Installing-Envault-on-Laravel-Vapor)
 
 ### The basics
 - [Introduction](https://vimeo.com/414894566)
@@ -39,19 +64,7 @@
 - [Managing an app's collaborators](https://github.com/envault/envault/wiki/Managing-an-app's-collaborators)
 - [Updating a user's details](https://github.com/envault/envault/wiki/Updating-a-user's-details)
 
-## Update guide
-
-After you update Envault from this repository, please run the following commands on your server. If you're using a platform like Laravel Forge, these can be added to your deploy script:
-
-```
-composer install
-php artisan migrate
-php artisan queue:restart
-php artisan livewire:discover
-php artisan view:clear
-```
-
-## Support
+## Need help?
 
 🐞 If you spot a bug with Envault, please [submit a detailed issue](https://github.com/envault/envault/issues/new), and wait for assistance.
 
