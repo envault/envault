@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://envault.dev"><img src="https://user-images.githubusercontent.com/41773797/103243991-76d95580-4953-11eb-9bd7-af13af58b9cd.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
+    <a href="https://envault.dev"><img src="https://user-images.githubusercontent.com/41773797/103277136-3cf26880-49c0-11eb-8e8d-a8feec4f27a2.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
 </p>
 
 <p align="center">
