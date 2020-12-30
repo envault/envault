@@ -55,5 +55,17 @@
                 </button>
             </span>
         </div>
+
+        <div>
+            <span class="block w-full rounded-md shadow-sm animate-glow">
+                <a href="https://github.com/envault/envault" target="_blank"
+                        class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-gray-800 bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:border-yellow-300 focus:shadow-outline-yellow active:bg-yellow-400 transition duration-150 ease-in-out"
+                >
+                    <x-heroicon-s-star class="-ml-1 mr-2 h-5 w-5" />
+
+                    <span>Star Envault on GitHub</span>
+                </a>
+            </span>
+        </div>
     </form>
 </div>
