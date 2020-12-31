@@ -50,6 +50,7 @@ After you update Envault from this repository, please run the following commands
 ```
 composer install
 php artisan migrate
+php artisan view:cache
 php artisan queue:restart
 ```
 
