@@ -48,8 +48,8 @@ class Create extends Component
             return Str::contains($line, '=');
         })->each(function ($line) use (&$totalImported) {
             $lineComponents = explode('=', $line, 2);
-            $key = $lineComponents[0] ?? null;
-            $value = $lineComponents[1] ?? null;
+            $key = trim($lineComponents[0] ?? '');
+            $value = trim($lineComponents[1] ?? '');
 
             $validator = Validator::make([
                 'key' => $key,
