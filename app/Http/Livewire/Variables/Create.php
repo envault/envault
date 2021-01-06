@@ -44,7 +44,7 @@ class Create extends Component
 
         $totalImported = 0;
 
-        collect(preg_split('/\r\n|[\r\n]/', $this->import))->filter(function ($line) {
+        collect(preg_split('/\r\n|\n|\r/', $this->import))->filter(function ($line) {
             return Str::contains($line, '=');
         })->each(function ($line) use (&$totalImported) {
             $lineComponents = explode('=', $line, 2);
