@@ -37,30 +37,24 @@ class Log extends Component
     }
 
     /**
-     * Executes when action is updated
-     * 
      * @return void
-     **/
+     */
     public function updatedAction()
     {
         $this->resetPage();
     }
 
     /**
-     * Executes when appId is updated
-     * 
      * @return void
-     **/
+     */
     public function updatedAppId()
     {
         $this->resetPage();
     }
 
     /**
-     * Executes when userId is updated
-     * 
      * @return void
-     **/
+     */
     public function updatedUserId()
     {
         $this->resetPage();
@@ -83,16 +77,15 @@ class Log extends Component
     public function render()
     {
         $entries = LogEntry::query()
-                        ->whereNotNull('description')
-                        ->when(Str::contains($this->action, '.'),function($query){
-                            return $query->where([['action', Str::after($this->action, '.')], ['loggable_type', Str::before($this->action, '.')]]);
-                        })
-                        ->when($this->appId && Str::before($this->action, '.') != 'user',function($query){
-                            return $query->where([['loggable_id', $this->appId], ['loggable_type', 'app']]);
-                        })->when($this->userId,function($query,$userId){
-                            return $query->where('user_id', $userId);
-                        });
-                        
+            ->whereNotNull('description')
+            ->when(Str::contains($this->action, '.'), function ($query) {
+                return $query->where([['action', Str::after($this->action, '.')], ['loggable_type', Str::before($this->action, '.')]]);
+            })->when($this->appId && Str::before($this->action, '.') !== 'user', function ($query) {
+                return $query->where([['loggable_id', $this->appId], ['loggable_type', 'app']]);
+            })->when($this->userId, function ($query, $userId){
+                return $query->where('user_id', $userId);
+            });
+
         return view('log', [
             'entries' => $entries->orderBy('created_at', 'desc')->paginate(20),
         ]);

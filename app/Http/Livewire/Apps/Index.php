@@ -26,10 +26,8 @@ class Index extends Component
     }
 
     /**
-     * Reset pagination page on search
-     * 
      * @return void
-     **/
+     */
     public function updatedSearch()
     {
         $this->resetPage();
@@ -45,9 +43,9 @@ class Index extends Component
         } else {
             $apps = auth()->user()->app_collaborations();
         }
-        
-        $apps = $apps->when($this->search,function($query,$searchTerm){
-            return $query->where('name', 'like', '%'.$searchTerm.'%');
+
+        $apps = $apps->when($this->search, function ($query, $search) {
+            return $query->where('name', 'like', '%'.$search.'%');
         });
 
         return view('apps.index', [
