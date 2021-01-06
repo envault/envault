@@ -36,6 +36,7 @@
                 </div>
             </div>
         </div>
+
         <form wire:submit.prevent="store" spellcheck="false">
             <div class="px-4 py-6 sm:px-6">
                 <x-inputs.text label="Key" name="key" placeholder="MAIL_USERNAME" font="font-mono"
@@ -46,6 +47,7 @@
                                maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
                 />
             </div>
+
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse sm:justify-between">
                 <span class="flex w-full rounded-md shadow-sm sm:w-auto">
                     <button type="submit" wire:loading.class="opacity-75 cursor-wait"
@@ -56,6 +58,7 @@
                         <x-heroicon-s-check class="ml-1.5 -mr-1 h-5 w-5" />
                     </button>
                 </span>
+
                 <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
                     <button @click="importOpen = true" type="button"
                             class="inline-flex justify-center w-full rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline transition ease-in-out duration-150 sm:text-sm sm:leading-5"
@@ -78,14 +81,16 @@
                                     <h3 class="text-lg leading-6 font-medium text-gray-900">
                                         Import Variables
                                     </h3>
+
                                     <div class="mt-3 rounded-md shadow-sm">
                                         <textarea wire:model.defer="import" rows="20"
                                                   placeholder="API_KEY=iRRMCOsMpNwpSWBi"
-                                                  class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5 font-mono"
+                                                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md transition duration-150 ease-in-out sm:leading-5 font-mono"
                                         ></textarea>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                                 <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                                     <button wire:click="import" @click="importOpen = false" type="button"
@@ -95,6 +100,7 @@
                                         Import
                                     </button>
                                 </span>
+
                                 <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:w-auto">
                                     <button @click="importOpen = false" type="button"
                                             wire:loading.class="opacity-75 cursor-wait"
