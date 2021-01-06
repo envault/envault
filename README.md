@@ -75,6 +75,16 @@ php artisan queue:restart
 - [Managing an app's collaborators](https://github.com/envault/envault/wiki/Managing-an-app's-collaborators)
 - [Updating a user's details](https://github.com/envault/envault/wiki/Updating-a-user's-details)
 
+## Roadmap
+
+- Multiple environments per app. #23
+- Webooks. #17
+- Granular user permissions system. #15
+- Specify custom .env filenames. https://github.com/envault/envault/discussions/5#discussioncomment-249329
+- Bidirectional syncing.
+- Sync new variables without them being present locally first. #25
+- Docker image. #1
+
 ## Need Help?
 
 🐞 If you spot a bug with Envault, please [submit a detailed issue](https://github.com/envault/envault/issues/new), and wait for assistance.
