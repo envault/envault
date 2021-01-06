@@ -1,3 +1,3 @@
-import 'alpinejs';
-import 'typeface-fira-mono';
-import 'typeface-inter';
+import 'alpinejs'
+import 'typeface-fira-mono'
+import 'typeface-inter'
