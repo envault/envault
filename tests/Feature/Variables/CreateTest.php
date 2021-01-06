@@ -69,6 +69,33 @@ class CreateTest extends TestCase
     }
 
     /** @test */
+    public function can_import_variable_with_excess_whitespace()
+    {
+        $app = App::factory()->create();
+
+        $variableToCreate = Variable::factory()->make();
+
+        $variableVersionToCreate = VariableVersion::factory()->make();
+
+        Livewire::test('variables.create', ['app' => $app])
+            ->set('import', $variableToCreate->key.' = '.$variableVersionToCreate->value)
+            ->call('import')
+            ->assertEmitted('variables.imported')
+            ->assertSet('key', null)
+            ->assertSet('import', null);
+
+        $this->assertDatabaseHas('variables', [
+            'app_id' => $app->id,
+            'key' => $variableToCreate->key,
+        ]);
+
+        $this->assertEquals(Variable::where([
+            ['app_id', $app->id],
+            ['key', $variableToCreate->key],
+        ])->first()->latest_version->value, $variableVersionToCreate->value);
+    }
+
+    /** @test */
     public function key_is_alpha_dash()
     {
         $app = App::factory()->create();
