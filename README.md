@@ -77,13 +77,13 @@ php artisan queue:restart
 
 ## Roadmap
 
-- Multiple environments per app. #23
-- Webooks. #17
-- Granular user permissions system. #15
-- Specify custom .env filenames. https://github.com/envault/envault/discussions/5#discussioncomment-249329
+- [Multiple environments per app.](https://github.com/envault/envault/discussions/23)
+- [Webooks.](https://github.com/envault/envault/discussions/17)
+- [Granular user permissions system.](https://github.com/envault/envault/discussions/15)
+- [Specify custom .env filenames.](https://github.com/envault/envault/discussions/5#discussioncomment-249329)
 - Bidirectional syncing.
-- Sync new variables without them being present locally first. #25
-- Docker image. #1
+- [Sync new variables without them being present locally first.](https://github.com/envault/envault/discussions/25)
+- [Docker image.](https://github.com/envault/envault/discussions/1)
 
 ## Need Help?
 
