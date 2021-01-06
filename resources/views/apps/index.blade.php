@@ -43,7 +43,7 @@
                                                 />
                                                 <span
                                                     class="truncate"
-                                                >{{ count($app->variables) }} {{ count($app->variables) == 1 ? 'variable' : 'variables' }}</span>
+                                                >{{ count($app->variables) }} {{ Str::plural('variable', count($app->variables)) }}</span>
                                             </div>
                                         </div>
                                     </div>

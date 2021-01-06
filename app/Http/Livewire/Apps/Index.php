@@ -26,15 +26,13 @@ class Index extends Component
     }
 
     /**
-     * @param string $field
+     * Reset pagination page on search
+     * 
      * @return void
-     */
-    public function updated($field)
+     **/
+    public function updatedSearch()
     {
-        // Reset pagination page on search
-        if ($field == 'search') {
-            $this->gotoPage(1);
-        }
+        $this->resetPage();
     }
 
     /**
@@ -47,8 +45,10 @@ class Index extends Component
         } else {
             $apps = auth()->user()->app_collaborations();
         }
-
-        $apps = $apps->where('name', 'like', '%'.$this->search.'%');
+        
+        $apps = $apps->when($this->search,function($query,$searchTerm){
+            return $query->where('name', 'like', '%'.$searchTerm.'%');
+        });
 
         return view('apps.index', [
             'apps' => $apps->orderBy('name')->paginate(10),

@@ -37,15 +37,40 @@ class Log extends Component
     }
 
     /**
+     * Executes when action is updated
+     * 
+     * @return void
+     **/
+    public function updatedAction()
+    {
+        $this->resetPage();
+    }
+
+    /**
+     * Executes when appId is updated
+     * 
+     * @return void
+     **/
+    public function updatedAppId()
+    {
+        $this->resetPage();
+    }
+
+    /**
+     * Executes when userId is updated
+     * 
+     * @return void
+     **/
+    public function updatedUserId()
+    {
+        $this->resetPage();
+    }
+
+    /**
      * @param string $field
      */
     public function updated($field)
     {
-        // Reset pagination page on filter
-        if ($field == 'action' || $field == 'appId' || $field == 'userId') {
-            $this->gotoPage(1);
-        }
-
         // Reset app filter when an appless action is selected
         if (Str::before($this->action, '.') == 'user') {
             $this->appId = null;
@@ -57,20 +82,17 @@ class Log extends Component
      */
     public function render()
     {
-        $entries = LogEntry::whereNotNull('description');
-
-        if (Str::contains($this->action, '.')) {
-            $entries = $entries->where([['action', Str::after($this->action, '.')], ['loggable_type', Str::before($this->action, '.')]]);
-        }
-
-        if ($this->appId && Str::before($this->action, '.') != 'user') {
-            $entries = $entries->where([['loggable_id', $this->appId], ['loggable_type', 'app']]);
-        }
-
-        if ($this->userId) {
-            $entries = $entries->where('user_id', $this->userId);
-        }
-
+        $entries = LogEntry::query()
+                        ->whereNotNull('description')
+                        ->when(Str::contains($this->action, '.'),function($query){
+                            return $query->where([['action', Str::after($this->action, '.')], ['loggable_type', Str::before($this->action, '.')]]);
+                        })
+                        ->when($this->appId && Str::before($this->action, '.') != 'user',function($query){
+                            return $query->where([['loggable_id', $this->appId], ['loggable_type', 'app']]);
+                        })->when($this->userId,function($query,$userId){
+                            return $query->where('user_id', $userId);
+                        });
+                        
         return view('log', [
             'entries' => $entries->orderBy('created_at', 'desc')->paginate(20),
         ]);
