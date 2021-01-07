@@ -42,6 +42,10 @@ class Log extends Component
     public function updatedAction()
     {
         $this->resetPage();
+        // Reset app filter when an appless action is selected
+        if (Str::before($this->action, '.') == 'user') {
+            $this->appId = null;
+        }
     }
 
     /**
@@ -58,17 +62,6 @@ class Log extends Component
     public function updatedUserId()
     {
         $this->resetPage();
-    }
-
-    /**
-     * @param string $field
-     */
-    public function updated($field)
-    {
-        // Reset app filter when an appless action is selected
-        if (Str::before($this->action, '.') == 'user') {
-            $this->appId = null;
-        }
     }
 
     /**
