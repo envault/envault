@@ -38,12 +38,13 @@
                             </select>
                         </div>
                         <div class="flex mt-2 sm:mt-0 relative rounded-md shadow-sm sm:w-1/3">
+
                             <select wire:model="userId"
                                     class="border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >
                                 <option value="">Select user responsible...</option>
-                                @foreach (App\Models\User::orderBy('first_name')->get() as $user)
-                                    <option value="{{ $user->id }}">{{ $user->full_name }}</option>
+                                @foreach ($this->auditLogUserList as $userId => $userFullName)
+                                    <option value="{{ $userId }}">{{ $userFullName }}</option>
                                 @endforeach
                             </select>
                         </div>

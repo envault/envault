@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\App;
 use App\Models\LogEntry;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -106,6 +107,18 @@ class Log extends Component
     public function getAuditLogApplicationListProperty()
     {
         return App::query()->orderBy('name')->pluck('name','id');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getAuditLogUserListProperty()
+    {
+        return User::query()
+            ->orderBy('first_name')
+            ->select(['id','first_name','last_name'])
+            ->get()
+            ->pluck('full_name','id');
     }
 
     /**
