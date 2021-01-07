@@ -65,7 +65,7 @@
                         </thead>
                         <tbody>
                             @forelse ($entries as $entry)
-                                <tr class="{{ $loop->index % 2 == 0 ? 'bg-white' : 'bg-gray-50' }}">
+                                <tr class="{{ $loop->odd ? 'bg-white' : 'bg-gray-50' }}">
                                     <td class="hidden sm:block px-6 py-4 whitespace-nowrap text-sm leading-5 font-medium text-gray-900">
                                         {{ $entry->user->full_name ?? null }}
                                     </td>
