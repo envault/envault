@@ -38,6 +38,8 @@ class Account extends Component
             'lastName' => ['required'],
         ]);
 
+        $fireNameUpdatedEvent = $fireEmailUpdatedEvent = false;
+
         $oldEmail = $this->user->email;
         $oldFullName = $this->user->full_name;
 
@@ -45,15 +47,23 @@ class Account extends Component
         $this->user->first_name = $this->firstName;
         $this->user->last_name = $this->lastName;
 
+        if($this->user->isDirty('email')){
+            $fireEmailUpdatedEvent = true;
+        }
+
+        if($this->app->isDirty('first_name') || $this->app->isDirty('last_name')){
+            $fireNameUpdatedEvent = true;
+        }
+
         $this->user->save();
 
         $this->emit('account.updated');
 
-        if ($oldEmail != $this->user->email) {
+        if ($fireEmailUpdatedEvent) {
             event(new \App\Events\Users\EmailUpdatedEvent($this->user, $oldEmail, $this->user->email));
         }
 
-        if ($oldFullName != $this->user->full_name) {
+        if ($fireNameUpdatedEvent) {
             event(new \App\Events\Users\NameUpdatedEvent($this->user, $oldFullName, $this->user->full_name));
         }
     }
