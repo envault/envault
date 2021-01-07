@@ -75,7 +75,7 @@ class Log extends Component
             'Users' => [
                 'user.created' => 'User added',
                 'user.deleted' => 'User removed',
-                'user.authenticated' => '>User signed in',
+                'user.authenticated' => 'User signed in',
                 'user.email.updated' => 'User email address updated',
                 'user.name.updated' => 'User name updated',
                 'user.role.updated' => 'User role updated',
