@@ -83,7 +83,7 @@
                                             <div class="min-w-0 flex-1 sm:flex sm:items-center sm:justify-between">
                                                 <div>
                                                     <div class="leading-5 font-medium text-sm text-gray-800 truncate">
-                                                        No results match this query.
+                                                        {{$this->emptyMessage}}
                                                     </div>
                                                 </div>
                                             </div>

@@ -122,6 +122,17 @@ class Log extends Component
     }
 
     /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getEmptyMessageProperty()
+    {
+        if(LogEntry::query()->count() === 0){
+            return 'No Records Found';
+        }
+        return ! $this->action &&  ! $this->appId && ! $this->userId ? 'No Records Found' : 'No results match this query';
+    }
+
+    /**
      * @return \Illuminate\View\View
      */
     public function render()
@@ -140,4 +151,6 @@ class Log extends Component
             'entries' => $entries->orderBy('created_at', 'desc')->paginate(20),
         ]);
     }
+
+
 }
