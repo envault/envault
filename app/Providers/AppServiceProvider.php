@@ -42,11 +42,6 @@ class AppServiceProvider extends ServiceProvider
             'variable' => Variable::class,
         ]);
 
-        App::observe(AppObserver::class);
-        LogEntry::observe(LogEntryObserver::class);
-        User::observe(UserObserver::class);
-        Variable::observe(VariableObserver::class);
-
         if ($this->app->environment('production')) {
             URL::forceScheme('https');
         }

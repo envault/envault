@@ -51,7 +51,7 @@ class Account extends Component
             $fireEmailUpdatedEvent = true;
         }
 
-        if($this->app->isDirty('first_name') || $this->app->isDirty('last_name')){
+        if($this->user->isDirty('first_name') || $this->user->isDirty('last_name')){
             $fireNameUpdatedEvent = true;
         }
 
