@@ -17,7 +17,7 @@
                                     class="border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >                            
                                 <option value="">Select action...</option>
-                                @foreach ($this->logAction as $groupAction => $groupActions)
+                                @foreach ($this->auditLogActionList as $groupAction => $groupActions)
                                 <optgroup label="{{$groupAction}}">
                                     @foreach ($groupActions as $action => $actionName)
                                     <option value="{{$action}}">{{$actionName}}</option>    
@@ -27,12 +27,13 @@
                             </select>
                         </div>
                         <div class="flex mt-2 sm:mt-0 sm:mx-2 relative rounded-md shadow-sm sm:w-1/3">
+
                             <select wire:model="appId" @if (Str::before($this->action, '.') == 'user') disabled
                                     @endif class="@if (Str::before($this->action, '.') == 'user') bg-gray-50 opacity-50 cursor-not-allowed @endif border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             >
                                 <option value="">Select app...</option>
-                                @foreach (App\Models\App::orderBy('name')->get() as $app)
-                                    <option value="{{ $app->id }}">{{ $app->name }}</option>
+                                @foreach ($this->auditLogApplicationList as $applicationId => $applicationName)
+                                    <option value="{{ $applicationId }}">{{ $applicationName }}</option>
                                 @endforeach
                             </select>
                         </div>

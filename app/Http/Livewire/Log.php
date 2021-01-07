@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\App;
 use App\Models\LogEntry;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
@@ -65,9 +66,9 @@ class Log extends Component
     }
 
     /**
-     * @return void
+     * @return \Illuminate\Support\Collection
      */
-    public function getLogActionProperty()
+    public function getAuditLogActionListProperty()
     {
         return collect([
             'Users' => [
@@ -97,6 +98,14 @@ class Log extends Component
                 'app.variable.value.updated' => 'Variable value updated',
             ],
         ]);
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getAuditLogApplicationListProperty()
+    {
+        return App::query()->orderBy('name')->pluck('name','id');
     }
 
     /**
