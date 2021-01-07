@@ -65,6 +65,41 @@ class Log extends Component
     }
 
     /**
+     * @return void
+     */
+    public function getLogActionProperty()
+    {
+        return collect([
+            'Users' => [
+                'user.created' => 'User added',
+                'user.deleted' => 'User removed',
+                'user.authenticated' => '>User signed in',
+                'user.email.updated' => 'User email address updated',
+                'user.name.updated' => 'User name updated',
+                'user.role.updated' => 'User role updated',
+            ],
+            'Apps' => [
+                'app.created' => 'App created',
+                'app.deleted' => 'App deleted',
+                'app.name.updated' => 'App name updated',
+                'app.notifications.set-up' => 'App notifications set up',
+                'app.notifications.update' => 'App notification settings updated',
+                'app.collaborator.added' => 'Collaborator added',
+                'app.collaborator.removed' => 'Collaborator removed',
+                'app.collaborator.role.updated' => 'Collaborator role updated',
+            ],
+
+            'Variables' => [
+                'app.variable.created' => 'Variable created',
+                'app.variables.imported' => 'Variables imported',
+                'app.variable.deleted' => 'Variable deleted',
+                'app.variable.key.updated' => 'Variable key updated',
+                'app.variable.value.updated' => 'Variable value updated',
+            ],
+        ]);
+    }
+
+    /**
      * @return \Illuminate\View\View
      */
     public function render()

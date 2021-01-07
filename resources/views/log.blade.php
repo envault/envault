@@ -15,33 +15,15 @@
                         <div class="flex relative rounded-md shadow-sm sm:w-1/3">
                             <select wire:model="action"
                                     class="border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 rounded-md block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                            >
+                            >                            
                                 <option value="">Select action...</option>
-                                <optgroup label="Users">
-                                    <option value="user.created">User added</option>
-                                    <option value="user.deleted">User removed</option>
-                                    <option value="user.authenticated">User signed in</option>
-                                    <option value="user.email.updated">User email address updated</option>
-                                    <option value="user.name.updated">User name updated</option>
-                                    <option value="user.role.updated">User role updated</option>
+                                @foreach ($this->logAction as $groupAction => $groupActions)
+                                <optgroup label="{{$groupAction}}">
+                                    @foreach ($groupActions as $action => $actionName)
+                                    <option value="{{$action}}">{{$actionName}}</option>    
+                                    @endforeach
                                 </optgroup>
-                                <optgroup label="Apps">
-                                    <option value="app.created">App created</option>
-                                    <option value="app.deleted">App deleted</option>
-                                    <option value="app.name.updated">App name updated</option>
-                                    <option value="app.notifications.set-up">App notifications set up</option>
-                                    <option value="app.notifications.update">App notification settings updated</option>
-                                    <option value="app.collaborator.added">Collaborator added</option>
-                                    <option value="app.collaborator.removed">Collaborator removed</option>
-                                    <option value="app.collaborator.role.updated">Collaborator role updated</option>
-                                </optgroup>
-                                <optgroup label="Variables">
-                                    <option value="app.variable.created">Variable created</option>
-                                    <option value="app.variables.imported">Variables imported</option>
-                                    <option value="app.variable.deleted">Variable deleted</option>
-                                    <option value="app.variable.key.updated">Variable key updated</option>
-                                    <option value="app.variable.value.updated">Variable value updated</option>
-                                </optgroup>
+                                @endforeach
                             </select>
                         </div>
                         <div class="flex mt-2 sm:mt-0 sm:mx-2 relative rounded-md shadow-sm sm:w-1/3">
