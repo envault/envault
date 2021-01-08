@@ -37,7 +37,7 @@ class RollBack extends Component
      */
     public function selectVersion($id, $value, $createdAt)
     {
-        if ($this->selectedVersionId != $id) {
+        if ($this->selectedVersionId !== $id) {
             $this->selectedVersionCreatedAt = $createdAt;
             $this->selectedVersionId = $id;
             $this->selectedVersionValue = $value;

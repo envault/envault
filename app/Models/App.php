@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\AppObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,6 +21,18 @@ class App extends Model
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::observe(AppObserver::class);
+    }
 
     /**
      * @return bool

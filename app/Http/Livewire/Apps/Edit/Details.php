@@ -59,7 +59,7 @@ class Details extends Component
 
         $this->emit('app.updated', $this->app->id);
 
-        if ($oldName != $this->app->name) {
+        if ($this->app->wasChanged('name')) {
             event(new \App\Events\Apps\NameUpdatedEvent($this->app, $oldName, $this->app->name));
         }
 

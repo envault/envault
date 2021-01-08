@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
@@ -49,11 +50,11 @@ class Account extends Component
 
         $this->emit('account.updated');
 
-        if ($oldEmail != $this->user->email) {
+        if ($this->user->wasChanged('email')) {
             event(new \App\Events\Users\EmailUpdatedEvent($this->user, $oldEmail, $this->user->email));
         }
 
-        if ($oldFullName != $this->user->full_name) {
+        if ($this->user->wasChanged(['first_name', 'last_name'])) {
             event(new \App\Events\Users\NameUpdatedEvent($this->user, $oldFullName, $this->user->full_name));
         }
     }

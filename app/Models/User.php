@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Observers\UserObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,6 +22,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $guarded = [];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        
+        static::observe(UserObserver::class);
+    }
 
     /**
      * @return string
@@ -48,18 +61,6 @@ class User extends Authenticatable
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function app_collaborations()
-    {
-        return $this->belongsToMany(App::class, 'app_collaborators')
-            ->withPivot([
-                'role',
-            ])
-            ->withTimestamps();
-    }
-
-    /**
      * @param \App\Models\App $app
      * @return bool
      */
@@ -82,6 +83,18 @@ class User extends Authenticatable
     public function actions()
     {
         return $this->hasMany(LogEntry::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function app_collaborations()
+    {
+        return $this->belongsToMany(App::class, 'app_collaborators')
+            ->withPivot([
+                'role',
+            ])
+            ->withTimestamps();
     }
 
     /**

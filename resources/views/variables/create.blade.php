@@ -73,7 +73,7 @@
                             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
                         </div>
 
-                        <div @click.away="importOpen = false" @keydown.escape.window="importOpen = false"
+                        <div @click.away="importOpen = false" @keydown.escape.window="importOpen = false; $wire.set('import', '')"
                              class="relative z-10 bg-white rounded-lg overflow-hidden shadow-xl sm:max-w-4xl sm:w-full"
                         >
                             <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
