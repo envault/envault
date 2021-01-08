@@ -67,15 +67,15 @@ class Edit extends Component
 
         $this->emit('user.updated', $this->user->id);
 
-        if ($oldEmail != $this->user->email) {
+        if ($this->user->wasChanged('email')) {
             event(new \App\Events\Users\EmailUpdatedEvent($this->user, $oldEmail, $this->user->email));
         }
 
-        if ($oldFullName != $this->user->full_name) {
+        if ($this->user->wasChanged(['first_name', 'last_name'])) {
             event(new \App\Events\Users\NameUpdatedEvent($this->user, $oldFullName, $this->user->full_name));
         }
 
-        if ($oldRole != $this->user->role) {
+        if ($this->user->wasChanged('role')) {
             event(new \App\Events\Users\RoleUpdatedEvent($this->user, $oldRole, $this->user->role));
         }
     }

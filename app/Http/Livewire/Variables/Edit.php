@@ -78,7 +78,7 @@ class Edit extends Component
 
         $oldValue = $this->variable->latest_version->value ?? null;
 
-        if ($oldValue != $this->value) {
+        if ($oldValue !== $this->value) {
             $this->variable->versions()->create([
                 'value' => $this->value,
             ]);
@@ -94,7 +94,7 @@ class Edit extends Component
 
         $this->emit('variable.updated', $this->variable->id);
 
-        if ($oldKey != $this->variable->key) {
+        if ($this->variable->wasChanged('key')) {
             event(new \App\Events\Variables\KeyUpdatedEvent($this->variable->app, $this->variable, $oldKey, $this->variable->key));
         }
     }

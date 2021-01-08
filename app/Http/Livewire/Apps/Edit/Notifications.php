@@ -46,7 +46,7 @@ class Notifications extends Component
         $this->app->slack_notification_webhook_url = $this->slackNotificationWebhookUrl;
         $this->app->save();
 
-        if ($oldChannel != $this->app->slack_notification_channel || $oldWebhookUrl != $this->app->slack_notification_webhook_url) {
+        if ($this->app->wasChanged(['slack_notification_channel', 'slack_notification_webhook_url'])) {
             if ($this->app->notificationsEnabled()) {
                 $this->emit('app.notifications.set-up', $this->app->id);
 

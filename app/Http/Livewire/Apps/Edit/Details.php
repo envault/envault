@@ -53,19 +53,13 @@ class Details extends Component
 
         $oldName = $this->app->name;
 
-        $fireNameUpdatedEvent = false;
-
         $this->app->name = $this->name;
 
-        if($this->app->isDirty('name')){
-            $fireNameUpdatedEvent = true;
-        }
-
         $this->app->save();
-        
+
         $this->emit('app.updated', $this->app->id);
 
-        if ($fireNameUpdatedEvent) {
+        if ($this->app->wasChanged('name')) {
             event(new \App\Events\Apps\NameUpdatedEvent($this->app, $oldName, $this->app->name));
         }
 
