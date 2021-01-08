@@ -2,9 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\App;
 use App\Models\LogEntry;
-use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Str;
 use Livewire\Component;
@@ -19,6 +17,37 @@ class Log extends Component
      * @var string|null
      */
     public $action = null;
+
+    /**
+     * @var array
+     */
+    public $actions = [
+        'Users' => [
+            'user.created' => 'User added',
+            'user.deleted' => 'User removed',
+            'user.authenticated' => 'User signed in',
+            'user.email.updated' => 'User email address updated',
+            'user.name.updated' => 'User name updated',
+            'user.role.updated' => 'User role updated',
+        ],
+        'Apps' => [
+            'app.created' => 'App created',
+            'app.deleted' => 'App deleted',
+            'app.name.updated' => 'App name updated',
+            'app.notifications.set-up' => 'App notifications set up',
+            'app.notifications.update' => 'App notification settings updated',
+            'app.collaborator.added' => 'Collaborator added',
+            'app.collaborator.removed' => 'Collaborator removed',
+            'app.collaborator.role.updated' => 'Collaborator role updated',
+        ],
+        'Variables' => [
+            'app.variable.created' => 'Variable created',
+            'app.variables.imported' => 'Variables imported',
+            'app.variable.deleted' => 'Variable deleted',
+            'app.variable.key.updated' => 'Variable key updated',
+            'app.variable.value.updated' => 'Variable value updated',
+        ],
+    ];
 
     /**
      * @var int|null
@@ -39,15 +68,17 @@ class Log extends Component
     }
 
     /**
+     * @param string $value
      * @return void
      */
-    public function updatedAction()
+    public function updatedAction($value)
     {
-        $this->resetPage();
         // Reset app filter when an appless action is selected
-        if (Str::before($this->action, '.') == 'user') {
+        if (Str::before($value, '.') === 'user') {
             $this->appId = null;
         }
+
+        $this->resetPage();
     }
 
     /**
@@ -64,72 +95,6 @@ class Log extends Component
     public function updatedUserId()
     {
         $this->resetPage();
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function getAuditLogActionListProperty()
-    {
-        return collect([
-            'Users' => [
-                'user.created' => 'User added',
-                'user.deleted' => 'User removed',
-                'user.authenticated' => 'User signed in',
-                'user.email.updated' => 'User email address updated',
-                'user.name.updated' => 'User name updated',
-                'user.role.updated' => 'User role updated',
-            ],
-            'Apps' => [
-                'app.created' => 'App created',
-                'app.deleted' => 'App deleted',
-                'app.name.updated' => 'App name updated',
-                'app.notifications.set-up' => 'App notifications set up',
-                'app.notifications.update' => 'App notification settings updated',
-                'app.collaborator.added' => 'Collaborator added',
-                'app.collaborator.removed' => 'Collaborator removed',
-                'app.collaborator.role.updated' => 'Collaborator role updated',
-            ],
-
-            'Variables' => [
-                'app.variable.created' => 'Variable created',
-                'app.variables.imported' => 'Variables imported',
-                'app.variable.deleted' => 'Variable deleted',
-                'app.variable.key.updated' => 'Variable key updated',
-                'app.variable.value.updated' => 'Variable value updated',
-            ],
-        ]);
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function getAuditLogApplicationListProperty()
-    {
-        return App::query()->orderBy('name')->pluck('name','id');
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function getAuditLogUserListProperty()
-    {
-        return User::query()
-            ->orderBy('first_name')
-            ->select(['id','first_name','last_name'])
-            ->get()
-            ->pluck('full_name','id');
-    }
-
-    /**
-     * @return \Illuminate\Support\Collection
-     */
-    public function getEmptyMessageProperty()
-    {
-        if(LogEntry::query()->count() === 0){
-            return 'No Records Found';
-        }
-        return ! $this->action &&  ! $this->appId && ! $this->userId ? 'No Records Found' : 'No results match this query';
     }
 
     /**
@@ -151,6 +116,4 @@ class Log extends Component
             'entries' => $entries->orderBy('created_at', 'desc')->paginate(20),
         ]);
     }
-
-
 }
