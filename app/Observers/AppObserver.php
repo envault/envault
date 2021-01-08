@@ -27,8 +27,6 @@ class AppObserver
      */
     public function restored(App $app)
     {
-        $app->setup_tokens()->withTrashed()->where('deleted_at', '>=', $app->deleted_at)->get()->restore();
-
         $app->variables()->withTrashed()->where('deleted_at', '>=', $app->deleted_at)->get()->restore();
     }
 
