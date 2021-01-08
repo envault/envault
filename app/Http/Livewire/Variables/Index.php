@@ -3,8 +3,11 @@
 namespace App\Http\Livewire\Variables;
 
 use App\Models\App;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
+use App\Models\Variable;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Index extends Component
 {
@@ -29,6 +32,33 @@ class Index extends Component
         'variable.updated' => '$refresh',
         'variables.imported' => '$refresh',
     ];
+
+    public function exportToEnvFile()
+    {
+        $envFileName = Str::of($this->app->name)
+                        ->replace(' ','_')
+                        ->finish('.env')
+                        ->__toString();
+
+        $keyValuePairs = $this->app
+                ->variables()
+                ->orderBy('key')
+                ->get()
+                ->map(function(Variable $variable){
+
+                    $variableArray = $variable->toArray();
+                    
+                    return Str::of(Arr::get($variableArray,'key'))
+                            ->append('=')
+                            ->append(Arr::get($variableArray,'latest_version.value'))
+                            ->__toString();
+                })
+                ->implode(PHP_EOL);
+
+        return response()->streamDownload(function () use ($keyValuePairs){
+            echo $keyValuePairs;
+        }, $envFileName);
+    }
 
     /**
      * @param \App\Models\App $app
