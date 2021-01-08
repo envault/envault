@@ -61,18 +61,6 @@ class User extends Authenticatable
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function app_collaborations()
-    {
-        return $this->belongsToMany(App::class, 'app_collaborators')
-            ->withPivot([
-                'role',
-            ])
-            ->withTimestamps();
-    }
-
-    /**
      * @param \App\Models\App $app
      * @return bool
      */
@@ -95,6 +83,18 @@ class User extends Authenticatable
     public function actions()
     {
         return $this->hasMany(LogEntry::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function app_collaborations()
+    {
+        return $this->belongsToMany(App::class, 'app_collaborators')
+            ->withPivot([
+                'role',
+            ])
+            ->withTimestamps();
     }
 
     /**
