@@ -6,6 +6,8 @@ use App\Models\App;
 use App\Models\User;
 use App\Models\Variable;
 use App\Models\VariableVersion;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -93,6 +95,24 @@ class CreateTest extends TestCase
             ['app_id', $app->id],
             ['key', $variableToCreate->key],
         ])->first()->latest_version->value, $variableVersionToCreate->value);
+    }
+
+    /** @test */
+    public function can_upload_file_for_variable_import()
+    {
+        $app = App::factory()->create();
+
+        $variableToCreate = Variable::factory()->make();
+
+        $variableVersionToCreate = VariableVersion::factory()->make();
+
+        $fileToImportContents = $variableToCreate->key.'='.$variableVersionToCreate->value;
+        $fileToImport = UploadedFile::fake()->createWithContent('.env', $fileToImportContents);
+
+        Livewire::test('variables.create', ['app' => $app])
+            ->set('importFile', $fileToImport)
+            ->assertSet('import', $fileToImportContents)
+            ->assertSet('importFile', null);
     }
 
     /** @test */
