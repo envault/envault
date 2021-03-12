@@ -36,7 +36,7 @@ class Index extends Component
     public function exportToEnvFile()
     {
         $envFileName = Str::of($this->app->name)
-                        ->replace(' ','_')
+                        ->slug('_')
                         ->finish('.env')
                         ->__toString();
 
