@@ -89,4 +89,4 @@ php artisan queue:restart
 
 🤔 If you have a question or feature request, please [start a new discussion](https://github.com/envault/envault/discussions/new).
 
-🔐 If you discover a vulnerability within Envault, please review our [security policy](https://github.com/envault/envault/blob/master/SECURITY.md).
+🔐 If you discover a vulnerability within Envault, please review our [security policy](https://github.com/envault/envault/blob/main/SECURITY.md).

@@ -2,12 +2,19 @@
     <div class="bg-white shadow overflow-hidden rounded-md">
         <ul>
             <div class="bg-white px-4 py-5 sm:p-6 border-b border-gray-200">
-                <div class="flex items-center flex-wrap sm:flex-no-wrap">
-                    <div>
+                <div class="flex items-center justify-between">
+                    <div class="flex-1 min-w-0">
                         <h3 class="text-lg leading-6 font-medium text-gray-900">
                             Variables
                         </h3>
                     </div>
+                    @if (count($variables))
+                        <div>
+                            <button wire:click="export" wire:loading.class="opacity-75 cursor-wait" class="inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline transition duration-150 ease-in-out shadow-sm sm:text-sm sm:leading-5">
+                                Export
+                            </button>
+                        </div>
+                    @endif
                 </div>
             </div>
             @forelse ($variables as $variable)

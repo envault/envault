@@ -3,8 +3,10 @@
 namespace App\Http\Livewire\Variables;
 
 use App\Models\App;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
+use App\Models\Variable;
+use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Index extends Component
 {
@@ -29,6 +31,31 @@ class Index extends Component
         'variable.updated' => '$refresh',
         'variables.imported' => '$refresh',
     ];
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\StreamedResponse
+     */
+    public function export()
+    {
+        $fileName = (string) Str::of($this->app->name)
+            ->slug('_')
+            ->finish('.env');
+
+        $contents = $this->app
+            ->variables()
+            ->orderBy('key')
+            ->get()
+            ->map(function (Variable $variable) {
+                return (string) Str::of($variable->key)
+                    ->append('=')
+                    ->append($variable->latest_version->value);
+            })
+            ->implode(PHP_EOL);
+
+        return response()->streamDownload(function () use ($contents) {
+            echo $contents;
+        }, $fileName);
+    }
 
     /**
      * @param \App\Models\App $app
