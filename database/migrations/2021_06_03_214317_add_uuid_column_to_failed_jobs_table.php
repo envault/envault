@@ -14,7 +14,7 @@ class AddUuidColumnToFailedJobsTable extends Migration
     public function up()
     {
         Schema::table('failed_jobs', function (Blueprint $table) {
-            $table->string('uuid')->unique()->after('id');
+            $table->string('uuid')->nullable()->unique()->after('id');
         });
     }
 
