@@ -8,7 +8,9 @@
             </div>
         </div>
 
-        <x-inputs.text disabled label="Key" name="key" :value="$variable->key" :key="$variable->id" context="show" font="font-mono" maxWidth="max-w-lg" class="mt-6" />
+        <x-inputs.text disabled label="Label" name="label" :value="$variable->label" :key="$variable->id" context="show" font="font-mono" maxWidth="max-w-lg" class="mt-6" />
+
+        <x-inputs.text disabled label="Key" name="key" :value="$variable->key" :key="$variable->id" context="show" font="font-mono" maxWidth="max-w-lg" class="mt-6" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
 
         <x-inputs.text disabled label="Value" name="value" :value="$variable->latest_version->value ?? ''" :key="$variable->id" context="show" font="font-mono" maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5" />
     </div>

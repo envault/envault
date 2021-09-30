@@ -12,8 +12,13 @@
                 <x-flash-message event="variable.updated" message="Saved!" />
             </div>
 
+            <x-inputs.text label="Label" name="label" :key="$variable->id" context="edit" font="font-mono"
+                           maxWidth="max-w-lg" class="mt-6"
+            />
+
             <x-inputs.text label="Key" name="key" :key="$variable->id" context="edit" font="font-mono"
                            maxWidth="max-w-lg" class="mt-6"
+                           class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
             />
 
             <x-inputs.base label="Value" name="value" :key="$variable->id" context="edit" maxWidth="max-w-lg"

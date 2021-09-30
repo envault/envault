@@ -25,6 +25,11 @@ class Create extends Component
     /**
      * @var string
      */
+    public $label = '';
+
+    /**
+     * @var string
+     */
     public $key = '';
 
     /**
@@ -103,6 +108,7 @@ class Create extends Component
             'key' => ['required', 'alpha_dash', Rule::unique('variables')->where(function ($query) {
                 return $query->where('app_id', $this->app->id);
             })->whereNull('deleted_at')],
+            'label' => 'required'
         ]));
 
         $variable->versions()->create([
@@ -113,7 +119,7 @@ class Create extends Component
 
         event(new \App\Events\Variables\CreatedEvent($this->app, $variable));
 
-        $this->reset('key', 'value');
+        $this->reset('label', 'key', 'value');
     }
 
     /**

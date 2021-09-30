@@ -39,8 +39,12 @@
 
         <form wire:submit.prevent="store" spellcheck="false">
             <div class="px-4 py-6 sm:px-6">
-                <x-inputs.text label="Key" name="key" placeholder="MAIL_USERNAME" font="font-mono"
+                <x-inputs.text label="Label" name="label" placeholder="Username" font="font-mono"
                                maxWidth="max-w-lg"
+                />
+
+                <x-inputs.text label="Key" name="key" placeholder="MAIL_USERNAME" font="font-mono"
+                               maxWidth="max-w-lg" class="mt-6 sm:border-t sm:border-gray-200 sm:pt-5"
                 />
 
                 <x-inputs.text label="Value" name="value" placeholder="3c683983b21e1f" font="font-mono"

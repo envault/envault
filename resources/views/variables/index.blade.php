@@ -25,7 +25,12 @@
                          class="hover:bg-gray-50 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out cursor-pointer"
                     >
                         <div class="px-4 py-4 sm:px-6">
-                            <div class="flex items-center">
+                            <div class="flex items-center" style="min-width: 40%; display: inline-block">
+                                <div class="text-sm leading-5 text-indigo-600 font-medium truncate font-mono">
+                                    {{ $variable->label }}
+                                </div>
+                            </div>
+                            <div class="flex items-center" style="display: inline-block">
                                 <div class="text-sm leading-5 text-indigo-600 font-medium truncate font-mono">
                                     {{ $variable->key }}
                                 </div>

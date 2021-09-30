@@ -14,6 +14,10 @@ class Edit extends Component
     /**
      * @var string
      */
+    public $label = '';
+    /**
+     * @var string
+     */
     public $key = '';
 
     /**
@@ -74,6 +78,7 @@ class Edit extends Component
             'key' => ['required', 'alpha_dash', Rule::unique('variables')->ignore($this->variable)->where(function ($query) {
                 return $query->where('app_id', $this->variable->app->id);
             })->whereNull('deleted_at')],
+            'label' => ['required'],
         ]);
 
         $oldValue = $this->variable->latest_version->value ?? null;
@@ -87,8 +92,10 @@ class Edit extends Component
         }
 
         $oldKey = $this->variable->key;
+        $oldLabel = $this->variable->label;
 
         $this->variable->key = $this->key;
+        $this->variable->label = $this->label;
 
         $this->variable->save();
 
@@ -111,6 +118,7 @@ class Edit extends Component
             'key' => ['alpha_dash', Rule::unique('variables')->ignore($this->variable)->where(function ($query) {
                 return $query->where('app_id', $this->variable->app->id);
             })->whereNull('deleted_at')],
+            'label' => ['required']
         ]);
     }
 
@@ -120,6 +128,7 @@ class Edit extends Component
      */
     public function mount(Variable $variable)
     {
+        $this->label = $variable->label;
         $this->key = $variable->key;
         $this->value = $variable->latest_version->value ?? '';
         $this->variable = $variable;
