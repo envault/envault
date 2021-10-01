@@ -84,6 +84,6 @@ class App extends Model
      */
     public function variables()
     {
-        return $this->hasMany(Variable::class);
+        return $this->hasMany(Variable::class)->orderBy('order', 'asc');
     }
 }
