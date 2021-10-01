@@ -1,6 +1,6 @@
 <div>
     <div class="bg-white shadow overflow-hidden rounded-md">
-        <ul>
+        <ul wire:sortable="updateVariableOrder">
             <div class="bg-white px-4 py-5 sm:p-6 border-b border-gray-200">
                 <div class="flex items-center justify-between">
                     <div class="flex-1 min-w-0">
@@ -19,6 +19,8 @@
             </div>
             @forelse ($variables as $variable)
                 <li x-data="{ context: null }" x-cloak wire:key="variable.{{ $variable->id }}"
+                    wire:sortable.item="{{ $variable->id }}"
+                    wire:sortable.handle
                     class="@if (!$loop->last) border-b border-gray-200 @endif"
                 >
                     <div @click="context = 'show';"
@@ -27,12 +29,13 @@
                         <div class="px-4 py-4 sm:px-6">
                             <div class="flex items-center" style="min-width: 40%; display: inline-block">
                                 <div class="text-sm leading-5 text-indigo-600 font-medium truncate font-mono">
-                                    {{ $variable->label }}
+                                    {{ $variable->key }}
                                 </div>
                             </div>
+
                             <div class="flex items-center" style="display: inline-block">
                                 <div class="text-sm leading-5 text-indigo-600 font-medium truncate font-mono">
-                                    {{ $variable->key }}
+                                    {{ $variable->label }}
                                 </div>
                             </div>
                         </div>

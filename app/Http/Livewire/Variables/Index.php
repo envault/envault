@@ -43,7 +43,8 @@ class Index extends Component
 
         $contents = $this->app
             ->variables()
-            ->orderBy('key')
+            ->orderBy('order')
+            ->orderBy('id')
             ->get()
             ->map(function (Variable $variable) {
                 return (string) Str::of($variable->key)
@@ -67,11 +68,23 @@ class Index extends Component
     }
 
     /**
+     * @return void
+     */
+    public function updateVariableOrder($variables)
+    {
+        foreach($variables as $variable) {
+            $this->app->variables()->find($variable['value'])->update(['order' => $variable['order']]);
+        }
+
+        $this->dispatchBrowserEvent('alert', ['type' => 'success', 'message' => 'Update order successfully!']);
+    }
+
+    /**
      * @return \Illuminate\View\View
      */
     public function render()
     {
-        $this->variables = $this->app->variables()->orderBy('key')->get();
+        $this->variables = $this->app->variables()->orderBy('order')->orderBy('id')->get();
 
         return view('variables.index');
     }

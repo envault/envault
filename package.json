@@ -17,5 +17,8 @@
         "tailwindcss": "^2.0.2",
         "typeface-fira-mono": "^1.1.13",
         "typeface-inter": "^3.15.1"
+    },
+    "dependencies": {
+        "livewire-sortable": "^0.2.2"
     }
 }

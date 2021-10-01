@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLabelSortForVariables extends Migration
+class AddLabelOrderForVariables extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class AddLabelSortForVariables extends Migration
     {
         Schema::table('variables', function (Blueprint $table) {
             $table->string('label')->nullable()->after('key')->comment('標題');
-            $table->integer('sort')->default(0)->after('label')->comment('排序');
+            $table->integer('order')->default(0)->after('label')->comment('排序');
         });
     }
 
