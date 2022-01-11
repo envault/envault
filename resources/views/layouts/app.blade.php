@@ -149,6 +149,9 @@
 </div>
 
 <main class="flex-grow -mt-56">
+    @if (parse_url(strtolower(config('app.url')))['scheme'] != 'https')
+        @include('components.alert', ['title' => 'Warning!', 'message' => 'Your application URL protocol is not secured.', 'type' => 'yellow'])
+    @endif
     {{ $slot }}
 </main>
 
