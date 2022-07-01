@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://envault.dev"><img src="https://user-images.githubusercontent.com/41773797/103277136-3cf26880-49c0-11eb-8e8d-a8feec4f27a2.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
+    <a href="https://github.com/envault/envault"><img src="https://user-images.githubusercontent.com/41773797/103277136-3cf26880-49c0-11eb-8e8d-a8feec4f27a2.png" alt="Envault banner" style="width: 100%; max-width: 800px;" /></a>
 </p>
 
 <h1 align="center">Envault</h1>
@@ -11,7 +11,7 @@
     <a href="https://php.net"><img alt="PHP 8" src="https://img.shields.io/badge/PHP-8-777BB4?style=for-the-badge&logo=php"></a>
 </p>
 
-[Envault](https://envault.dev) is a tool to share .env secrets.
+[Envault](https://github.com/envault/envault) is a tool to share .env secrets.
 
 It lets you manage and sync your entire team’s local .env files, across all your projects, so you’re all kept up to date with the latest changes.
 
