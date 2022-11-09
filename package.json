@@ -12,7 +12,7 @@
     "devDependencies": {
         "@tailwindcss/forms": "^0.2.1",
         "alpinejs": "^2.8.0",
-        "laravel-mix": "^6.0.39",
+        "laravel-mix": "^6.0.49",
         "postcss": "^8.3.11",
         "tailwindcss": "^2.2.19",
         "typeface-fira-mono": "^1.1.13",
