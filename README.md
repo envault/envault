@@ -31,7 +31,7 @@ Simply install Envault onto your own web server and you're ready to sync all you
 
 Envault is built on [the Laravel PHP framework](https://laravel.com). This makes installation very simple.
 
-1) Clone this repository onto your server.
+1) Clone this repository onto your server and run `composer update`.
 2) Copy the `.env.example` to `.env`.
 3) Generate a new `APP_KEY` in your `.env` by running `php artisan key:generate` in the terminal.
 4) Ensure that the `APP_URL` in `.env` matches the address of your Envault server.
