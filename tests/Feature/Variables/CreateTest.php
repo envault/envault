@@ -53,7 +53,7 @@ class CreateTest extends TestCase
         $variableVersionToCreate = VariableVersion::factory()->make();
 
         Livewire::test('variables.create', ['app' => $app])
-            ->set('import', $variableToCreate->key.'='.$variableVersionToCreate->value)
+            ->set('import', $variableToCreate->key . '=' . $variableVersionToCreate->value)
             ->call('import')
             ->assertEmitted('variables.imported')
             ->assertSet('key', null)
@@ -80,7 +80,7 @@ class CreateTest extends TestCase
         $variableVersionToCreate = VariableVersion::factory()->make();
 
         Livewire::test('variables.create', ['app' => $app])
-            ->set('import', $variableToCreate->key.' = '.$variableVersionToCreate->value)
+            ->set('import', $variableToCreate->key . ' = ' . $variableVersionToCreate->value)
             ->call('import')
             ->assertEmitted('variables.imported')
             ->assertSet('key', null)
@@ -106,7 +106,7 @@ class CreateTest extends TestCase
 
         $variableVersionToCreate = VariableVersion::factory()->make();
 
-        $fileToImportContents = $variableToCreate->key.'='.$variableVersionToCreate->value;
+        $fileToImportContents = $variableToCreate->key . '=' . $variableVersionToCreate->value;
         $fileToImport = UploadedFile::fake()->createWithContent('.env', $fileToImportContents);
 
         Livewire::test('variables.create', ['app' => $app])
