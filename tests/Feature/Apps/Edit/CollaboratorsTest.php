@@ -42,7 +42,7 @@ class CollaboratorsTest extends TestCase
             ->call('remove', $userToRemove->id)
             ->assertEmitted('app.collaborator.removed', $userToRemove->id, $app->id);
 
-        $this->assertDeleted('app_collaborators', [
+        $this->assertDatabaseMissing('app_collaborators', [
             'app_id' => $app->id,
             'user_id' => $userToRemove->id,
         ]);
@@ -55,8 +55,12 @@ class CollaboratorsTest extends TestCase
 
         $addableUser = User::factory()->create();
 
-        Livewire::test('apps.edit.collaborators', ['app' => $app])
+        $test = Livewire::test('apps.edit.collaborators', ['app' => $app])
             ->assertSee($addableUser->name);
+
+        $test->assertSee($addableUser->name);
+
+        $this->assertTrue(str_contains($test->payload['effects']['html'], $addableUser->name), "The addable user's name is not visible in the component.");
     }
 
     /** @test */
@@ -83,13 +87,14 @@ class CollaboratorsTest extends TestCase
     public function can_view_collaborators()
     {
         $app = App::factory()->create();
-
         $appCollaborator = User::factory()->create();
-
         $app->collaborators()->attach($appCollaborator);
 
-        Livewire::test('apps.edit.collaborators', ['app' => $app])
-            ->assertSee($appCollaborator->name)
+        $livewireTest = Livewire::test('apps.edit.collaborators', ['app' => $app]);
+
+        $this->assertNotEmpty($livewireTest, 'Livewire test object is empty.');
+
+        $livewireTest->assertSee($appCollaborator->name)
             ->assertSee($this->authenticatedUser->name);
     }
 
