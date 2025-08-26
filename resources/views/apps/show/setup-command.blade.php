@@ -8,15 +8,13 @@
         <div class="flex">
             <div class="relative flex-grow focus-within:z-10">
                 <input id="setupCommand" type="text"
-                       value="npx envault {{ parse_url(config('app.url'))['host'] ?? config('app.url') }} {{ $app->id }} {{ $token }}"
-                       class="px-4 sm:px-6 rounded-none border-0 block w-full transition ease-in-out duration-150 font-mono py-5 text-white bg-gray-900 sm:leading-5"
-                       readonly
-                />
+                    value="npx envault {{ parse_url(config('app.url'))['host'] ?? config('app.url') }} {{ $app->id }} {{ $token }}"
+                    class="px-4 sm:px-6 rounded-none border-0 block w-full transition ease-in-out duration-150 font-mono py-5 text-white bg-gray-900 sm:leading-5"
+                    readonly />
             </div>
             <button id="copySetupCommand" type="button"
-                    class="-ml-px relative inline-flex items-center px-4 py-2 text-sm leading-5 font-medium text-gray-100 bg-gray-900 border-l border-gray-200 hover:text-white hover:bg-gray-800 focus:outline-none focus:shadow-outline-indigo active:bg-gray-900 active:text-white transition ease-in-out duration-150"
-            >
-                <x-heroicon-s-clipboard-copy class="h-5 w-5 text-gray-400" />
+                class="-ml-px relative inline-flex items-center px-4 py-2 text-sm leading-5 font-medium text-gray-100 bg-gray-900 border-l border-gray-200 hover:text-white hover:bg-gray-800 focus:outline-none focus:shadow-outline-indigo active:bg-gray-900 active:text-white transition ease-in-out duration-150">
+                <x-heroicon-s-clipboard-document class="h-5 w-5 text-gray-400" />
                 <span class="ml-2">Copy</span>
             </button>
         </div>
